@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Georgia",
+    "img": "src/assets/Georgia.svg"
+  },
+  {
+    "name": "Albania",
+    "img": "src/assets/Albania.svg"
+  },
+  {
+    "name": "Algeria",
+    "img": "src/assets/Algeria.svg"
+  },
+  {
+    "name": "Andorra",
+    "img": "src/assets/Andorra.svg"
+  },
+  {
+    "name": "Angola",
+    "img": "src/assets/Angola.svg"
+  },
+  {
+    "name": "Antigua & Barbuad",
+    "img": "src/assets/Antigua & Barbuda.svg"
+  },
+  {
+    "name": "Armenia",
+    "img": "src/assets/Armenia.svg"
+  }
+]
