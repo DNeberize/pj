@@ -24,7 +24,7 @@ function FeedMenu({ children }: FeedProps) {
             </button>
           </div>
         </div>
-        <div className="h-[45px] w-[150px] rounded-[8px] bg-[#23262E]/10 flex justify-between px-1 items-center ">
+        <div className="h-[45px] w-[180px] rounded-[8px] bg-[#23262E]/10 flex justify-between px-1 items-center ">
           <img
             className=" rotate-90  size-[11px]"
             src="src\assets\Vector.svg"

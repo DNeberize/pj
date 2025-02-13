@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Layout from "./Layout";
-import CenterFeed from "./Header/Feed/CenterFeed";
+import CenterFeed from "./Feed/CenterFeed";
 import NotFound from "./NotFount";
 
 createRoot(document.getElementById("root")!).render(

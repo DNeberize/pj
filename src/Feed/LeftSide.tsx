@@ -1,6 +1,6 @@
-import Leagues from "../../Leagues.json";
+import Leagues from "../Leagues.json";
 import LeagueList from "./Listing";
-import Country from "../../Country.json";
+import Country from "../Country.json";
 
 function LeftSideBar() {
   return (

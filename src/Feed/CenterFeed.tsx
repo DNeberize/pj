@@ -1,9 +1,10 @@
 import FeedMenu from "./FeedMenu";
+import LeagueMatches from "./LeagueMatches";
 function CenterFeed() {
   return (
     <div>
       <div className="w-full ">
-        <div className=" rounded-[12px]">
+      <div className=" rounded-[12px]">
           <img
             className="rounded-[12px]"
             src="src/assets/topBanner.svg"
@@ -12,15 +13,9 @@ function CenterFeed() {
         </div>
 
         <FeedMenu>
-          <div className="w-[100%] h-[100px]">
-            <ul>
-              <div>
-                <img src="" alt="" />
-                <img src="src\assets\Country Flags\Argentina.svg" alt="" />
-                <h1></h1>
-              </div>
-              <li></li>
-            </ul>
+          <div className="w-[100%]">
+            <LeagueMatches/>
+            
           </div>
         </FeedMenu>
       </div>

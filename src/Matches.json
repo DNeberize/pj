@@ -1,0 +1,20 @@
+[
+    {
+      "leagueName": "ARGENTINA: Liga Profesional",
+      "leagueFlag": "src/assets/Country Flags/Argentina.svg",
+      "matches": [
+        {
+          "imgClub1": "src/assets/Country Flags/Argentino Jrs.svg",
+          "imgClub2": "src/assets/Country Flags/Sarmiento.svg",
+          "club1": "Argentino Jrs",
+          "club2": "Sarmiento",
+          "time": "22:00",
+          "club1_HT1": 1,
+          "club1_HT2": 2,
+          "club2_HT1": 1,
+          "club2_HT2": 2
+        }
+      ]
+    }
+  ]
+  
