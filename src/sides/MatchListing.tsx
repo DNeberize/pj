@@ -1,4 +1,3 @@
-
 type Match = {
   imgClub1: string;
   imgClub2: string;
@@ -11,7 +10,6 @@ type Match = {
   club2_HT2: number;
 };
 
-
 type MatchListProps = {
   List: Match[];
 };
@@ -23,14 +21,18 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
         <div className="inline-grid w-full items-center grid-cols-[450px_1fr] text-[12px] h-[72px] py-[15px] px-[20px]">
           <div className="border-r-[1px] border-solid border-[#23262E1A] flex items-center gap-2 h-[42px]">
             <img src="src/assets/Star.svg" alt="Star" />
-            <h2 className="text-[12px] w-[60px] flex justify-center">{L.time}</h2>
+            <h2 className="text-[12px] w-[60px] flex justify-center">
+              {L.time}
+            </h2>
             <div className="w-full space-y-2">
               <div className="flex justify-between">
                 <div className="flex gap-2 items-center">
                   <img src={L.imgClub1} alt={L.club1} />
                   <h1 className="font-medium text-[#23262E]">{L.club1}</h1>
                 </div>
-                <div className="w-[49.66px] text-[#23262E] px-4 flex justify-center">{L.club1_HT1}</div>
+                <div className="w-[49.66px] text-[#23262E] px-4 flex justify-center">
+                  {L.club1_HT1}
+                </div>
               </div>
 
               <div className="flex justify-between">
@@ -38,7 +40,9 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
                   <img src={L.imgClub2} alt={L.club2} />
                   <h1 className="font-medium text-[#23262E]">{L.club2}</h1>
                 </div>
-                <div className="w-[49.66px] text-[#23262E] px-4 flex justify-center">{L.club2_HT1}</div>
+                <div className="w-[49.66px] text-[#23262E] px-4 flex justify-center">
+                  {L.club2_HT1}
+                </div>
               </div>
             </div>
           </div>
@@ -58,11 +62,11 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
               <img src="src/assets/Shirt.svg" alt="Shirt" />
               <img src="src/assets/TV.svg" alt="TV" />
               <img src="src/assets/Info.svg" alt="Info" />
-            </div> 
+            </div>
           </div>
         </div>
       </li>
     ))}
   </ul>
 );
-export default MatchList
+export default MatchList;

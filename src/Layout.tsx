@@ -1,18 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header/Header";
-import LeftSide from "./Feed/LeftSide";
-import RightSideBar from "./Feed/RightSide";
+import LeftSideBar from "./sides/LeftSide";
+import RightSideBar from "./sides/RightSide";
 
 export default function Layout() {
   return (
     <div className=" flex justify-center">
-      
       <Header />
-      
 
       <div className="flex justify-center  gap-4">
-        
-        <LeftSide />
+        <LeftSideBar />
 
         <div className="flex-1">
           <Outlet />

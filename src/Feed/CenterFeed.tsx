@@ -3,8 +3,8 @@ import LeagueMatches from "./LeagueMatches";
 function CenterFeed() {
   return (
     <div>
-      <div className="w-full ">
-      <div className=" rounded-[12px]">
+      <div className="w-full  ">
+        <div className=" rounded-[12px]">
           <img
             className="rounded-[12px]"
             src="src/assets/topBanner.svg"
@@ -13,9 +13,8 @@ function CenterFeed() {
         </div>
 
         <FeedMenu>
-          <div className="w-[100%]">
-            <LeagueMatches/>
-            
+          <div className="w-[100%] pb-5">
+            <LeagueMatches />
           </div>
         </FeedMenu>
       </div>
