@@ -13,7 +13,7 @@ const LeagueList: React.FC<LeagueListProps> = ({ List }) => (
     {List.map((L, index) => (
       <li
         key={index}
-        className="grid grid-cols-[28px_1fr] h-[44px] items-center"
+        className="cursor-pointer hover:opacity-80 grid grid-cols-[28px_1fr] h-[44px] items-center"
       >
         <img
           src={L.img}

@@ -1,5 +1,5 @@
 import Matches from "../Matches.json";
-import MatchList from "../sides/MatchListing";
+import MatchList from "./MatchListing";
 import { useState } from "react";
 
 function LeagueMatches() {
@@ -21,7 +21,7 @@ function LeagueMatches() {
         <div key={index}>
           <div
             onClick={() => toggleLeague(index)}
-            className="inline-grid w-full grid-cols-[450px_1fr] text-[12px] bg-[#23262E1A] h-[50px] py-[15px] px-[20px] cursor-pointer"
+            className="inline-grid w-full grid-cols-[9fr_4fr] text-[12px] bg-[#23262E1A] h-[50px] py-[15px] px-[20px] cursor-pointer"
           >
             <div className="flex gap-2 items-center">
               <img src="src/assets/Star.svg" alt="Star" />

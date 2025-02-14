@@ -4,9 +4,9 @@ import Country from "../Country.json";
 
 function LeftSideBar() {
   return (
-    <div className="flex flex-col w-[248px]">
+    <div>
       <div className="flex">
-        <div className="">
+        <div>
           <h2 className="font-bold text-[14px] text-[#231F2E] pb-4 mb-[15px] mt-[15px] border-b-1 border-solid border-[#23262E]/10">
             Pinned Leagues
           </h2>

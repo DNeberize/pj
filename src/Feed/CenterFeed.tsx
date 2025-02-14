@@ -13,7 +13,7 @@ function CenterFeed() {
         </div>
 
         <FeedMenu>
-          <div className="w-[100%] pb-5">
+          <div className="w-[100%]">
             <LeagueMatches />
           </div>
         </FeedMenu>
