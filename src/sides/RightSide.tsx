@@ -4,8 +4,8 @@ function RightSideBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
-      <div className="w-[300px] p-4 pt-3 bg-white rounded-[12px]">
+    <div className="pr-[5rem]">
+      <div className=" p-4 pt-3 bg-white rounded-[12px]">
         <div
           onClick={() => setIsOpen((prev) => !prev)}
           className="flex justify-between mb-2 cursor-pointer"
@@ -20,10 +20,10 @@ function RightSideBar() {
           />
         </div>
         {isOpen && (
-          <div className="w-[270px] h-[280px] flex-col">
+          <div className=" h-[280px] flex-col">
             <div className="rounded-[12px] w-[100%] h-[160px] flex justify-center content-center bg-[#23262E]/10">
               <img
-                className="w-[120px]"
+                
                 src="src/assets/QR.svg"
                 alt="QR Code"
               />
@@ -44,7 +44,7 @@ function RightSideBar() {
           </div>
         )}
       </div>
-      <div className="mt-[20px] w-[300px] h-[360px] rounded-[12px]">
+      <div className="mt-[20px]  h-[360px] rounded-[12px]">
         <img src="src/assets/Banner.svg" alt="Banner" />
       </div>
     </div>

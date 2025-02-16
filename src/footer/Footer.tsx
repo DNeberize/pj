@@ -2,7 +2,7 @@ import ListOfLists from "./ListOfLists";
 
 function Footer() {
   return (
-    <div className="w-full absolute left-0 flex justify-center bg-white mt-20 h-[580px]">
+    <div className=" right-0 absolute left-0 flex justify-center bg-white mt-20 h-[580px]">
       <div className="flex flex-col w-[1000px] relative h-full">
         <div className="flex flex-col gap-y-[80px] pt-[40px]  w-full flex-grow">
           <div className="h-[125px] grid grid-cols-[233px_1fr]  w-full">

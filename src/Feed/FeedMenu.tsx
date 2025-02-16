@@ -5,7 +5,7 @@ type FeedProps = {
 };
 
 function FeedMenu({ children }: FeedProps) {
-  const [activeTab, setActiveTab] = useState<string | null>("All Matches");
+  const [activeTab, setActiveTab] = useState<string>("All Matches");
 
   const handleTabClick = (tab: string) => {
     setActiveTab(() => tab);
