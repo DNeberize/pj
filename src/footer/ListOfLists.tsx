@@ -1,7 +1,7 @@
 function ListOfLists() {
   return (
-    <div className="h-[240px] gap-[25px] flex w-full">
-      <div className="w-[233px]">
+    <div className="h-[240px] gap-[25px] grid grid-cols-[1fr_1fr_1fr_1fr] w-full">
+      <div>
         <h2 className="text-[#23262E] mb-1 font-semibold text-[14px] uppercase">
           Football
         </h2>
@@ -15,7 +15,7 @@ function ListOfLists() {
         </ul>
       </div>
 
-      <div className="w-[233px]">
+      <div>
         <h2 className="text-[#23262E] mb-1 font-semibold text-[14px] uppercase">
           Football
         </h2>
@@ -29,7 +29,7 @@ function ListOfLists() {
         </ul>
       </div>
 
-      <div className="w-[233px]">
+      <div>
         <h2 className="text-[#23262E] mb-1 font-semibold text-[14px] uppercase">
           Football
         </h2>
@@ -43,7 +43,7 @@ function ListOfLists() {
         </ul>
       </div>
 
-      <div className="w-[233px]">
+      <div>
         <h2 className="text-[#23262E] mb-1 font-semibold text-[14px] uppercase">
           Football
         </h2>

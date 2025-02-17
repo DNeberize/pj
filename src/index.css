@@ -7,11 +7,9 @@ body {
   .max-w-1024-hidden {
     display: none;
   }
-
 }
 
 .page-container {
   padding-left: clamp(0px, 0rem, 80px);
   transition: padding 0.3s ease-in-out;
 }
-

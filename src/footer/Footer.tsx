@@ -2,11 +2,12 @@ import ListOfLists from "./ListOfLists";
 
 function Footer() {
   return (
-    <div className=" right-0 absolute left-0 flex justify-center bg-white mt-20 h-[580px]">
-      <div className="flex flex-col w-[1000px] relative h-full">
+    <div className="w-full flex justify-center  bottom-0 bg-white mt-20 h-[580px]">
+      {/*  */}
+      <div className="flex flex-col w-full max-w-[1000px] relative h-full">
         <div className="flex flex-col gap-y-[80px] pt-[40px]  w-full flex-grow">
-          <div className="h-[125px] grid grid-cols-[233px_1fr]  w-full">
-            <div>
+          <div className="grid grid-cols-12  w-full">
+            <div className="col-span-4">
               <h2 className="text-[#23262E] mb-1 font-semibold text-[14px] uppercase">
                 Football
               </h2>
@@ -18,7 +19,7 @@ function Footer() {
               </ul>
             </div>
 
-            <div className="h-full flex items-center ">
+            <div className="h-full col-span-8 flex items-center ">
               <p className=" text-[12px] text-[#23262E]">
                 Football live scores page on Flashscore.com offers all the
                 latest football results from EPL 2024 and more than 100+
@@ -37,7 +38,7 @@ function Footer() {
         </div>
 
         <div className="h-[60px] w-full flex justify-between items-center border-t-2 border-solid border-[#23262E]/[10%]">
-          <div className="gap-[8px] flex h-[18px] w-[360px]">
+          <div className="gap-[8px] flex h-[18px] ">
             <img
               className="border-r-2 border-solid pr-1 border-[#23262E]/[10%]"
               src="src/assets/TheSportsLogo.svg"
