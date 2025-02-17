@@ -10,7 +10,7 @@ function FeedMenu() {
 
   return (
     <>
-      <div className="grid  grid-cols-[11fr_3fr] gap-4 p-[20px] mb-4">
+      <div className="grid  grid-cols-[11fr_3fr] max-lg:flex gap-4 p-[20px] mb-4">
         <div className="max-lg:hidden">
           <div className="bg-[#F7F8FA] h-[45px] rounded-[12px] p-1 text-[12px] grid grid-cols-[1fr_1fr_1fr_1fr]">
             {["All Matches", "Live (12)", "Finished", "Scheduled"].map(
@@ -47,9 +47,7 @@ function FeedMenu() {
             alt=""
           />
         </div>
-        <MobileFeedMenu/>
-
-        <div />
+        <MobileFeedMenu />
       </div>
     </>
   );

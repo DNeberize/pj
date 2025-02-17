@@ -25,12 +25,12 @@ const App: React.FC = () => (
     <Dropdown
       menu={{ items }}
       trigger={["click"]}
-      className="custom-dropdown"
+      className="custom-dropdown "
       overlayClassName="custom-dropdown"
     >
       <a onClick={(e) => e.preventDefault()}>
         <Space>
-          <img className="h-full" src="src\assets\dropDown.svg" alt="" />
+          <img className="h-full " src="src\assets\dropDown.svg" alt="" />
         </Space>
       </a>
     </Dropdown>

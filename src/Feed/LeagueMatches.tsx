@@ -26,14 +26,14 @@ function LeagueMatches() {
             <div className="flex gap-2 items-center">
               <img src="src/assets/Star.svg" alt="Star" />
               <img src={league.leagueFlag} alt={league.leagueName} />
-              <h1 className="font-semibold text-[#23262E]">
+              <h1 className="font-semibold max-lg:text-[12px] text-[#23262E]">
                 {league.leagueName}
               </h1>
               <img src="src/assets/Pin.svg" alt="Pin" />
             </div>
 
-            <div className="flex justify-between">
-              <div className="flex">
+            <div className="flex justify-between max-lg:justify-end">
+              <div className="flex max-lg:hidden ">
                 <h2 className="text-[#23262E] px-4 border-r-[1px] border-solid border-[#23262E1A]">
                   HT
                 </h2>
@@ -42,7 +42,7 @@ function LeagueMatches() {
               <div className="flex mx-1 gap-4 h-[20px]">
                 <img
                   src="src/assets/3Line.svg"
-                  className="w-[15px]"
+                  className="w-[15px] max-lg:hidden"
                   alt="Menu"
                 />
                 <img

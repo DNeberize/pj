@@ -42,12 +42,14 @@ body {
     width: 36px;
   }
 }
-@media (max-width: 1024px) {
-  .max-w-1024-footer-padding {
-    padding-left: 5rem;
-    padding-right: 5rem;
+@media (max-width: 380px) {
+  .mobile-menu-p-sizedown {
+    font-size: 11px;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
   }
 }
+
 .max-w-1024-show {
   display: none;
   @media (max-width: 1024px) {
