@@ -6,7 +6,7 @@ function MobileHeaderMenu() {
       >
         <img
           className="w-full flex justify-center max-h-[20px]"
-          src="src\assets\Ball.svg"
+          src="src\assets\menuStar.svg"
           alt=""
         />
         <h3 className="text-[12px] text-[#23262EB2]">Football</h3>
@@ -26,7 +26,7 @@ function MobileHeaderMenu() {
       >
         <img
           className="w-full flex justify-center max-h-[20px]"
-          src="src\assets\Ball.svg"
+          src="src\assets\Basketball.svg"
           alt=""
         />
         <h3 className="text-[12px] text-[#23262EB2]">Football</h3>
@@ -36,7 +36,7 @@ function MobileHeaderMenu() {
       >
         <img
           className="w-full flex justify-center max-h-[20px]"
-          src="src\assets\Ball.svg"
+          src="src\assets\Hockey.svg"
           alt=""
         />
         <h3 className="text-[12px] text-[#23262EB2]">Football</h3>
@@ -46,7 +46,7 @@ function MobileHeaderMenu() {
       >
         <img
           className="w-full flex justify-center max-h-[20px]"
-          src="src\assets\Ball.svg"
+          src="src\assets\Handball.svg"
           alt=""
         />
         <h3 className="text-[12px] text-[#23262EB2]">Football</h3>
@@ -56,7 +56,7 @@ function MobileHeaderMenu() {
       >
         <img
           className="w-full flex justify-center max-h-[20px]"
-          src="src\assets\Ball.svg"
+          src="src\assets\Rugby.svg"
           alt=""
         />
         <h3 className="text-[12px] text-[#23262EB2]">Football</h3>
