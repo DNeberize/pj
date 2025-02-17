@@ -4,7 +4,7 @@ import Country from "../Country.json";
 
 function LeftSideBar() {
   return (
-    <div className="pl-[5rem]">
+    <div className="pl-[5rem] max-w-1024-hidden">
       <div className="flex">
         <div>
           <h2 className="font-bold text-[14px] text-[#231F2E] pb-4 my-[15px]  border-b-1 border-solid border-[#23262E]/10">
@@ -27,7 +27,7 @@ function LeftSideBar() {
             type="submit"
             className="right-0 top-0 bg-[#F7F8FA] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
           >
-            <img src="src/assets/Search.svg" alt=""  />
+            <img src="src/assets/Search.svg" alt="" />
           </button>
         </form>
         <LeagueList List={Country} />

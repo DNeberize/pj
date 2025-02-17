@@ -1,0 +1,15 @@
+.custom-dropdown .ant-dropdown-menu {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-dropdown .ant-dropdown-menu-item {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.custom-dropdown .ant-dropdown-menu-item:hover {
+  background-color: #e6f7ff;
+}

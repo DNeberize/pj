@@ -2,9 +2,9 @@ import ListOfLists from "./ListOfLists";
 
 function Footer() {
   return (
-    <div className="w-full flex justify-center  bottom-0 bg-white mt-20 h-[580px]">
+    <div className="w-full right-0 flex justify-center   bottom-0 bg-white mt-20 h-[580px]">
       {/*  */}
-      <div className="flex flex-col w-full max-w-[1000px] relative h-full">
+      <div className="flex flex-col w-full max-w-[1000px] max-w-1024-footer-padding relative h-full">
         <div className="flex flex-col gap-y-[80px] pt-[40px]  w-full flex-grow">
           <div className="grid grid-cols-12  w-full">
             <div className="col-span-4">

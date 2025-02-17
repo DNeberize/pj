@@ -8,7 +8,7 @@ export default function SearchBar() {
       />
       <button
         type="submit"
-        className="cursor-pointer hover:opacity-80 absolute right-0 top-0 border-[#23262E]/[10%] bg-[#F7F8FA] border-solid border-[1px] rounded-[8px] h-10 w-[48px] flex items-center justify-center"
+        className="cursor-pointer hover:opacity-80 absolute right-0 top-0 border-[#23262E]/[10%] bg-[#F7F8FA] border-solid border-[1px] rounded-[8px] h-10 max-w-1024-h w-[48px] flex items-center justify-center"
       >
         <img src="src/assets/Search.svg" alt="" className="w-4 h-4" />
       </button>

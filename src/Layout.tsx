@@ -9,7 +9,7 @@ export default function Layout() {
     <div className="page-container relative w-full flex flex-col">
       <Header />
       <div className="flex justify-center w-full flex-1">
-        <div className="grid max-w-[1500px]  grid-cols-[minmax(200px,1fr)_minmax(600px,2fr)_minmax(200px,1fr)] gap-4 w-full ">
+        <div className="flex max-w-[1500px]  gap-4 w-full ">
           <LeftSideBar />
           <div className="flex-1">
             <Outlet />

@@ -4,7 +4,7 @@ function RightSideBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="pr-[5rem]">
+    <div className="pr-[5rem] max-w-1024-hidden">
       <div className=" p-4 pt-3 bg-white rounded-[12px]">
         <div
           onClick={() => setIsOpen((prev) => !prev)}
@@ -22,11 +22,7 @@ function RightSideBar() {
         {isOpen && (
           <div className=" h-[280px] flex-col">
             <div className="rounded-[12px] w-[100%] h-[160px] flex justify-center content-center bg-[#23262E]/10">
-              <img
-                
-                src="src/assets/QR.svg"
-                alt="QR Code"
-              />
+              <img src="src/assets/QR.svg" alt="QR Code" />
             </div>
             <h2 className="flex justify-center mb-2 mt-2 text-[14px] font-semibold">
               OR

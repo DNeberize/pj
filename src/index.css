@@ -9,6 +9,52 @@ body {
   }
 }
 
+@media (max-width: 1024px) {
+  .max-w-1024-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 1024px) {
+  .max-w-1024-left-header {
+    justify-content: left;
+    gap: 1rem;
+  }
+}
+@media (max-width: 1024px) {
+  .max-w-1024-right-header {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .max-w-1024-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media (max-width: 1024px) {
+  .max-w-1024-h {
+    height: 36px;
+    width: 36px;
+  }
+}
+@media (max-width: 1024px) {
+  .max-w-1024-footer-padding {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+.max-w-1024-show {
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+  }
+}
+
 .page-container {
   padding-left: clamp(0px, 0rem, 80px);
   transition: padding 0.3s ease-in-out;
