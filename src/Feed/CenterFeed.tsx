@@ -4,6 +4,26 @@ import LeagueMatches from "./LeagueMatches";
 import LiveMatches from "../LiveMatces.json";
 import ScheduledMatches from "../ScheduledMatches.json";
 import FinisshedMatches from "../FinishedMatches.json";
+import MobileFeedMenu from "./MobileFeedMenu";
+
+const MenuItems = [
+  {
+    label: "All Matches",
+    id: "0",
+  },
+  {
+    label: "Live (12)",
+    id: "1",
+  },
+  {
+    label: "Finished",
+    id: "2",
+  },
+  {
+    label: "Schedueld",
+    id: "3",
+  },
+];
 
 function CenterFeed() {
   const [selectedTab, setSelectedTab] = useState<string>("All Matches");
@@ -23,10 +43,18 @@ function CenterFeed() {
           />
         </div>
         <div className="bg-white rounded-[8px] text-[#23262E]/70 mt-[20px]">
-          <FeedMenu
-            selectedTab={selectedTab}
-            handleTabChange={handleTabChange}
-          />
+          <div className="jemala grid grid-cols-[12fr_4fr] max-lg:flex gap-8 p-[20px] mb-4">
+            <FeedMenu
+              selectedTab={selectedTab}
+              handleTabChange={handleTabChange}
+              MenuItems={MenuItems}
+            />
+            <MobileFeedMenu
+              selectedTab={selectedTab}
+              handleTabChange={handleTabChange}
+              MenuItems={MenuItems}
+            />{" "}
+          </div>
           {(selectedTab === "All Matches" || selectedTab === "All") && (
             <>
               <LeagueMatches Matches={FinisshedMatches} />
@@ -38,7 +66,7 @@ function CenterFeed() {
           {selectedTab == "Live (12)" && (
             <LeagueMatches Matches={LiveMatches} />
           )}
-          {selectedTab == "Scheduled" && (
+          {selectedTab == "Schedueld" && (
             <LeagueMatches Matches={ScheduledMatches} />
           )}
           {selectedTab == "Finished" && (

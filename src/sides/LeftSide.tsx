@@ -8,7 +8,7 @@ interface LeftSideBarProps {
 }
 
 function LeftSideBar({ IsPC }: LeftSideBarProps) {
-  const [CountryList, SetCountryList] = useState(Country);
+  const [CountryList] = useState(Country);
   const [Query, SetQuery] = useState("");
 
   const FilteredCountry = CountryList.filter((country) =>
