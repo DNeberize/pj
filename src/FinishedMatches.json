@@ -1,0 +1,19 @@
+[
+  {
+    "leagueName": "Bolivia: Clausura",
+    "leagueFlag": "src/assets/Country Flags/Bolivia.svg",
+    "matches": [
+      {
+        "imgClub1": "src/assets/Country Flags/Royal Pary.svg",
+        "imgClub2": "src/assets/Country Flags/Santa Cruiz.svg",
+        "club1": "Argentino Jrs",
+        "club2": "Sarmiento",
+        "time": "Finished",
+        "club1_HT1": 1,
+        "club1_HT2": 1,
+        "club2_HT1": 1,
+        "club2_HT2": 3
+      }
+    ]
+  }
+]

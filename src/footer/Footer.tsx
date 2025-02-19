@@ -1,30 +1,49 @@
 import ListOfLists from "./ListOfLists";
+import { useState } from "react";
 
 function Footer() {
+  const [openSections, setOpenSections] = useState(true);
+
+  const toggleSection = () => {
+    setOpenSections((prev) => !prev);
+  };
+
   return (
-    <div className="w-full flex justify-center  max-lg:px-4 bottom-0 bg-white mt-20  max-lg:h-1000px">
-      <div className="flex flex-col w-full max-w-[1000px] max-w-1024-footer-padding relative h-full">
-        <div className="flex flex-col gap-y-[80px] max-lg:gap-y-8 pt-[40px]  w-full flex-grow">
-          <div className="grid grid-cols-12 max-lg:flex-col-reverse max-lg:flex max-lg:gap-10   w-full">
-            <div className="col-span-4 max-lg:border-b-1 pb-8 border-solid border-[#23262E1A]">
-              <h2 className="text-[#23262E] mb-1 flex justify-between font-semibold text-[14px] uppercase">
+    <div className="w-full flex justify-center max-lg:px-4 bottom-0 bg-white mt-20 max-lg:h-auto">
+      <div className="flex flex-col w-full max-w-[1000px] relative h-full">
+        <div className="flex flex-col gap-y-[80px] max-lg:gap-y-8 pt-[40px] w-full flex-grow">
+          <div className="grid grid-cols-12 max-lg:flex-col-reverse max-lg:flex max-lg:gap-10 w-full">
+            <div className="col-span-4 max-lg:border-b border-solid border-[#23262E1A]">
+              <h2
+                className="text-[#23262E] mb-1 flex justify-between font-semibold text-[14px] uppercase cursor-pointer"
+                onClick={toggleSection}
+              >
                 Football
                 <img
-                  className="lg:hidden"
-                  src="src\assets\VectorV2.svg"
+                  className={`lg:hidden transform transition-transform ${
+                    openSections ? "rotate-180" : ""
+                  }`}
+                  src="src/assets/VectorV2.svg"
                   alt=""
                 />
               </h2>
-              <ul className="list-none flex flex-col gap-y-[10px]">
-                <li className="text-[12px] text-[#23262E]">Transfer News</li>
-                <li className="text-[12px] text-[#23262E]">Live</li>
-                <li className="text-[12px] text-[#23262E]">Premier League</li>
-                <li className="text-[12px] text-[#23262E]">Seria A</li>
-              </ul>
+
+              <div
+                className={`transition-all overflow-hidden duration-300 ease-in-out ${
+                  openSections ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul className="list-none flex flex-col gap-y-[10px]">
+                  <li className="text-[12px] text-[#23262E]">Transfer News</li>
+                  <li className="text-[12px] text-[#23262E]">Live</li>
+                  <li className="text-[12px] text-[#23262E]">Premier League</li>
+                  <li className="text-[12px] text-[#23262E]">Seria A</li>
+                </ul>
+              </div>
             </div>
 
-            <div className="h-full col-span-8 flex items-center ">
-              <p className=" text-[12px] text-[#23262E]">
+            <div className="h-full col-span-8 flex items-center">
+              <p className="text-[12px] text-[#23262E]">
                 Football live scores page on Flashscore.com offers all the
                 latest football results from EPL 2024 and more than 100+
                 football leagues and tournaments all around the world including
@@ -41,10 +60,10 @@ function Footer() {
           <ListOfLists />
         </div>
 
-        <div className=" max-lg:gap-[1rem] w-full max-lg:flex-col flex justify-between max-lg:items-start items-center border-t-2 max-lg:py-[12px] border-solid border-[#23262E]/[10%]">
-          <div className="gap-[1rem] max-lg:gap-[1rem] max-lg:flex-col flex  ">
+        <div className="lg:h-[4rem] max-lg:gap-[1rem] w-full max-lg:flex-col flex justify-between max-lg:items-start items-center border-t-2 max-lg:py-[12px] border-solid border-[#23262E]/[10%]">
+          <div className="gap-[1rem] max-lg:gap-[1rem] max-lg:flex-col flex">
             <img
-              className="border-r-2  max-lg:border-r-0 max-lg:max-h-[20px] border-solid pr-1 max-lg:w-[150px]  border-[#23262E]/[10%]"
+              className="border-r-2 max-lg:border-r-0 max-lg:max-h-[20px] border-solid pr-1 max-lg:w-[150px] border-[#23262E]/[10%]"
               src="src/assets/TheSportsLogo.svg"
               alt=""
             />

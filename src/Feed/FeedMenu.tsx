@@ -1,39 +1,60 @@
-import { useState } from "react";
+import React from "react";
+import { Segmented } from "antd";
+import img from "../assets/Live.svg";
 import MobileFeedMenu from "./MobileFeedMenu";
+import "./segment.css";
 
-function FeedMenu() {
-  const [activeTab, setActiveTab] = useState<string>("All Matches");
+type FeedMenuProps = {
+  selectedTab: string;
+  handleTabChange: (value: string) => void;
+};
 
-  const handleTabClick = (tab: string) => {
-    setActiveTab(() => tab);
-  };
-
+const FeedMenu: React.FC<FeedMenuProps> = ({
+  selectedTab,
+  handleTabChange,
+}) => {
   return (
     <>
-      <div className="grid  grid-cols-[11fr_3fr] max-lg:flex gap-4 p-[20px] mb-4">
+      <div className="jemala grid grid-cols-[12fr_4fr] max-lg:flex gap-8 p-[20px] mb-4">
         <div className="max-lg:hidden">
-          <div className="bg-[#F7F8FA] h-[45px] rounded-[12px] p-1 text-[12px] grid grid-cols-[1fr_1fr_1fr_1fr]">
-            {["All Matches", "Live (12)", "Finished", "Scheduled"].map(
-              (tab) => (
-                <button
-                  key={tab}
-                  className={`rounded-[8px] cursor-pointer font-semibold px-[20px] flex items-center justify-center shrink-0 transition-colors duration-500 ease-in-out ${
-                    activeTab === tab
-                      ? "bg-white text-[#23262E]"
-                      : "text-[#23262E]/70"
-                  }`}
-                  onClick={() => handleTabClick(tab)}
-                >
-                  {tab === "Live (12)" && (
-                    <img src="src/assets/Live.svg" alt="" className=" inline" />
-                  )}
-                  {tab}
-                </button>
-              )
-            )}
-          </div>
+          <Segmented
+            block={true}
+            value={selectedTab}
+            onChange={(value) => handleTabChange(value as string)}
+            options={[
+              { label: "All Matches", value: "All Matches" },
+              {
+                label: (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <img
+                      src={img}
+                      alt="Live"
+                      style={{ width: 20, height: 20, marginRight: 8 }}
+                    />
+                    Live (12)
+                  </div>
+                ),
+                value: "Live (12)",
+              },
+              { label: "Finished", value: "Finished" },
+              { label: "Scheduled", value: "Scheduled" },
+            ]}
+            style={{
+              borderRadius: "12px",
+              height: "100%",
+              fontSize: "12px",
+              padding: "4px",
+            }}
+          />
         </div>
-        <div className="h-[45px] max-lg:hidden  rounded-[8px] min-w-[130px] bg-[#F7F8FA] flex justify-between p-[12px] items-center ">
+        <div className="h-[45px] max-lg:hidden rounded-[8px] min-w-[130px] bg-[#F7F8FA] flex justify-between p-[12px] items-center">
           <img
             className="rotate-90 size-[10px]"
             src="src/assets/Vector.svg"
@@ -47,10 +68,13 @@ function FeedMenu() {
             alt=""
           />
         </div>
-        <MobileFeedMenu />
+        <MobileFeedMenu
+          selectedTab={selectedTab}
+          handleTabChange={handleTabChange}
+        />
       </div>
     </>
   );
-}
+};
 
 export default FeedMenu;

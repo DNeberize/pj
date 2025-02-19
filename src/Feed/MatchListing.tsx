@@ -21,16 +21,21 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
         <div className="inline-grid w-full items-center grid-cols-[9fr_4fr] text-[12px] h-[72px] py-[15px] px-[20px]">
           <div className="border-r-[1px] max-lg:border-r-0 border-solid border-[#23262E1A] flex items-center gap-2 h-[42px]">
             <img src="src/assets/Star.svg" alt="Star" />
-            <h2 className="text-[12px] max-lg:hidden  w-[4rem] flex justify-center">
+            <h2
+              className={`text-[12px] max-lg:hidden w-[4rem] text-[#23262E] flex justify-center ${
+                L.time.slice(-1) === "'" ? "text-red-500" : ""
+              }`}
+            >
               {L.time}
             </h2>
+
             <div className="w-full space-y-2">
               <div className="flex justify-between">
                 <div className="flex gap-2 items-center">
                   <img src={L.imgClub1} alt={L.club1} />
                   <h1 className="font-medium text-[#23262E]">{L.club1}</h1>
                 </div>
-                <div className="w-[3rem] max-lg:hidden text-[#23262E] px-4 flex justify-center">
+                <div className="w-[3rem] max-lg:hidden text-[#23262E] px-4 flex justify-center ">
                   {L.club1_HT1}
                 </div>
               </div>
@@ -53,7 +58,11 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
                 <p className="flex justify-center">{L.club1_HT2}</p>
                 <p className="flex justify-center">{L.club2_HT2}</p>
               </div>
-              <h2 className="text-[12px]  max-lg:flex w-[4rem] text-[#23262E] hidden items-center justify-center">
+              <h2
+                className={`text-[12px]  max-lg:flex w-[4rem] text-[#23262E] hidden items-center justify-center  ${
+                  L.time.slice(-1) === "'" ? "text-red-500" : ""
+                }`}
+              >
                 {L.time}
               </h2>
               <div className="w-[3rem] max-lg:hidden text-[#23262E] space-y-2 px-4">

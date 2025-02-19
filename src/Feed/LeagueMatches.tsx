@@ -1,8 +1,17 @@
-import Matches from "../Matches.json";
 import MatchList from "./MatchListing";
 import { useState } from "react";
 
-function LeagueMatches() {
+interface League {
+  leagueFlag: string;
+  leagueName: string;
+  matches: any[];
+}
+
+type LeagueMatchesProps = {
+  Matches: League[];
+};
+
+function LeagueMatches({ Matches }: LeagueMatchesProps) {
   const [openLeagues, setOpenLeagues] = useState<boolean[]>(
     new Array(Matches.length).fill(true)
   );
@@ -26,14 +35,14 @@ function LeagueMatches() {
             <div className="flex gap-2 items-center">
               <img src="src/assets/Star.svg" alt="Star" />
               <img src={league.leagueFlag} alt={league.leagueName} />
-              <h1 className="font-semibold max-lg:text-[12px] text-[#23262E]">
+              <h1 className="font-semibold small-menu-p max-lg:text-[12px] text-[#23262E]">
                 {league.leagueName}
               </h1>
               <img src="src/assets/Pin.svg" alt="Pin" />
             </div>
 
             <div className="flex justify-between max-lg:justify-end">
-              <div className="flex max-lg:hidden ">
+              <div className="flex max-lg:hidden">
                 <h2 className="text-[#23262E] px-4 border-r-[1px] border-solid border-[#23262E1A]">
                   HT
                 </h2>
@@ -46,7 +55,7 @@ function LeagueMatches() {
                   alt="Menu"
                 />
                 <img
-                  className={`w-[10px] transition-transform ${
+                  className={`w-[10px] transition-transform duration-500 ${
                     openLeagues[index] ? "rotate-180" : ""
                   }`}
                   src="src/assets/Vector.svg"
@@ -56,7 +65,13 @@ function LeagueMatches() {
             </div>
           </div>
 
-          {openLeagues[index] && <MatchList List={league.matches} />}
+          <div
+            className={`transition-[max-height] duration-500 ease-in-out overflow-hidden ${
+              openLeagues[index] ? "max-h-[1000px]" : "max-h-0"
+            }`}
+          >
+            <MatchList List={league.matches} />
+          </div>
         </div>
       ))}
     </ul>

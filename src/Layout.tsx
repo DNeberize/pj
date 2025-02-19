@@ -10,7 +10,7 @@ export default function Layout() {
       <Header />
       <div className="flex justify-center w-full flex-1">
         <div className="flex max-w-[1500px]  gap-4 w-full ">
-          <LeftSideBar />
+          <LeftSideBar IsPC={true} />
           <div className="flex-1">
             <Outlet />
           </div>

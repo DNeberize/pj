@@ -1,28 +1,26 @@
-import { useState, useEffect } from "react";
+import React from "react";
 
-function MobileFeedMenu() {
-  const [activeTab, setActiveTab] = useState<string>("");
+type MobileFeedMenuProps = {
+  selectedTab: string;
+  handleTabChange: (value: string) => void;
+};
 
-  useEffect(() => {
-    setActiveTab("All");
-  }, []);
-
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab);
-  };
-
+const MobileFeedMenu: React.FC<MobileFeedMenuProps> = ({
+  selectedTab,
+  handleTabChange,
+}) => {
   return (
     <div className="gap-y-2 lg:hidden w-full flex flex-col">
-      <div className="hidden  w-full justify-evenly  rounded-[12px]   max-lg:flex">
+      <div className="hidden w-full justify-between rounded-[12px] max-lg:flex">
         {["All", "Live (12)", "Finished", "Scheduled"].map((tab) => (
           <button
             key={tab}
-            className={`rounded-[8px] py-[12px] mobile-menu-p-sizedown  text-[#23262E] text-[12px] cursor-pointer font-semibold px-[1rem] flex items-center justify-center shrink-0 transition-colors duration-500 ease-in-out ${
-              activeTab === tab
+            className={`rounded-[8px] py-[12px] mobile-menu-p-sizedown text-[#23262E] text-[12px] cursor-pointer font-semibold px-[1rem] flex items-center justify-center shrink-0 transition-colors duration-500 ease-in-out ${
+              selectedTab.slice(0, 3) === tab.slice(0, 3)
                 ? "bg-[#7F3FFC] text-[#23262E]"
                 : "text-[#23262E]/70"
             }`}
-            onClick={() => handleTabClick(tab)}
+            onClick={() => handleTabChange(tab)}
           >
             {tab}
           </button>
@@ -53,6 +51,6 @@ function MobileFeedMenu() {
       </div>
     </div>
   );
-}
+};
 
 export default MobileFeedMenu;

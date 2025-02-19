@@ -1,40 +1,45 @@
-import React from "react";
-import { Dropdown, Space } from "antd";
-import Leagues from "../Leagues.json";
-import LeagueList from "../sides/Listing";
-import Country from "../Country.json";
-import "../custom-dropdown.css";
+import React, { useState } from "react";
+import { Drawer, Button } from "antd";
+import SettingsBar from "./SettingButton";
+import "../custom-sidebar.css";
+import DottedMenu from "./DottedMenu";
+import LeftSideBar from "../sides/LeftSide";
 
-const items = [
-  {
-    label: <LeagueList List={Leagues} />,
-    key: "0",
-  },
-  {
-    label: <div style={{ height: "1px", backgroundColor: "#d9d9d9" }} />,
-    key: "divider",
-  },
-  {
-    label: <LeagueList List={Country} />,
-    key: "1",
-  },
-];
+const Sidebar: React.FC = () => {
+  const [visible, setVisible] = useState(false);
 
-const App: React.FC = () => (
-  <div className="max-w-1024-show">
-    <Dropdown
-      menu={{ items }}
-      trigger={["click"]}
-      className="custom-dropdown "
-      overlayClassName="custom-dropdown"
-    >
-      <a onClick={(e) => e.preventDefault()}>
-        <Space>
-          <img className="h-full " src="src\assets\dropDown.svg" alt="" />
-        </Space>
-      </a>
-    </Dropdown>
-  </div>
-);
+  const showDrawer = () => {
+    setVisible(true);
+  };
 
-export default App;
+  const closeDrawer = () => {
+    setVisible(false);
+  };
+
+  return (
+    <div className="lg:hidden h-full ">
+      <Button type="primary" onClick={showDrawer} className="sidebar-toggle ">
+        <img className="h-full w-[20px]" src="src/assets/dropDown.svg" alt="" />
+      </Button>
+
+      <Drawer
+        title="Menu"
+        placement="left"
+        width="100vw"
+        onClose={closeDrawer}
+        open={visible}
+        className="custom-sidebar"
+      >
+        <div className="fixed right-0 top-0 flex p-2 gap-4">
+          <SettingsBar />
+          <DottedMenu />
+        </div>
+        <div className="sidebar-content">
+          <LeftSideBar IsPC={false} />
+        </div>
+      </Drawer>
+    </div>
+  );
+};
+
+export default Sidebar;

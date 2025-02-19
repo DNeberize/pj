@@ -45,8 +45,12 @@ body {
 @media (max-width: 380px) {
   .mobile-menu-p-sizedown {
     font-size: 11px;
-    padding-left: 0.8rem;
-    padding-right: 0.8rem;
+    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  }
+}
+@media (max-width: 380px) {
+  .small-menu-p {
+    font-size: 10px;
   }
 }
 
