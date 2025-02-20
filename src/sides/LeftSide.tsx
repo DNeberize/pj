@@ -2,6 +2,7 @@ import Leagues from "../Leagues.json";
 import LeagueList from "./Listing";
 import Country from "../Country.json";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface LeftSideBarProps {
   IsPC: boolean;
@@ -22,12 +23,12 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
           <h2 className="font-bold text-[14px] text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[#23262E]/10">
             Pinned Leagues
           </h2>
-          <LeagueList List={Leagues} />
+          <LeagueList IsPage={false} List={Leagues} />
         </div>
       </div>
-      <div>
+      <div className="">
         <h2 className="flex font-bold text-[14px] text-[#231F2E] mb-[15px] mt-[30px]">
-          Countries <span className="text-[#231F2E]/70 pl-2">[A-Z]</span>
+          <Link to='/country'> Countries </Link><span className="text-[#231F2E]/70 pl-2">[A-Z]</span>
         </h2>
         <form className="flex">
           <input
@@ -44,7 +45,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
             <img src="src/assets/Search.svg" alt="Search" />
           </button>
         </form>
-        <LeagueList List={FilteredCountry} />
+        <LeagueList IsPage={false} List={FilteredCountry} />
       </div>
     </div>
   );

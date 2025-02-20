@@ -21,7 +21,7 @@ function RightSideBar() {
         </div>
         {isOpen && (
           <div className=" h-[280px] flex-col">
-            <div className="rounded-[12px] w-[100%] h-[160px] flex justify-center content-center bg-[#23262E]/10">
+            <div className="rounded-[12px] w-[100%] p-5 h-[160px] flex justify-center content-center bg-[#23262E]/10">
               <img src="src/assets/QR.svg" alt="QR Code" />
             </div>
             <h2 className="flex justify-center mb-2 mt-2 text-[14px] font-semibold">
