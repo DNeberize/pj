@@ -16,6 +16,12 @@ body {
     justify-content: space-between;
   }
 }
+@media (max-width: 435px) {
+  .max-w-440-shrink {
+    flex-shrink: 0;
+    width: auto;
+  }
+}
 @media (max-width: 1024px) {
   .max-w-1024-left-header {
     justify-content: left;

@@ -53,9 +53,9 @@ function CenterFeed() {
               selectedTab={selectedTab}
               handleTabChange={handleTabChange}
               MenuItems={MenuItems}
-            />{" "}
+            />
           </div>
-          {(selectedTab === "All Matches" || selectedTab === "All") && (
+          {selectedTab === "All Matches"  && (
             <>
               <LeagueMatches Matches={FinisshedMatches} />
               <LeagueMatches Matches={ScheduledMatches} />

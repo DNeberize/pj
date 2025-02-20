@@ -24,18 +24,21 @@ const MobileFeedMenu: React.FC<MobileFeedMenuProps> = ({
       <div className="hidden w-full justify-between rounded-[12px] max-lg:flex">
         {MenuItems.map((item, index) => (
           <button
-            key={item.id}
-            className={`rounded-[8px] py-[12px] text-[12px] cursor-pointer font-semibold 
-              px-[1rem] flex items-center justify-center shrink-0 transition-colors duration-500 ease-in-out
-              ${
-                selectedTab === item.label
-                  ? "bg-[#7F3FFC] text-white"
-                  : "text-[#23262E]/70"
-              }`}
-            onClick={() => handleTabChange(item.label)}
-          >
-            {index === 0 ? item.label.slice(0, 3) : item.label}
-          </button>
+          key={item.id}
+          className={`rounded-[8px] py-[12px]  text-[12px] w-fill cursor-pointer font-semibold 
+            px-[1rem] flex items-center justify-center shrink-0  transition-colors duration-500 ease-in-out
+            ${
+              selectedTab === item.label
+                ? item.id === "1"
+                  ? "bg-red-500 text-white" 
+                  : "bg-[#7F3FFC] text-white" 
+                : "text-[#23262E]/70 "
+            }`}
+          onClick={() => handleTabChange(item.label)}
+        >
+          {index === 0 ? item.label.slice(0, 3) : item.label}
+        </button>
+        
         ))}
       </div>
 
