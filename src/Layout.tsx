@@ -9,7 +9,7 @@ export default function Layout() {
     <div className="page-container relative w-full flex flex-col">
       <Header />
       <div className="flex justify-center w-full flex-1">
-        <div className="flex max-w-[1500px]  gap-4 w-full ">
+        <div className="flex max-w-[1500px] gap-4 w-full">
           <LeftSideBar IsPC={true} />
           <div className="flex-1">
             <Outlet />

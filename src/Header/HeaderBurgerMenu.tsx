@@ -18,10 +18,17 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className="lg:hidden flex  h-full ">
-      <Button type="primary" onClick={showDrawer} className="sidebar-toggle  flex items-center justify-center min-h-[40px]">
-  <img className="h-[20px] w-[20px]" src="src/assets/dropDown.svg" alt="" />
-</Button>
-
+      <Button
+        type="primary"
+        onClick={showDrawer}
+        className="sidebar-toggle  flex items-center justify-center min-h-[40px]"
+      >
+        <img
+          className="h-[20px] w-[20px]"
+          src="/src/assets/dropDown.svg"
+          alt=""
+        />
+      </Button>
 
       <Drawer
         title="Menu"

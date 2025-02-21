@@ -1,11 +1,10 @@
 import { useState } from "react";
 import FeedMenu from "./FeedMenu";
 import LeagueMatches from "./LeagueMatches";
-import LiveMatches from "../LiveMatces.json";
-import ScheduledMatches from "../ScheduledMatches.json";
-import FinisshedMatches from "../FinishedMatches.json";
+import LiveMatches from "../jsonfiles.json/LiveMatces.json";
+import ScheduledMatches from "../jsonfiles.json/ScheduledMatches.json";
+import FinisshedMatches from "../jsonfiles.json/FinishedMatches.json";
 import MobileFeedMenu from "./MobileFeedMenu";
-
 
 const MenuItems = [
   {
@@ -39,7 +38,7 @@ function CenterFeed() {
         <div className="flex justify-center rounded-[12px]">
           <img
             className="rounded-[12px]"
-            src="src/assets/topBanner.svg"
+            src="/src/assets/topBanner.svg"
             alt=""
           />
         </div>
@@ -56,7 +55,7 @@ function CenterFeed() {
               MenuItems={MenuItems}
             />
           </div>
-          {selectedTab === "All Matches"  && (
+          {selectedTab === "All Matches" && (
             <>
               <LeagueMatches Matches={FinisshedMatches} />
               <LeagueMatches Matches={ScheduledMatches} />

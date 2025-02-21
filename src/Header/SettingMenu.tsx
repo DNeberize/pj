@@ -15,7 +15,7 @@ const MenuButtons = () => {
             className="cursor-pointer hover:opacity-80"
             onClick={() => setVisible(false)}
           >
-            <img src="src/assets/X.svg" alt="Close" className="h-4 w-4" />
+            <img src="/src/assets/X.svg" alt="Close" className="h-4 w-4" />
           </button>
         </div>
       ),
@@ -99,7 +99,7 @@ const MenuButtons = () => {
       >
         <button className="cursor-pointer hover:opacity-80 bg-[#F7F8FA] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
           <img
-            src="src/assets/Settings.svg"
+            src="/src/assets/Settings.svg"
             alt="Settings Icon"
             className="h-[1.5rem]"
           />
@@ -107,7 +107,7 @@ const MenuButtons = () => {
       </Dropdown>
 
       <button className="cursor-pointer max-lg:hidden hover:opacity-80 bg-[#F7F8FA] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
-        <img src="src/assets/dots-grid.svg" alt="Menu Icon" />
+        <img src="/src/assets/dots-grid.svg" alt="Menu Icon" />
       </button>
 
       <button className="cursor-pointer hover:opacity-80 text-white bg-[#7F3FFC] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border max-lg:w-[75px] max-lg:h-[36px] max-w-[5.5rem] min-w-[5rem]">

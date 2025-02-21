@@ -20,7 +20,7 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
       <li key={index}>
         <div className="inline-grid w-full items-center grid-cols-[9fr_4fr] text-[12px] h-[72px] py-[15px] px-[20px]">
           <div className="border-r-[1px] max-lg:border-r-0 border-solid border-[#23262E1A] flex items-center gap-2 h-[42px]">
-            <img src="src/assets/Star.svg" alt="Star" />
+            <img src="/src/assets/Star.svg" alt="Star" />
             <h2
               className={`text-[12px] max-lg:hidden w-[4rem] text-[#23262E] flex justify-center ${
                 L.time.slice(-1) === "'" ? "text-red-500" : ""
@@ -52,7 +52,7 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
             </div>
           </div>
 
-          <div className="flex justify-between ">
+          <div className="flex justify-between min-w-[170px]">
             <div className="flex max-lg:w-full">
               <div className="w-[3rem] text-[#23262E] space-y-2 max-lg:flex-col justify-end max-lg:w-full px-4 max-lg:border-r-0 border-r-[1px] h-[48px] border-solid border-[#23262E1A]">
                 <p className="flex justify-center">{L.club1_HT2}</p>
@@ -71,9 +71,9 @@ const MatchList: React.FC<MatchListProps> = ({ List }) => (
               </div>
             </div>
             <div className="grid grid-cols-[1fr_1fr_1fr] max-lg:hidden gap-4 items-center">
-              <img src="src/assets/Shirt.svg" alt="Shirt" />
-              <img src="src/assets/TV.svg" alt="TV" />
-              <img src="src/assets/Info.svg" alt="Info" />
+              <img src="/src/assets/Shirt.svg" alt="Shirt" />
+              <img src="/src/assets/TV.svg" alt="TV" />
+              <img src="/src/assets/Info.svg" alt="Info" />
             </div>
           </div>
         </div>

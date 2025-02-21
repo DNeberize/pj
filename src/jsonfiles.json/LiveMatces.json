@@ -1,11 +1,11 @@
 [
   {
     "leagueName": "BRAZIL: Copa do Brasil",
-    "leagueFlag": "src/assets/Country Flags/Brazil.svg",
+    "leagueFlag": "/src/assets/Country Flags/Brazil.svg",
     "matches": [
       {
-        "imgClub1": "src/assets/Country Flags/Bahia.svg",
-        "imgClub2": "src/assets/Country Flags/Flamengo.svg",
+        "imgClub1": "/src/assets/Country Flags/Bahia.svg",
+        "imgClub2": "/src/assets/Country Flags/Flamengo.svg",
         "club1": "Argentino Jrs",
         "club2": "Sarmiento",
         "time": "57'",

@@ -11,7 +11,7 @@ function FootBallMenu() {
       <button className="bg-[#F7F8FA] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border-[1px] border-solid h-[40px] w-[48px]">
         <img
           className="h-5 w-auto"
-          src="src/assets/Football.svg"
+          src="/src/assets/Football.svg"
           alt="Ball icon"
         />
       </button>
@@ -20,7 +20,7 @@ function FootBallMenu() {
         className={`h-2 w-auto transition-transform duration-300 ${
           isOpen ? "rotate-180" : "rotate-0"
         }`}
-        src="src/assets/Vector.svg"
+        src="/src/assets/Vector.svg"
         alt="Dropdown icon"
       />
       {isOpen && (

@@ -1,48 +1,52 @@
-import {useState } from "react";
-
-import test from "../../test.json"
+import { Link, useParams } from "react-router-dom";
+import LeagueListing from "../leagues/LeagueListing";
+import test from "../jsonfiles.json/test.json";
+import { Breadcrumb } from "antd";
+import { useEffect, useState } from "react";
+import { fetchLeaguesByCountry } from "../leagues/FetchLeagues"; // Import the function
 
 function SingleCountry() {
-  type Country = {
-    code: string;
-    flag: string;
-    name: string;
-  };
+  const { name } = useParams();
+  const [leagues, setLeagues] = useState<
+    { flag: string; name: string; country?: string }[]
+  >([]);
 
-  type League = {
-    id: number;
-    name: string;
-    logo: string;
-    type: string;
-  };
-
-  type CountryLeagueData = {
-    country: Country;
-    league?: League; 
-  }[];
-
-
-  const [CountryList, setCountries] = useState<CountryLeagueData>(test);
-//  useEffect(() => {
-//     fetch("https://v3.football.api-sports.io/countries", {
-//       method: "GET",
-//       headers: {
-//         "x-rapidapi-host": "v3.football.api-sports.io",
-//         "x-rapidapi-key": "fe4a3e5f07e932632340b6d7e7a0e345" 
-//       }
-//     })
-//       .then((response) => response.json())
-//       .then((data) => setCountries(data.response))
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   }, []);
+  useEffect(() => {
+    if (name) {
+      fetchLeaguesByCountry(name).then(setLeagues);
+    }
+  }, [name]);
 
   return (
-    <div className="h-auto w-full rounded-[12px] py-[20px] bg-white">
-      
+    <div>
+      <div className="h-auto mb-[20px] inline-block w-full items-center rounded-[12px] py-2 px-[20px] bg-white">
+        <Breadcrumb separator=">">
+          <Breadcrumb.Item>
+            <Link to="/">Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/country">Football</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Link to="/country">Country</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item className="text-purple-500">{name}</Breadcrumb.Item>
+        </Breadcrumb>
 
-      
+        <div className="flex items-center mb-5 mt-5 gap-4">
+          <div className="h-16 w-21 rounded-[12px] p-3 border-1 border-[#23262E1A]">
+            <img className="rounded-1" src={test[0].country.flag} alt="Flag" />
+          </div>
+          <h2 className="text-[#23262E] font-bold text-[14px]">{name}</h2>
+        </div>
+      </div>
+
+      <div className="h-auto w-full rounded-[12px] py-[20px] bg-white">
+        <h2 className="flex font-bold text-[14px] px-[20px] text-[#231F2E] mb-[15px]">
+          All Football Leagues and Tournaments of {name}
+        </h2>
+        <LeagueListing IsPage={true} List={leagues} />
+      </div>
     </div>
   );
 }

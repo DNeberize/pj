@@ -74,7 +74,7 @@ function ListOfLists() {
               className={`lg:hidden transform transition-transform ${
                 openSections[index] ? "rotate-180" : ""
               }`}
-              src="src/assets/VectorV2.svg"
+              src="/src/assets/VectorV2.svg"
               alt=""
             />
           </h2>

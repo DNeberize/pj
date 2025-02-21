@@ -9,7 +9,7 @@ body {
   }
 }
 @media (max-width: 1024px) {
-  .search-events{
+  .search-events {
     top: 0 !important;
     right: 0 !important;
     width: 100%;
@@ -26,8 +26,6 @@ body {
 .search-events .ant-dropdown-menu-vertical {
   overflow-y: scroll;
   max-height: 70vh;
-  
- 
 }
 @media (max-width: 1024px) {
   .max-w-1024-header {

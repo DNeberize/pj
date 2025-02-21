@@ -1,11 +1,11 @@
 [
   {
     "leagueName": "ARGENTINA",
-    "leagueFlag": "src/assets/Country Flags/Argentina.svg",
+    "leagueFlag": "/src/assets/Country Flags/Argentina.svg",
     "matches": [
       {
-        "imgClub1": "src/assets/Country Flags/Argentino Jrs.svg",
-        "imgClub2": "src/assets/Country Flags/Sarmiento.svg",
+        "imgClub1": "/src/assets/Country Flags/Argentino Jrs.svg",
+        "imgClub2": "/src/assets/Country Flags/Sarmiento.svg",
         "club1": "Argentino Jrs",
         "club2": "Sarmiento",
         "time": "22:00",
@@ -15,8 +15,8 @@
         "club2_HT2": 2
       },
       {
-        "imgClub1": "src/assets/Country Flags/Instituto 2.svg",
-        "imgClub2": "src/assets/Country Flags/Belgrano.svg",
+        "imgClub1": "/src/assets/Country Flags/Instituto 2.svg",
+        "imgClub2": "/src/assets/Country Flags/Belgrano.svg",
         "club1": "Instituto 2",
         "club2": "Belgrano 2",
         "time": "22:00",

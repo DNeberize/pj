@@ -2,31 +2,31 @@
   {
     "name": "Bundesliga",
     "country": "germany",
-    "flag": "src/assets/Boundeslige.svg"
+    "flag": "/src/assets/Boundeslige.svg"
   },
   {
     "name": "La Liga",
     "country": "Spain",
-    "flag": "src/assets/La Liga.svg"
+    "flag": "/src/assets/La Liga.svg"
   },
   {
     "name": "Seria A",
     "country": "italy",
-    "flag": "src/assets/Seria A.svg"
+    "flag": "/src/assets/Seria A.svg"
   },
   {
     "name": "Premier League",
     "country": "England",
-    "flag": "src/assets/Premier League.svg"
+    "flag": "/src/assets/Premier League.svg"
   },
   {
     "name": "Ligue 1",
     "country": "france",
-    "flag": "src/assets/League 1.svg"
+    "flag": "/src/assets/League 1.svg"
   },
   {
     "name": "Eredivisie",
     "country": "Netherlands",
-    "flag": "src/assets/Eredivisie.svg"
+    "flag": "/src/assets/Eredivisie.svg"
   }
 ]

@@ -1,16 +1,27 @@
-import Leagues from "../Leagues.json";
-import LeagueList from "./Listing";
-import Country from "../Country.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import LeagueListing from "../leagues/LeagueListing";
+import CountryListing from "../Country/CountryListing";
+import { fetchCountries } from "../Country/fetchCountries";
+import test from "../jsonfiles.json/test.json";
 
 interface LeftSideBarProps {
   IsPC: boolean;
 }
 
+type Country = {
+  code: string;
+  flag: string;
+  name: string;
+};
+
 function LeftSideBar({ IsPC }: LeftSideBarProps) {
-  const [CountryList] = useState(Country);
+  const [CountryList, setCountries] = useState<Country[]>([]);
   const [Query, SetQuery] = useState("");
+
+  useEffect(() => {
+    fetchCountries().then(setCountries);
+  }, []);
 
   const FilteredCountry = CountryList.filter((country) =>
     country.name.toLowerCase().includes(Query.toLowerCase())
@@ -23,16 +34,24 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
           <h2 className="font-bold text-[14px] text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[#23262E]/10">
             Pinned Leagues
           </h2>
-          <LeagueList IsPage={false} List={Leagues} />
+          <LeagueListing
+            IsPage={false}
+            List={test.map((item) => ({
+              flag: item.league.logo,
+              name: item.league.name,
+              country: item.country.name,
+            }))}
+          />
         </div>
       </div>
       <div className="">
         <h2 className="flex font-bold text-[14px] text-[#231F2E] mb-[15px] mt-[30px]">
-          <Link to='/country'> Countries </Link><span className="text-[#231F2E]/70 pl-2">[A-Z]</span>
+          <Link to="/country"> Countries </Link>
+          <span className="text-[#231F2E]/70 pl-2">[A-Z]</span>
         </h2>
         <form className="flex">
           <input
-            className="bg-[#F7F8FA] text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-[12px] focus:outline-none"
+            className="bg-white text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-[12px] focus:outline-none"
             type="search"
             value={Query}
             onChange={(e) => SetQuery(e.target.value)}
@@ -40,12 +59,12 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
           />
           <button
             type="submit"
-            className="right-0 top-0 bg-[#F7F8FA] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
+            className="right-0 top-0 bg-white rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
           >
-            <img src="src/assets/Search.svg" alt="Search" />
+            <img src="/src/assets/Search.svg" alt="Search" />
           </button>
         </form>
-        <LeagueList IsPage={false} List={FilteredCountry} />
+        <CountryListing IsPage={false} List={FilteredCountry} />
       </div>
     </div>
   );

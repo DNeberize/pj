@@ -33,15 +33,15 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
             className="inline-grid w-full grid-cols-[9fr_4fr] text-[12px] bg-[#23262E1A] h-[50px] py-[15px] px-[20px] cursor-pointer"
           >
             <div className="flex gap-2 items-center">
-              <img src="src/assets/Star.svg" alt="Star" />
+              <img src="/src/assets/Star.svg" alt="Star" />
               <img src={league.leagueFlag} alt={league.leagueName} />
               <h1 className="font-semibold small-menu-p max-lg:text-[12px] text-[#23262E]">
                 {league.leagueName}
               </h1>
-              <img src="src/assets/Pin.svg" alt="Pin" />
+              <img src="/src/assets/Pin.svg" alt="Pin" />
             </div>
 
-            <div className="flex justify-between max-lg:justify-end">
+            <div className="flex min-w-[170px] justify-between max-lg:justify-end">
               <div className="flex max-lg:hidden">
                 <h2 className="text-[#23262E] px-4 border-r-[1px] border-solid border-[#23262E1A]">
                   HT
@@ -50,7 +50,7 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
               </div>
               <div className="flex mx-1 gap-4 h-[20px]">
                 <img
-                  src="src/assets/3Line.svg"
+                  src="/src/assets/3Line.svg"
                   className="w-[15px] max-lg:hidden"
                   alt="Menu"
                 />
@@ -58,7 +58,7 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
                   className={`w-[10px] transition-transform duration-500 ${
                     openLeagues[index] ? "rotate-180" : ""
                   }`}
-                  src="src/assets/Vector.svg"
+                  src="/src/assets/Vector.svg"
                   alt="Arrow"
                 />
               </div>

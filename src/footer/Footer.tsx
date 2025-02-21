@@ -23,7 +23,7 @@ function Footer() {
                   className={`lg:hidden transform transition-transform ${
                     openSections ? "rotate-180" : ""
                   }`}
-                  src="src/assets/VectorV2.svg"
+                  src="/src/assets/VectorV2.svg"
                   alt=""
                 />
               </h2>
@@ -64,7 +64,7 @@ function Footer() {
           <div className="gap-[1rem] max-lg:gap-[1rem] max-lg:flex-col flex">
             <img
               className="border-r-2 max-lg:border-r-0 max-lg:max-h-[20px] border-solid pr-1 max-lg:w-[150px] border-[#23262E]/[10%]"
-              src="src/assets/TheSportsLogo.svg"
+              src="/src/assets/TheSportsLogo.svg"
               alt=""
             />
             <h3 className="text-[#23262E]/[70%] text-[12px] flex">

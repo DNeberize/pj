@@ -33,7 +33,7 @@ function MobileHeaderMenu() {
             className={`w-full flex justify-center max-h-[20px] transition-transform duration-300 ${
               activeTab === tab.name ? "scale-105" : "scale-100"
             }`}
-            src={`src/assets/${tab.icon}`}
+            src={`/src/assets/${tab.icon}`}
             alt={tab.name}
           />
           <h3

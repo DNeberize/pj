@@ -62,16 +62,16 @@ const FeedMenu: React.FC<FeedMenuProps> = ({
       <div className="h-[45px] max-lg:hidden rounded-[8px] min-w-[130px] bg-[#F7F8FA] flex justify-between p-[12px] items-center">
         <img
           className="rotate-90 size-[10px]"
-          src="src/assets/Vector.svg"
+          src="/src/assets/Vector.svg"
           alt=""
         />
-        <img src="src/assets/calendar.svg" alt="" />
+        <img src="/src/assets/calendar.svg" alt="" />
         <p className="text-[11px] text-[#23262E] font-semibold">
           {formattedDate}
         </p>
         <img
           className="-rotate-90 size-[11px]"
-          src="src/assets/Vector.svg"
+          src="/src/assets/Vector.svg"
           alt=""
         />
       </div>
