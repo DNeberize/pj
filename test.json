@@ -1,0 +1,42 @@
+[
+    {
+        "country":
+        {
+            "code":"GE-GEO",
+            "flag": "src/assets/Georgia.svg",
+            "name":"England"
+        },
+
+        "league":
+        {
+            "id":39,
+            "name":"Premier League",
+            "logo": "src/assets/Georgia.svg",
+            "type":"England"
+        }
+    },
+    {
+        "country":
+        {
+            "code":"GE-GEO",
+            "flag": "src/assets/Georgia.svg",
+            "name":"England"
+        },
+
+        "league":
+        {
+            "id":39,
+            "name":"Premier League",
+            "logo": "src/assets/Georgia.svg",
+            "type":"England"
+        }
+    },
+    {
+        "country":
+        {
+            "code":"GE-GEO",
+            "flag": "src/assets/Georgia.svg",
+            "name":"England"
+        }
+    }
+]

@@ -10,7 +10,7 @@ const MenuButtons = () => {
     {
       label: (
         <div className="flex items-center justify-between p-2   rounded">
-          <h2 className="text-lg text-black font-semibold">Settings</h2>
+          <h2 className="text-lg text-black font-semibold">Search</h2>
           <button
             className="cursor-pointer hover:opacity-80"
             onClick={() => setVisible(false)}

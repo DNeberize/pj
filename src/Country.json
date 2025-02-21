@@ -1,30 +1,166 @@
-[
+[ {
+  "name": "Georgia",
+  "flag": "src/assets/Georgia.svg",
+  "code": "1"
+},
+{
+  "name": "Albania",
+  "flag": "src/assets/Albania.svg",
+  "code": "1"
+},
+{
+  "name": "Algeria",
+  "flag": "src/assets/Algeria.svg",
+  "code": "1"
+},
+{
+  "name": "Andorra",
+  "flag": "src/assets/Andorra.svg",
+  "code": "1"
+},
+{
+  "name": "Angola",
+  "flag": "src/assets/Angola.svg",
+  "code": "1"
+},
+{
+  "name": "Antigua & Barbuad",
+  "flag": "src/assets/Antigua & Barbuda.svg",
+  "code": "1"
+},
+{
+  "name": "Armenia",
+  "flag": "src/assets/Armenia.svg",
+  "code": "1"
+},{
+  "name": "Georgia",
+  "flag": "src/assets/Georgia.svg",
+  "code": "1"
+},
+{
+  "name": "Albania",
+  "flag": "src/assets/Albania.svg",
+  "code": "1"
+},
+{
+  "name": "Algeria",
+  "flag": "src/assets/Algeria.svg",
+  "code": "1"
+},
+{
+  "name": "Andorra",
+  "flag": "src/assets/Andorra.svg",
+  "code": "1"
+},
+{
+  "name": "Angola",
+  "flag": "src/assets/Angola.svg",
+  "code": "1"
+},
+{
+  "name": "Antigua & Barbuad",
+  "flag": "src/assets/Antigua & Barbuda.svg",
+  "code": "1"
+},
+{
+  "name": "Armenia",
+  "flag": "src/assets/Armenia.svg",
+  "code": "1"
+},
+
   {
     "name": "Georgia",
-    "img": "src/assets/Georgia.svg"
+    "flag": "src/assets/Georgia.svg",
+    "code": "1"
   },
   {
     "name": "Albania",
-    "img": "src/assets/Albania.svg"
+    "flag": "src/assets/Albania.svg",
+    "code": "1"
   },
   {
     "name": "Algeria",
-    "img": "src/assets/Algeria.svg"
+    "flag": "src/assets/Algeria.svg",
+    "code": "1"
   },
   {
     "name": "Andorra",
-    "img": "src/assets/Andorra.svg"
+    "flag": "src/assets/Andorra.svg",
+    "code": "1"
   },
   {
     "name": "Angola",
-    "img": "src/assets/Angola.svg"
+    "flag": "src/assets/Angola.svg",
+    "code": "1"
   },
   {
     "name": "Antigua & Barbuad",
-    "img": "src/assets/Antigua & Barbuda.svg"
+    "flag": "src/assets/Antigua & Barbuda.svg",
+    "code": "1"
   },
   {
     "name": "Armenia",
-    "img": "src/assets/Armenia.svg"
+    "flag": "src/assets/Armenia.svg",
+    "code": "1"
+  },
+  {
+    "name": "Albania",
+    "flag": "src/assets/Albania.svg",
+    "code": "1"
+  },
+  {
+    "name": "Algeria",
+    "flag": "src/assets/Algeria.svg",
+    "code": "1"
+  },
+  {
+    "name": "Andorra",
+    "flag": "src/assets/Andorra.svg",
+    "code": "1"
+  },
+  {
+    "name": "Angola",
+    "flag": "src/assets/Angola.svg",
+    "code": "1"
+  },
+  {
+    "name": "Antigua & Barbuad",
+    "flag": "src/assets/Antigua & Barbuda.svg",
+    "code": "1"
+  },
+  {
+    "name": "Armenia",
+    "flag": "src/assets/Armenia.svg",
+    "code": "1"
+  },
+  {
+    "name": "Albania",
+    "flag": "src/assets/Albania.svg",
+    "code": "1"
+  },
+  {
+    "name": "Algeria",
+    "flag": "src/assets/Algeria.svg",
+    "code": "1"
+  },
+  {
+    "name": "Andorra",
+    "flag": "src/assets/Andorra.svg",
+    "code": "1"
+  },
+  {
+    "name": "Angola",
+    "flag": "src/assets/Angola.svg",
+    "code": "1"
+  },
+  {
+    "name": "Antigua & Barbuad",
+    "flag": "src/assets/Antigua & Barbuda.svg",
+    "code": "1"
+  },
+  {
+    "name": "Armenia",
+    "flag": "src/assets/Armenia.svg",
+    "code": "1"
   }
 ]
