@@ -1,0 +1,100 @@
+[
+ {   "league":
+    {
+        "country":"England",
+        "id":39,
+        "logo":"/src/assets/Premier League.svg",
+        "name":"Premier League",
+        "season":2023,
+        "standings":[
+            [{
+                "all":{
+                    "draw":7,
+                    "goals":{
+                        "for":96,
+                        "against":34
+                    },
+                    "lose":3,
+                    "played":38,
+                    "win":28  
+                },
+                "away":{
+                    "draw":2,
+                    "goals":{
+                        "for":45,
+                        "against":18
+                    },
+                    "lose":3,
+                    "played":19,
+                    "win":14  
+                },
+                "form":"WWWWW",
+                "home":{
+                    "draw":5,
+                    "goals":{
+                        "for":51,
+                        "against":16
+                    },
+                    "lose":0,
+                    "played":19,
+                    "win":14  
+                },
+                "points":91,
+                "rank":1,
+                "team":{
+                    "id":50,
+                    "logo":"/src/assets/Clubs/ManchesterCity.svg",
+                    "name":"Manchester City"
+
+                }
+                
+            },
+            {
+                "all":{
+                    "draw":8,
+                    "goals":{
+                        "for":95,
+                        "against":32
+                    },
+                    "lose":5,
+                    "played":37,
+                    "win":25  
+                },
+                "away":{
+                    "draw":3,
+                    "goals":{
+                        "for":45,
+                        "against":18
+                    },
+                    "lose":5,
+                    "played":19,
+                    "win":13  
+                },
+                "form":"WLWDW",
+                "home":{
+                    "draw":5,
+                    "goals":{
+                        "for":41,
+                        "against":14
+                    },
+                    "lose":0,
+                    "played":18,
+                    "win":12  
+                },
+                "points":86,
+                "rank":2,
+                "team":{
+                    "id":50,
+                    "logo":"/src/assets/Clubs/arsenal.svg",
+                    "name":"Liverpool"
+                }
+                
+            }]
+
+        ]
+
+    }
+
+    
+}
+]

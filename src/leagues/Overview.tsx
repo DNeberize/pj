@@ -3,7 +3,8 @@ import "../index.css";
 import MatchList from "../Feed/MatchListing";
 import Matches from "../jsonfiles.json/Matches.json";
 import { useState } from "react";
-import { Standings } from "./Standing";
+import  Standings  from "./Standing";
+
 function Overview() {
   const [selectedTab, setSelectedTab] = useState(1);
 
@@ -64,6 +65,7 @@ function Overview() {
           </div>
           <MatchList IsHomePage={false} List={Matches} />
         </div>
+        
         <Standings />
       </div>
       <div className="bg-white rounded-[12px] h-50"></div>
