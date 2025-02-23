@@ -89,3 +89,13 @@ body {
   padding-left: clamp(0px, 0rem, 80px);
   transition: padding 0.3s ease-in-out;
 }
+
+.custom-progress .ant-progress-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-progress .ant-progress-bg {
+  transform: skewX(-20deg);
+  border-radius: 4px !important;
+}

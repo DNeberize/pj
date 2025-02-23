@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LeagueListing from "../leagues/LeagueListing";
 import CountryListing from "../Country/CountryListing";
 import { fetchCountries } from "../Country/fetchCountries";
@@ -16,6 +16,9 @@ type Country = {
 };
 
 function LeftSideBar({ IsPC }: LeftSideBarProps) {
+  const name = useParams();
+  console.log(name.League);
+
   const [CountryList, setCountries] = useState<Country[]>([]);
   const [Query, SetQuery] = useState("");
 
@@ -28,7 +31,11 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
   );
 
   return (
-    <div className={`${IsPC && "pl-[5rem] max-w-1024-hidden"} `}>
+    <div
+      className={`${IsPC && " lg:pl-[5rem] max-w-1024-hidden"}${
+        name.League && " hidden "
+      } `}
+    >
       <div className="flex">
         <div>
           <h2 className="font-bold text-[14px] text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[#23262E]/10">

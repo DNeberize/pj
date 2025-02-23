@@ -12,13 +12,23 @@ type Match = {
 
 type MatchListProps = {
   List: Match[];
+  IsHomePage: boolean;
 };
 
-const MatchList: React.FC<MatchListProps> = ({ List }) => (
+const MatchList: React.FC<MatchListProps> = ({ List, IsHomePage }) => (
   <ul>
     {List.map((L, index) => (
-      <li key={index}>
-        <div className="inline-grid w-full items-center grid-cols-[9fr_4fr] text-[12px] h-[72px] py-[15px] px-[20px]">
+      <li
+        className={`${
+          IsHomePage ? "" : "border-b-1 border-solid border-[#23262E1A]"
+        }`}
+        key={index}
+      >
+        <div
+          className={`inline-grid w-full items-center ${
+            IsHomePage ? "grid-cols-[9fr_4fr]" : "grid-cols-[4fr_4fr]"
+          }  text-[12px] h-[72px] py-[15px] px-[20px]`}
+        >
           <div className="border-r-[1px] max-lg:border-r-0 border-solid border-[#23262E1A] flex items-center gap-2 h-[42px]">
             <img src="/src/assets/Star.svg" alt="Star" />
             <h2

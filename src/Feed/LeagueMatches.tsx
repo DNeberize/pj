@@ -70,7 +70,7 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
               openLeagues[index] ? "max-h-[1000px]" : "max-h-0"
             }`}
           >
-            <MatchList List={league.matches} />
+            <MatchList List={league.matches} IsHomePage={true} />
           </div>
         </div>
       ))}

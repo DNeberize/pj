@@ -3,7 +3,7 @@ import LeagueListing from "../leagues/LeagueListing";
 import test from "../jsonfiles.json/test.json";
 import { Breadcrumb } from "antd";
 import { useEffect, useState } from "react";
-import { fetchLeaguesByCountry } from "../leagues/FetchLeagues"; // Import the function
+import { fetchLeaguesByCountry } from "../leagues/FetchLeagues";
 
 function SingleCountry() {
   const { name } = useParams();

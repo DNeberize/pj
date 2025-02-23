@@ -31,7 +31,6 @@ function CenterFeed() {
   const handleTabChange = (value: string) => {
     setSelectedTab(value);
   };
-  console.log(selectedTab);
   return (
     <div>
       <div className="w-full max-w-1024-padding">
