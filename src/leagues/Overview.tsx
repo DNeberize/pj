@@ -4,7 +4,9 @@ import MatchList from "../Feed/MatchListing";
 import Matches from "../jsonfiles.json/Matches.json";
 import { useState } from "react";
 import Standings from "./Standing";
-
+import vec from "@assets/Vector.svg"
+import mancity from "@assets/Clubs/ManchesterCity.svg"
+import Chart from "@assets/Chart.svg"
 function Overview() {
   const [selectedTab, setSelectedTab] = useState(1);
 
@@ -17,7 +19,7 @@ function Overview() {
       <div className="gap-6 flex flex-col">
         <div className="rounded-[12px] gap-6 grid grid-cols-[1fr_1fr] h-50">
           <div className="bg-white p-5 rounded-[12px]">
-            <h2 className="text-[#23262E]  font-bold text-[14px]">facts</h2>
+            <h2 className="text-[#23262E]  font-bold text-[14px]">Facts</h2>
             <div className="gap-4 flex flex-col">
               <div className="grid w-full grid-cols-[1fr_1fr_1fr] gap-4">
                 <div className="flex flex-col justify-between items-center py-[15px] px-4 rounded-[8px] border-1 border-solid border-[#23262E1A]">
@@ -41,7 +43,34 @@ function Overview() {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-[12px] h-50"></div>
+          <div className="bg-white rounded-[12px] py-5 ">
+          <h2 className="text-[#23262E] px-5  font-bold text-[14px]">Title Holder</h2>
+          <div className="grid h-full grid-rows-[1fr_1fr]">
+            <div className="flex px-5 cursor-pointer items-center border-b-1 border-solid border-[#23262E1A] justify-between">
+              <div className="flex w-full gap-2">
+                <img src={mancity} alt="manChity" />
+                <div>
+                  <h3 className="text-[12px] text-[#23262E]">Manchester City</h3>
+                  <p className="text-[#23262EB2] text-[12px]">Title Holder (10)</p>
+                </div>
+
+              </div>
+              <img className="-rotate-90" src={vec} alt="" />
+            </div>
+            <div className="flex px-5 cursor-pointer  items-center justify-between">
+              <div className="flex w-full gap-2">
+                <img src={mancity} alt="manChity" />
+                <div>
+                  <h3 className="text-[12px] text-[#23262E]">Manchester City</h3>
+                  <p className="text-[#23262EB2] text-[12px]">Title Holder (10)</p>
+                </div>
+
+              </div>
+              <img className="-rotate-90" src={vec} alt="" />
+            </div>
+          </div>
+
+          </div>
         </div>
         <div className="flex w-full justify-center rounded-[12px]">
           <img
@@ -92,7 +121,17 @@ function Overview() {
 
         <Standings />
       </div>
-      <div className="bg-white rounded-[12px] h-50"></div>
+      <div className="rounded-[12px] gap-5 flex flex-col">
+
+        <div className="bg-white h-50 rounded-[12px]">
+          <h3 className="text-[12px] font-bold flex text-[#23262EB2]">
+            <img src={Chart} alt="" />
+            Prem Stats
+          </h3>
+        </div>
+        <div className="bg-white h-50 rounded-[12px]"></div>
+        <div className="bg-white h-50 rounded-[12px]"></div>
+      </div>
     </div>
   );
 }
