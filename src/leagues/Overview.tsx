@@ -3,7 +3,7 @@ import "../index.css";
 import MatchList from "../Feed/MatchListing";
 import Matches from "../jsonfiles.json/Matches.json";
 import { useState } from "react";
-import  Standings  from "./Standing";
+import Standings from "./Standing";
 
 function Overview() {
   const [selectedTab, setSelectedTab] = useState(1);
@@ -16,7 +16,31 @@ function Overview() {
     <div className="w-full gap-6 grid grid-cols-[19fr_6fr]">
       <div className="gap-6 flex flex-col">
         <div className="rounded-[12px] gap-6 grid grid-cols-[1fr_1fr] h-50">
-          <div className="bg-white rounded-[12px] h-50"></div>
+          <div className="bg-white p-5 rounded-[12px]">
+            <h2 className="text-[#23262E]  font-bold text-[14px]">facts</h2>
+            <div className="gap-4 flex flex-col">
+              <div className="grid w-full grid-cols-[1fr_1fr_1fr] gap-4">
+                <div className="flex flex-col justify-between items-center py-[15px] px-4 rounded-[8px] border-1 border-solid border-[#23262E1A]">
+                  <h3 className="text-[12px] text-[#23262EB2]">
+                    Division level
+                  </h3>
+                  <p className="text-[12px] font-bold text-[#23262E]">1</p>
+                </div>
+                <div className="flex flex-col justify-between items-center py-[15px] px-4 rounded-[8px] border-1 border-solid border-[#23262E1A]">
+                  <h3 className="text-[12px] text-[#23262EB2]">Rounds</h3>
+                  <p className="text-[12px] font-bold text-[#23262E]">38</p>
+                </div>
+                <div className="flex flex-col justify-between items-center py-[15px] px-4 rounded-[8px] border-1 border-solid border-[#23262E1A]">
+                  <h3 className="text-[12px] text-[#23262EB2]">Yellow cards</h3>
+                  <p className="text-[12px] font-bold text-[#23262E]">2</p>
+                </div>
+              </div>
+              <div className="flex flex-col justify-between items-center w-full py-[15px] px-4 rounded-[8px] border-1 border-solid border-[#23262E1A]">
+                <h3 className="text-[12px] text-[#23262EB2]">Red cards</h3>
+                <p className="text-[12px] font-bold text-[#23262E]">2</p>
+              </div>
+            </div>
+          </div>
           <div className="bg-white rounded-[12px] h-50"></div>
         </div>
         <div className="flex w-full justify-center rounded-[12px]">
@@ -65,7 +89,7 @@ function Overview() {
           </div>
           <MatchList IsHomePage={false} List={Matches} />
         </div>
-        
+
         <Standings />
       </div>
       <div className="bg-white rounded-[12px] h-50"></div>
