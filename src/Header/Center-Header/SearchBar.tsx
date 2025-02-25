@@ -37,7 +37,7 @@ export default function SearchBar() {
       label: (
         <form className="hidden max-lg:flex">
           <input
-            className="bg-[#F7F8FA] text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-[12px] focus:outline-none"
+            className="bg-[#F7F8FA] text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
             placeholder="Search Match, Team or Player"
           />
@@ -58,7 +58,7 @@ export default function SearchBar() {
             {["All", "Teams", "Leagues", "Players"].map((item, index) => (
               <button
                 key={index}
-                className={`rounded-[8px] mobile-menu-p-sizedown py-[8px] text-[12px] w-fill cursor-pointer font-semibold 
+                className={`rounded-[8px] mobile-menu-p-sizedown py-[8px] text-xs w-fill cursor-pointer font-semibold 
                   px-[1rem] flex items-center justify-center w-full max-w-440-shrink mobile-menu-p-sizedown transition-colors duration-500 ease-in-out
                   ${
                     selectedTab === item
@@ -90,7 +90,7 @@ export default function SearchBar() {
         <div className="flex items-center gap-4 p-2 hover:bg-gray-100 rounded">
           <img src={noImageIcon} alt="No Image" />
           <span>
-            <h3 className="text-[12px]">Team Name</h3>
+            <h3 className="text-xs">Team Name</h3>
             <p className="text-[#23262EB2] text-[10px]">Country</p>
           </span>
         </div>
@@ -102,7 +102,7 @@ export default function SearchBar() {
   return (
     <form className="relative h-10 flex " onSubmit={(e) => e.preventDefault()}>
       <input
-        className="border-[#23262E]/[10%] max-w-1024-hidden text-[#23262E]/[40%] w-full border border-solid min-w-[140px] rounded-[8px] h-10 p-2 pr-[50px] text-[12px] focus:outline-none"
+        className="border-[#23262E]/[10%] max-w-1024-hidden text-[#23262E]/[40%] w-full border border-solid min-w-[140px] rounded-[8px] h-10 p-2 pr-[50px] text-xs focus:outline-none"
         type="search"
         value={search}
         onChange={(e) => {

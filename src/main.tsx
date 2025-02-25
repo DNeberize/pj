@@ -18,7 +18,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="*" element={<NotFound />} />
           <Route path="country/" element={<ListOfCountryPage />} />
           <Route path="country/:name" element={<SingleCountry />} />
-          <Route path="country/:name/:League" element={<League />} />
+          <Route path="country/:name/:id/:League" element={<League />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -14,7 +14,7 @@ function RightSideBar() {
           onClick={() => setIsOpen((prev) => !prev)}
           className="flex justify-between mb-2 cursor-pointer"
         >
-          <h2 className="text-[14px] font-bold">Download Application</h2>
+          <h2 className="text-sm font-bold">Download Application</h2>
           <img
             className={`transition-transform ${
               isOpen ? "rotate-180" : "rotate-0"
@@ -28,7 +28,7 @@ function RightSideBar() {
             <div className="rounded-[12px] w-[100%] p-5 h-[160px] flex justify-center content-center bg-[#23262E]/10">
               <img src="/src/assets/QR.svg" alt="QR Code" />
             </div>
-            <h2 className="flex justify-center mb-2 mt-2 text-[14px] font-semibold">
+            <h2 className="flex justify-center mb-2 mt-2 text-sm font-semibold">
               OR
             </h2>
             <div>

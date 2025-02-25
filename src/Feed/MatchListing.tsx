@@ -27,12 +27,12 @@ const MatchList: React.FC<MatchListProps> = ({ List, IsHomePage }) => (
         <div
           className={`inline-grid w-full items-center ${
             IsHomePage ? "grid-cols-[9fr_4fr]" : "grid-cols-[4fr_4fr]"
-          }  text-[12px] h-[72px] py-[15px] px-[20px]`}
+          }  text-xs h-[72px] py-[15px] px-[20px]`}
         >
           <div className="border-r-[1px] max-lg:border-r-0 border-solid border-[#23262E1A] flex items-center gap-2 h-[42px]">
             <img src="/src/assets/Star.svg" alt="Star" />
             <h2
-              className={`text-[12px] max-lg:hidden w-[4rem] text-[#23262E] flex justify-center ${
+              className={`text-xs max-lg:hidden w-[4rem] text-[#23262E] flex justify-center ${
                 L.time.slice(-1) === "'" ? "text-red-500" : ""
               }`}
             >
@@ -62,14 +62,14 @@ const MatchList: React.FC<MatchListProps> = ({ List, IsHomePage }) => (
             </div>
           </div>
 
-          <div className="flex justify-between min-w-[170px]">
+          <div className="flex justify-between ">
             <div className="flex max-lg:w-full">
               <div className="w-[3rem] text-[#23262E] space-y-2 max-lg:flex-col justify-end max-lg:w-full px-4 max-lg:border-r-0 border-r-[1px] h-[48px] border-solid border-[#23262E1A]">
                 <p className="flex justify-center">{L.club1_HT2}</p>
                 <p className="flex justify-center">{L.club2_HT2}</p>
               </div>
               <h2
-                className={`text-[12px]  max-lg:flex w-[4rem] text-[#23262E] hidden items-center justify-center  ${
+                className={`text-xs  max-lg:flex w-[4rem] text-[#23262E] hidden items-center justify-center  ${
                   L.time.slice(-1) === "'" ? "text-red-500" : ""
                 }`}
               >

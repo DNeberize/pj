@@ -10,7 +10,7 @@ export async function fetchLeaguesByCountry(countryName: string) {
         method: "GET",
         headers: {
           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-          "x-rapidapi-key": "fe4a3e5f07e932632340b6d7e7a0e345",
+          // "x-rapidapi-key": "fe4a3e5f07e932632340b6d7e7a0e345",
         },
       }
     );
@@ -20,10 +20,12 @@ export async function fetchLeaguesByCountry(countryName: string) {
     }
 
     const data = await response.json();
+    console.log(data);
     return data.response.map((item: any) => ({
       flag: item.league.logo,
       name: item.league.name,
       country: item.country.name,
+      id: item.league.id,
     }));
   } catch (error) {
     console.error("Error fetching leagues:", error);

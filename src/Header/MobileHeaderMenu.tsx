@@ -37,7 +37,7 @@ function MobileHeaderMenu() {
             alt={tab.name}
           />
           <h3
-            className={`text-[12px] small-menu-p transition-all duration-300 ${
+            className={`text-xs small-menu-p transition-all duration-300 ${
               activeTab === tab.name ? "font-bold text-black" : "text-gray-400"
             }`}
           >

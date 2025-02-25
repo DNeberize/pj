@@ -4,6 +4,7 @@ type League = {
   flag: string;
   name: string;
   country?: string;
+  id?: number;
 };
 
 type LeagueListProps = {
@@ -34,7 +35,7 @@ const LeagueListing: React.FC<LeagueListProps> = ({ List, IsPage }) => {
               className={`${
                 IsPage ? "w-full flex justify-between" : "border-b-0"
               }`}
-              to={`../country/${L.country}/${L.name}`}
+              to={`../country/${L.country}/${L.id}/${L.name}`}
             >
               <div className="grid grid-cols-[28px_1fr] h-[44px] items-center">
                 <img
@@ -45,7 +46,7 @@ const LeagueListing: React.FC<LeagueListProps> = ({ List, IsPage }) => {
                   }`}
                 />
                 <div className="ml-2">
-                  <h3 className="text-[14px] text-[#231F2E] min-w-[115px] font-semibold">
+                  <h3 className="text-sm text-[#231F2E] min-w-[115px] font-semibold">
                     {L.name}
                   </h3>
                   {L.country && (

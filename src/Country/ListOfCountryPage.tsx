@@ -35,12 +35,12 @@ function ListOfCountryPage() {
           <Breadcrumb.Item className="text-purple-500">Country</Breadcrumb.Item>
         </Breadcrumb>
 
-        <h2 className="flex font-bold text-[14px]  text-[#231F2E] mb-5 mt-5">
+        <h2 className="flex font-bold text-sm  text-[#231F2E] mb-5 mt-5">
           Leagues By Countries
         </h2>
         <form onSubmit={(e) => e.preventDefault()} className="flex">
           <input
-            className="bg-[#F7F8FA] text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-[12px] focus:outline-none"
+            className="bg-[#F7F8FA] text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
             value={Query}
             onChange={(e) => SetQuery(e.target.value)}

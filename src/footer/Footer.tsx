@@ -15,7 +15,7 @@ function Footer() {
           <div className="grid grid-cols-12 max-lg:flex-col-reverse max-lg:flex max-lg:gap-10 w-full">
             <div className="col-span-4 max-lg:border-b border-solid border-[#23262E1A]">
               <h2
-                className="text-[#23262E] mb-1 flex justify-between font-semibold text-[14px] uppercase cursor-pointer"
+                className="text-[#23262E] mb-1 flex justify-between font-semibold text-sm uppercase cursor-pointer"
                 onClick={toggleSection}
               >
                 Football
@@ -34,16 +34,16 @@ function Footer() {
                 }`}
               >
                 <ul className="list-none flex flex-col gap-y-[10px]">
-                  <li className="text-[12px] text-[#23262E]">Transfer News</li>
-                  <li className="text-[12px] text-[#23262E]">Live</li>
-                  <li className="text-[12px] text-[#23262E]">Premier League</li>
-                  <li className="text-[12px] text-[#23262E]">Seria A</li>
+                  <li className="text-xs text-[#23262E]">Transfer News</li>
+                  <li className="text-xs text-[#23262E]">Live</li>
+                  <li className="text-xs text-[#23262E]">Premier League</li>
+                  <li className="text-xs text-[#23262E]">Seria A</li>
                 </ul>
               </div>
             </div>
 
             <div className="h-full col-span-8 flex items-center">
-              <p className="text-[12px] text-[#23262E]">
+              <p className="text-xs text-[#23262E]">
                 Football live scores page on Flashscore.com offers all the
                 latest football results from EPL 2024 and more than 100+
                 football leagues and tournaments all around the world including
@@ -67,16 +67,16 @@ function Footer() {
               src="/src/assets/TheSportsLogo.svg"
               alt=""
             />
-            <h3 className="text-[#23262E]/[70%] text-[12px] flex">
+            <h3 className="text-[#23262E]/[70%] text-xs flex">
               OptimoScore’s Sports Data Provider
             </h3>
           </div>
 
           <div className="flex max-lg:flex-col max-lg:gap-[1rem] gap-[8px]">
-            <h3 className="text-[#23262E]/[70%] border-r-2 border-solid pr-1 border-[#23262E]/[10%] text-[12px] flex">
+            <h3 className="text-[#23262E]/[70%] border-r-2 border-solid pr-1 border-[#23262E]/[10%] text-xs flex">
               Copyright @ 2024 OptimoScore
             </h3>
-            <h3 className="text-[#23262E]/[70%] text-[12px] flex">
+            <h3 className="text-[#23262E]/[70%] text-xs flex">
               18+ Gamble Responsibly
             </h3>
           </div>

@@ -30,12 +30,12 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
         <div key={index}>
           <div
             onClick={() => toggleLeague(index)}
-            className="inline-grid w-full grid-cols-[9fr_4fr] text-[12px] bg-[#23262E1A] h-[50px] py-[15px] px-[20px] cursor-pointer"
+            className="inline-grid w-full grid-cols-[9fr_4fr] text-xs bg-[#23262E1A] h-[50px] py-[15px] px-[20px] cursor-pointer"
           >
             <div className="flex gap-2 items-center">
               <img src="/src/assets/Star.svg" alt="Star" />
               <img src={league.leagueFlag} alt={league.leagueName} />
-              <h1 className="font-semibold small-menu-p max-lg:text-[12px] text-[#23262E]">
+              <h1 className="font-semibold small-menu-p max-lg:text-xs text-[#23262E]">
                 {league.leagueName}
               </h1>
               <img src="/src/assets/Pin.svg" alt="Pin" />

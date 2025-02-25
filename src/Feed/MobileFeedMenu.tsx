@@ -25,7 +25,7 @@ const MobileFeedMenu: React.FC<MobileFeedMenuProps> = ({
         {MenuItems.map((item, index) => (
           <button
             key={item.id}
-            className={`rounded-[8px] mobile-menu-p-sizedown py-[12px]  text-[12px] w-fill cursor-pointer font-semibold 
+            className={`rounded-[8px] mobile-menu-p-sizedown py-[12px]  text-xs w-fill cursor-pointer font-semibold 
             px-[1rem] flex items-center justify-center w-full max-w-440-shrink mobile-menu-p-sizedown  transition-colors duration-500 ease-in-out
             ${
               selectedTab === item.label

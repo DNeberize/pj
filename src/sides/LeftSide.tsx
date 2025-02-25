@@ -10,6 +10,7 @@ interface LeftSideBarProps {
 }
 
 type Country = {
+  id?: number;
   code: string;
   flag: string;
   name: string;
@@ -32,18 +33,19 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
 
   return (
     <div
-      className={`${IsPC && " lg:pl-[5rem] max-w-1024-hidden"}${
+      className={`${IsPC && " lg:pl-[5rem] max-lg:hidden"} ${
         name.League && " hidden "
       } `}
     >
       <div className="flex">
         <div>
-          <h2 className="font-bold text-[14px] text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[#23262E]/10">
+          <h2 className="font-bold text-sm text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[#23262E]/10">
             Pinned Leagues
           </h2>
           <LeagueListing
             IsPage={false}
             List={test.map((item) => ({
+              id: item.league.id,
               flag: item.league.logo,
               name: item.league.name,
               country: item.country.name,
@@ -52,13 +54,13 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
         </div>
       </div>
       <div className="">
-        <h2 className="flex font-bold text-[14px] text-[#231F2E] mb-[15px] mt-[30px]">
+        <h2 className="flex font-bold text-sm text-[#231F2E] mb-[15px] mt-[30px]">
           <Link to="/country"> Countries </Link>
           <span className="text-[#231F2E]/70 pl-2">[A-Z]</span>
         </h2>
         <form className="flex">
           <input
-            className="bg-white text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-[12px] focus:outline-none"
+            className="bg-white text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
             value={Query}
             onChange={(e) => SetQuery(e.target.value)}

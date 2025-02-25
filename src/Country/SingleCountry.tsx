@@ -8,7 +8,7 @@ import { fetchLeaguesByCountry } from "../leagues/FetchLeagues";
 function SingleCountry() {
   const { name } = useParams();
   const [leagues, setLeagues] = useState<
-    { flag: string; name: string; country?: string }[]
+    { flag: string; name: string; country?: string; id: string }[]
   >([]);
 
   useEffect(() => {
@@ -37,12 +37,12 @@ function SingleCountry() {
           <div className="h-16 w-21 rounded-[12px] p-3 border-1 border-[#23262E1A]">
             <img className="rounded-1" src={test[0].country.flag} alt="Flag" />
           </div>
-          <h2 className="text-[#23262E] font-bold text-[14px]">{name}</h2>
+          <h2 className="text-[#23262E] font-bold text-sm">{name}</h2>
         </div>
       </div>
 
       <div className="h-auto w-full rounded-[12px] py-[20px] bg-white">
-        <h2 className="flex font-bold text-[14px] px-[20px] text-[#231F2E] mb-[15px]">
+        <h2 className="flex font-bold text-sm px-[20px] text-[#231F2E] mb-[15px]">
           All Football Leagues and Tournaments of {name}
         </h2>
         <LeagueListing IsPage={true} List={leagues} />
