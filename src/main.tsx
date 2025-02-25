@@ -19,13 +19,13 @@ import Schedule from "./leagues/Pages/Schedule";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Layout />}>
           <Route index element={<CenterFeed />} />
           <Route path="*" element={<NotFound />} />
           <Route path="country/" element={<ListOfCountryPage />} />
           <Route path="country/:country" element={<SingleCountry />} />
-          <Route path="country/:country/:id/:league" element={<League />}>
+          <Route path="country/:country/:id" element={<League />}>
             <Route index element={<Overview />} />
             <Route path="overview" element={<Overview />} />
             <Route path="standings" element={<Standings />} />

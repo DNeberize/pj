@@ -55,6 +55,7 @@ interface TeamStanding {
 
 interface League {
   logo: string;
+  name: string;
 }
 
 export const LeagueInfo = createContext<{ standings: TeamStanding[] }>({
@@ -70,50 +71,73 @@ function League() {
     league: League | null;
     standings: TeamStanding[];
   }>({
-    league: null,
+    league: { logo: "", name:"" },
     standings: [],
   });
-
+  
+ 
   useEffect(() => {
-    const fetchStandings = async () => {
-      try {
-        const response = await fetch(
-          `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
-          {
-            method: "GET",
-            headers: {
-              "x-rapidapi-host": "v3.football.api-sports.io",
-              "x-rapidapi-key": "feb227bf92d08caaa0b6ad9839c7e393",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch standings");
+  const fetchStandings = async () => {
+    try {
+      const response = await fetch(
+        `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "v3.football.api-sports.io",
+            "x-rapidapi-key": "e322d3134e96e5ca6f13792f4df66ed5",
+          },
         }
+      );
 
-        const data = await response.json();
+      if (!response.ok) {
+        throw new Error("Failed to fetch standings");
+      }
+
+      const data = await response.json();
+      console.log("Fetched Data:", data); // Log the full response
+
+      if (data.response && data.response.length > 0) {
+        const league = data.response[0]?.league;
+        const standings = data.response[0]?.league?.standings?.[0];
+
+        if (league && standings) {
+          setLeagueData({
+            league,
+            standings,
+          });
+        } else {
+          console.error("Missing league or standings data");
+          setLeagueData({
+            league: null,
+            standings: [],
+          });
+        }
+      } else {
+        console.error("No data available in response");
         setLeagueData({
-          league: data.response[0]?.league,
-          standings: data.response[0]?.league?.standings?.[0],
-        });
-      } catch (error) {
-        console.error("Error fetching standings:", error);
-        setLeagueData({
-          league: StandingsList[0]?.league ?? null,
-          standings: StandingsList[0]?.league?.standings?.[0],
+          league: null,
+          standings: [],
         });
       }
-    };
+    } catch (error) {
+      console.error("Error fetching standings:", error);
+      setLeagueData({
+        league: StandingsList[0]?.league ?? null,
+        standings: StandingsList[0]?.league?.standings?.[0] ?? [],
+      });
+    }
+  };
 
-    fetchStandings();
-  }, [id]);
+  fetchStandings();
+}, [id]);
+
 
   const handleTabClick = (path: string, label: string) => {
     setSelectedTab(label.toLowerCase());
-    navigate(`/country/${country}/${id}/${league}/${path}`);
+    navigate(`/country/${country}/${id}/${path}`);
   };
-
+  console.log()
   return (
     <div className="px-5 md:px-20 flex flex-col gap-6 py-4 w-full mx-auto">
       <div className="bg-white w-full flex flex-col justify-between p-5 pb-0 gap-5 rounded-[12px]">
@@ -126,14 +150,14 @@ function League() {
               title: (
                 <Link
                   className="text-purple-500"
-                  to={`/country/${country}/${id}/${league}`}
+                  to={`/country/${country}/${league}`}
                 >
                   {league}
                 </Link>
               ),
             },
           ]}
-        />
+        /> 
 
         <div className="flex items-center gap-4">
           <div className="h-28 w-28 rounded-[12px] flex justify-center p-4 border border-[#23262E1A]">
@@ -144,7 +168,7 @@ function League() {
             />
           </div>
           <div>
-            <h2 className="text-[#23262E] mb-3 font-bold text-sm">{league}</h2>
+            <h2 className="text-[#23262E] mb-3 font-bold text-sm">{leagueData.league?.name}</h2>
             <button className="flex text-xs font-semibold px-4 py-2 gap-2 text-[#23262EB2] rounded-[8px] border border-solid border-[#23262E1A]">
               2024/2025 <img src={vector} alt="vector" />
             </button>

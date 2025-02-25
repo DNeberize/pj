@@ -27,7 +27,7 @@ const LeagueListing: React.FC<LeagueListProps> = ({ List, IsPage }) => {
         >
           <Link
             className={`${IsPage ? "w-full flex justify-between" : "border-b-0"}`}
-            to={`../country/${encodeURIComponent(L.country || "")}/${L.id}/${encodeURIComponent(L.name)}`}
+            to={`../country/${encodeURIComponent(L.country || "")}/${L.id}`}
           >
             <div className="grid grid-cols-[28px_1fr] h-[44px] items-center">
               <img

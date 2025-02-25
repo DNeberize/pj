@@ -30,7 +30,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
   const FilteredCountry = CountryList.filter((country) =>
     country.name.toLowerCase().includes(Query.toLowerCase())
   );
-  console.log(FilteredCountry)
+
   return (
     <div
       className={`${IsPC && " lg:pl-[5rem] max-lg:hidden"} ${

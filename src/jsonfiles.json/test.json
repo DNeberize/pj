@@ -1,14 +1,14 @@
 [
   {
     "country": {
-      "id": "39",
+      "id": "34",
       "code": "GE-GEO",
       "flag": "/src/assets/Country Flags/UK.svg",
       "name": "England"
     },
 
     "league": {
-      "id": "39",
+      "id": "34",
       "name": "Premier League",
       "logo": "/src/assets/Country Flags/premier.svg",
       "type": "England"
@@ -16,14 +16,14 @@
   },
   {
     "country": {
-      "id": "39",
+      "id": "35",
       "code": "GE-GEO",
       "flag": "/src/assets/Country Flags/UK.svg",
       "name": "England"
     },
 
     "league": {
-      "id": "39",
+      "id": "35",
       "name": "Premier League",
       "logo": "/src/assets/Country Flags/premier.svg",
       "type": "England"
@@ -31,14 +31,14 @@
   },
   {
     "country": {
-      "id": "39",
+      "id": "36",
       "code": "GE-GEO",
       "flag": "/src/assets/Country Flags/UK.svg",
       "name": "England"
     },
 
     "league": {
-      "id": "39",
+      "id": "36",
       "name": "Premier League",
       "logo": "/src/assets/Country Flags/premier.svg",
       "type": "England"
@@ -46,14 +46,14 @@
   },
   {
     "country": {
-      "id": "39",
+      "id": "37",
       "code": "GE-GEO",
       "flag": "/src/assets/Country Flags/UK.svg",
       "name": "England"
     },
 
     "league": {
-      "id": "39",
+      "id": "37",
       "name": "Premier League",
       "logo": "/src/assets/Country Flags/premier.svg",
       "type": "England"
@@ -61,92 +61,18 @@
   },
   {
     "country": {
-      "id": "39",
+      "id": "38",
       "code": "GE-GEO",
       "flag": "/src/assets/Country Flags/UK.svg",
       "name": "England"
     },
 
     "league": {
-      "id": "39",
-      "name": "Premier League",
-      "logo": "/src/assets/Country Flags/premier.svg",
-      "type": "England"
-    }
-  },
-  {
-    "country": {
-      "id": "39",
-      "code": "GE-GEO",
-      "flag": "/src/assets/Country Flags/UK.svg",
-      "name": "England"
-    },
-
-    "league": {
-      "id": "39",
-      "name": "Premier League",
-      "logo": "/src/assets/Country Flags/premier.svg",
-      "type": "England"
-    }
-  },
-  {
-    "country": {
-      "id": "39",
-      "code": "GE-GEO",
-      "flag": "/src/assets/Country Flags/UK.svg",
-      "name": "England"
-    },
-
-    "league": {
-      "id": "39",
-      "name": "Premier League",
-      "logo": "/src/assets/Country Flags/premier.svg",
-      "type": "England"
-    }
-  },
-  {
-    "country": {
-      "id": "39",
-      "code": "GE-GEO",
-      "flag": "/src/assets/Country Flags/UK.svg",
-      "name": "England"
-    },
-
-    "league": {
-      "id": "39",
-      "name": "Premier League",
-      "logo": "/src/assets/Country Flags/premier.svg",
-      "type": "England"
-    }
-  },
-  {
-    "country": {
-      "id": "39",
-      "code": "GE-GEO",
-      "flag": "/src/assets/Country Flags/UK.svg",
-      "name": "England"
-    },
-
-    "league": {
-      "id": "39",
-      "name": "Premier League",
-      "logo": "/src/assets/Country Flags/premier.svg",
-      "type": "England"
-    }
-  },
-  {
-    "country": {
-      "id": "39",
-      "code": "GE-GEO",
-      "flag": "/src/assets/Country Flags/UK.svg",
-      "name": "England"
-    },
-
-    "league": {
-      "id": "39",
+      "id": "38",
       "name": "Premier League",
       "logo": "/src/assets/Country Flags/premier.svg",
       "type": "England"
     }
   }
+  
 ]

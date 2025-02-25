@@ -6,11 +6,11 @@ const pages = [
   "Standings",
   "Stats",
   "Transfer",
-  "Champions",
+  "Champions", 
 ];
 
 export default function LeagueLayout() {
-  const { country, id, league } = useParams();
+  const { country, id } = useParams();
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default function LeagueLayout() {
         {pages.map((page) => (
           <Link
             key={page}
-            to={`/country/${country}/${id}/${league}/${page.toLowerCase()}`}
+            to={`/country/${country}/${id}/${page.toLowerCase()}`}
             style={{ marginRight: 10 }}
           ></Link>
         ))}
