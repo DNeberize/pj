@@ -10,10 +10,11 @@ interface LeftSideBarProps {
 }
 
 type Country = {
-  id?: number;
+  id?: string;
   code: string;
   flag: string;
   name: string;
+  logo:string;
 };
 
 function LeftSideBar({ IsPC }: LeftSideBarProps) {
@@ -29,6 +30,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
   const FilteredCountry = CountryList.filter((country) =>
     country.name.toLowerCase().includes(Query.toLowerCase())
   );
+  console.log(FilteredCountry)
   return (
     <div
       className={`${IsPC && " lg:pl-[5rem] max-lg:hidden"} ${
@@ -44,7 +46,8 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
             IsPage={false}
             List={test.map((item) => ({
               id: item.league.id,
-              flag: item.league.logo,
+              logo: item.league.logo,
+              flag: item.country.flag,
               name: item.league.name,
               country: item.country.name,
             }))}

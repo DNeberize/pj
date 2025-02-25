@@ -6,7 +6,7 @@ export async function fetchCountries() {
         method: "GET",
         headers: {
           "x-rapidapi-host": "v1.basketball.api-sports.io",
-          "x-rapidapi-key": "fe4a3e5f07e932632340b6d7e7a0e345",
+          "x-rapidapi-key": "0af6c4cae9850dba88765797e79d9413",
         },
       }
     );

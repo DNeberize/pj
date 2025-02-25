@@ -83,7 +83,7 @@ function League() {
             method: "GET",
             headers: {
               "x-rapidapi-host": "v3.football.api-sports.io",
-              "x-rapidapi-key": "fe4a3e5f07e932632340b6d7e7a0e345",
+              "x-rapidapi-key": "feb227bf92d08caaa0b6ad9839c7e393",
             },
           }
         );
