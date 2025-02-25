@@ -56,7 +56,7 @@ interface TeamStanding {
 interface League {
   logo: string;
   name: string;
-  standings?: TeamStanding[][]; // Updated to match API structure
+  standings?: TeamStanding[][];
 }
 
 export const LeagueInfo = createContext<{ standings: TeamStanding[] }>({
@@ -64,7 +64,7 @@ export const LeagueInfo = createContext<{ standings: TeamStanding[] }>({
 });
 
 function League() {
-  const { country, id, league } = useParams();
+  const { country, id } = useParams();
   const [selectedTab, setSelectedTab] = useState<string>("overview");
   const navigate = useNavigate();
   const [leagueData, setLeagueData] = useState<League>({
@@ -110,7 +110,8 @@ function League() {
   return (
     <div className="px-5 md:px-20 flex flex-col gap-6 py-4 w-full mx-auto">
       <div className="bg-white w-full flex flex-col justify-between p-5 pb-0 gap-5 rounded-[12px]">
-        <Breadcrumb
+        <Breadcrumb separator=">"
+        
           items={[
             { title: <Link to="/">Home</Link> },
             { title: <Link to="/country">Football</Link> },
@@ -118,10 +119,10 @@ function League() {
             {
               title: (
                 <Link
-                  className="text-purple-500"
-                  to={`/country/${country}/${league}`}
+                style={{ color: '#7F3FFC' }}
+                  to={`/country/${country}/${id}`}
                 >
-                  {league}
+                  {leagueData?.name}
                 </Link>
               ),
             },
