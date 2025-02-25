@@ -56,6 +56,7 @@ interface TeamStanding {
 interface League {
   logo: string;
   name: string;
+  standings?: TeamStanding[][]; // Updated to match API structure
 }
 
 export const LeagueInfo = createContext<{ standings: TeamStanding[] }>({
@@ -65,79 +66,47 @@ export const LeagueInfo = createContext<{ standings: TeamStanding[] }>({
 function League() {
   const { country, id, league } = useParams();
   const [selectedTab, setSelectedTab] = useState<string>("overview");
-
   const navigate = useNavigate();
-  const [leagueData, setLeagueData] = useState<{
-    league: League | null;
-    standings: TeamStanding[];
-  }>({
-    league: { logo: "", name:"" },
+  const [leagueData, setLeagueData] = useState<League>({
+    logo: "",
+    name: "",
     standings: [],
   });
-  
- 
+
   useEffect(() => {
-  const fetchStandings = async () => {
-    try {
-      const response = await fetch(
-        `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
-        {
-          method: "GET",
-          headers: {
-            "x-rapidapi-host": "v3.football.api-sports.io",
-            "x-rapidapi-key": "e322d3134e96e5ca6f13792f4df66ed5",
-          },
+    const fetchStandings = async () => {
+      try {
+        const response = await fetch(
+          `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
+          {
+            method: "GET",
+            headers: {
+              "x-rapidapi-host": "v3.football.api-sports.io",
+              "x-rapidapi-key": "e322d3134e96e5ca6f13792f4df66ed5",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch standings");
         }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch standings");
+        const data = await response.json();
+        const leagueResponse = data.response[0]?.league;
+        setLeagueData(leagueResponse || StandingsList[0]?.league);
+      } catch (error) {
+        console.error("Error fetching standings:", error);
+        setLeagueData(StandingsList[0]?.league ?? { logo: "", name: "", standings: [] });
       }
+    };
 
-      const data = await response.json();
-      console.log("Fetched Data:", data); // Log the full response
-
-      if (data.response && data.response.length > 0) {
-        const league = data.response[0]?.league;
-        const standings = data.response[0]?.league?.standings?.[0];
-
-        if (league && standings) {
-          setLeagueData({
-            league,
-            standings,
-          });
-        } else {
-          console.error("Missing league or standings data");
-          setLeagueData({
-            league: null,
-            standings: [],
-          });
-        }
-      } else {
-        console.error("No data available in response");
-        setLeagueData({
-          league: null,
-          standings: [],
-        });
-      }
-    } catch (error) {
-      console.error("Error fetching standings:", error);
-      setLeagueData({
-        league: StandingsList[0]?.league ?? null,
-        standings: StandingsList[0]?.league?.standings?.[0] ?? [],
-      });
-    }
-  };
-
-  fetchStandings();
-}, [id]);
-
+    fetchStandings();
+  }, [id]);
 
   const handleTabClick = (path: string, label: string) => {
     setSelectedTab(label.toLowerCase());
     navigate(`/country/${country}/${id}/${path}`);
   };
-  console.log()
+
   return (
     <div className="px-5 md:px-20 flex flex-col gap-6 py-4 w-full mx-auto">
       <div className="bg-white w-full flex flex-col justify-between p-5 pb-0 gap-5 rounded-[12px]">
@@ -157,18 +126,18 @@ function League() {
               ),
             },
           ]}
-        /> 
+        />
 
         <div className="flex items-center gap-4">
           <div className="h-28 w-28 rounded-[12px] flex justify-center p-4 border border-[#23262E1A]">
             <img
               className="rounded h-full"
-              src={leagueData.league?.logo || LeagLogo}
+              src={leagueData?.logo || LeagLogo}
               alt="League Logo"
             />
           </div>
           <div>
-            <h2 className="text-[#23262E] mb-3 font-bold text-sm">{leagueData.league?.name}</h2>
+            <h2 className="text-[#23262E] mb-3 font-bold text-sm">{leagueData?.name}</h2>
             <button className="flex text-xs font-semibold px-4 py-2 gap-2 text-[#23262EB2] rounded-[8px] border border-solid border-[#23262E1A]">
               2024/2025 <img src={vector} alt="vector" />
             </button>
@@ -181,11 +150,7 @@ function League() {
               <button
                 key={item.path}
                 className={`whitespace-nowrap py-3 px-4 text-xs font-semibold transition-colors duration-500 ease-in-out
-                  ${
-                    selectedTab === item.label.toLowerCase()
-                      ? "border-b-2 border-[#7F3FFC] text-[#7F3FFC]"
-                      : ""
-                  }`}
+                  ${selectedTab === item.label.toLowerCase() ? "border-b-2 border-[#7F3FFC] text-[#7F3FFC]" : ""}`}
                 onClick={() => handleTabClick(item.path, item.label)}
               >
                 {item.label}
@@ -195,7 +160,7 @@ function League() {
         </div>
       </div>
 
-      <LeagueInfo.Provider value={{ standings: leagueData.standings }}>
+      <LeagueInfo.Provider value={{ standings: leagueData.standings?.[0] || [] }}>
         <Outlet />
       </LeagueInfo.Provider>
     </div>
