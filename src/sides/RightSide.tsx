@@ -7,7 +7,7 @@ function RightSideBar() {
 
   return (
     <div
-      className={`pr-[5rem] max-w-1024-hidden ${name.League && " hidden "} `}
+      className={`pr-[5rem] max-w-1024-hidden ${name.id ? " hidden " : ""} `}
     >
       <div className=" p-4 pt-3 bg-white rounded-[12px]">
         <div

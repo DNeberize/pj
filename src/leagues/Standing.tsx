@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import TeamStandings from "./TeamStanding";
-import { LeageInfo } from "./League";
+import { LeagueInfo } from "./League";
 
 function Standings() {
   const [selectedTab, setSelectedTab] = useState("all");
-  const { standings } = useContext(LeageInfo);
+  const { standings } = useContext(LeagueInfo);
 
   const handleTabChange = (item: string) => {
     setSelectedTab(item.toLowerCase());

@@ -1,9 +1,9 @@
 import { Flex, Progress } from "antd";
-import "../index.css";
-import MatchList from "../Feed/MatchListing";
-import Matches from "../jsonfiles.json/Matches.json";
+import "../../index.css";
+import MatchList from "../../Feed/MatchListing";
+import Matches from "../../jsonfiles.json/Matches.json";
 import { useState } from "react";
-import Standings from "./Standing";
+import Standings from "../Standing";
 import vec from "@assets/Vector.svg";
 import mancity from "@assets/Clubs/ManchesterCity.svg";
 import Chart from "@assets/Chart.svg";

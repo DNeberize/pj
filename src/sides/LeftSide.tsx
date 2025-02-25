@@ -18,7 +18,6 @@ type Country = {
 
 function LeftSideBar({ IsPC }: LeftSideBarProps) {
   const name = useParams();
-  console.log(name.League);
 
   const [CountryList, setCountries] = useState<Country[]>([]);
   const [Query, SetQuery] = useState("");
@@ -30,11 +29,10 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
   const FilteredCountry = CountryList.filter((country) =>
     country.name.toLowerCase().includes(Query.toLowerCase())
   );
-
   return (
     <div
       className={`${IsPC && " lg:pl-[5rem] max-lg:hidden"} ${
-        name.League && " hidden "
+        name.id ? " hidden " : ""
       } `}
     >
       <div className="flex">

@@ -59,7 +59,6 @@ const getRankBadgeClass = (rank: number) => {
 };
 
 const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
-  console.log(data);
   return (
     <>
       {data.map((team, index) => {
