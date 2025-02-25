@@ -19,7 +19,7 @@ export default function LeagueLayout() {
           <Link
             key={page}
             to={`/country/${country}/${id}/${page.toLowerCase()}`}
-            style={{ marginRight: 10 }}
+           
           ></Link>
         ))}
       </div>
