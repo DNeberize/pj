@@ -66,7 +66,7 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
           () => team[selectedTab as keyof TeamStanding] as any,
           [team, selectedTab]
         );
-        const formArray = useMemo(() => team.form.split(""), [team.form]);
+        const formArray = team.form ? team.form.split("") : [];
 
         return (
           <div

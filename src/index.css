@@ -8,6 +8,7 @@ body {
     display: none;
   }
 }
+
 @media (max-width: 1024px) {
   .search-events {
     top: 0 !important;
@@ -22,6 +23,9 @@ body {
     width: 100%;
     position: fixed;
   }
+}
+.ant-segmented.ant-segmented-block{
+  height: 100%;
 }
 .search-events .ant-dropdown-menu-vertical {
   overflow-y: scroll;

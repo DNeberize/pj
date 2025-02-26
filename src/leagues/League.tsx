@@ -57,6 +57,7 @@ interface League {
 }
 
 function League() {
+
   const { country, id, page } = useParams();
   const navigate = useNavigate();
   const [leagueData, setLeagueData] = useState<League>({

@@ -9,26 +9,26 @@ import MobileFeedMenu from "./MobileFeedMenu";
 const MenuItems = [
   {
     label: "All Matches",
-    id: "0",
+    id: 0,
   },
   {
     label: "Live (12)",
-    id: "1",
+    id: 1,
   },
   {
     label: "Finished",
-    id: "2",
+    id: 2,
   },
   {
     label: "Schedueld",
-    id: "3",
+    id: 3,
   },
 ];
 
 function CenterFeed() {
-  const [selectedTab, setSelectedTab] = useState<string>("All Matches");
+  const [selectedTab, setSelectedTab] = useState<number>(0);
 
-  const handleTabChange = (value: string) => {
+  const handleTabChange = (value: number) => {
     setSelectedTab(value);
   };
   return (
@@ -55,7 +55,7 @@ function CenterFeed() {
               isLeaguePage={false}
             />
           </div>
-          {selectedTab === "All Matches" && (
+          {selectedTab === 0 && (
             <>
               <LeagueMatches Matches={FinisshedMatches} />
               <LeagueMatches Matches={ScheduledMatches} />
@@ -63,13 +63,13 @@ function CenterFeed() {
             </>
           )}
 
-          {selectedTab == "Live (12)" && (
+          {selectedTab == 1 && (
             <LeagueMatches Matches={LiveMatches} />
           )}
-          {selectedTab == "Schedueld" && (
+          {selectedTab == 2 && (
             <LeagueMatches Matches={ScheduledMatches} />
           )}
-          {selectedTab == "Finished" && (
+          {selectedTab == 3 && (
             <LeagueMatches Matches={FinisshedMatches} />
           )}
         </div>

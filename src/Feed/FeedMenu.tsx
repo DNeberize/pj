@@ -4,9 +4,9 @@ import img from "../assets/Live.svg";
 import "./segment.css";
 
 type FeedMenuProps = {
-  selectedTab: string;
-  handleTabChange: (value: string) => void;
-  MenuItems: { label: string; id: string }[];
+  selectedTab: number;
+  handleTabChange: (value: number) => void;
+  MenuItems: { label: string; id: number }[];
 };
 
 const FeedMenu: React.FC<FeedMenuProps> = ({
@@ -25,39 +25,39 @@ const FeedMenu: React.FC<FeedMenuProps> = ({
   return (
     <>
       <div className="max-lg:hidden">
-        <Segmented
-          block={true}
-          value={selectedTab}
-          onChange={(label) => handleTabChange(label as string)}
-          options={MenuItems.map((item) => ({
-            label: item.id.includes("1") ? (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "8px",
-                }}
-              >
-                <img
-                  src={img}
-                  alt="Live"
-                  style={{ width: 20, height: 20, marginRight: 8 }}
-                />
-                {item.label}
-              </div>
-            ) : (
-              item.label
-            ),
-            value: item.label,
-          }))}
-          style={{
-            borderRadius: "12px",
-            height: "100%",
-            fontSize: "12px",
-            padding: "4px",
-          }}
+      <Segmented
+  block={true}
+  value={MenuItems[selectedTab]?.label}
+  onChange={(label) => {
+    const selectedItem = MenuItems.find((item) => item.label === label);
+    if (selectedItem) {
+      handleTabChange(selectedItem.id);
+    }
+  }}
+  options={MenuItems.map((item) => ({
+    label: item.id === 1 ? (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "8px",
+        }}
+      >
+        <img
+          src={img}
+          alt="Live"
+          style={{ width: 20, height: 20, marginRight: 8 }}
         />
+        {item.label}
+      </div>
+    ) : (
+      item.label
+    ),
+    value: item.label,
+  }))}
+/>
+
       </div>
       <div className="h-[45px] max-lg:hidden rounded-[8px] min-w-[130px] bg-[#F7F8FA] flex justify-between p-[12px] items-center">
         <img
