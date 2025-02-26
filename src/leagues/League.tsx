@@ -14,18 +14,15 @@ const MenuItems = [
   { label: "Transfer", path: "transfer" },
   { label: "Champions", path: "champions" },
 ];
-
 interface GoalStats {
   for: number;
   against: number;
 }
-
 interface Team {
   id: number;
   logo: string;
   name: string;
 }
-
 interface TeamStanding {
   rank: number;
   team: Team;
@@ -53,7 +50,6 @@ interface TeamStanding {
   };
   form: string;
 }
-
 interface League {
   logo: string;
   name: string;
@@ -68,34 +64,36 @@ function League() {
     name: "",
     standings: [],
   });
-
-  useEffect(() => {
-    const fetchStandings = async () => {
-      try {
-        const response = await fetch(
-          `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
-          {
-            method: "GET",
-            headers: {
-              "x-rapidapi-host": "v3.football.api-sports.io",
-              "x-rapidapi-key": "e322d3134e96e5ca6f13792f4df66ed5",
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch standings");
+  const fetchStandings = async () => {
+    try {
+      const response = await fetch(
+        `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "v3.football.api-sports.io",
+            "x-rapidapi-key": "d22ef0645cbfd825854110faddc2a669",
+          },
         }
-        const data = await response.json();
-        const leagueResponse = data.response[0]?.league;
-        setLeagueData(leagueResponse || StandingsList[0]?.league);
-      } catch (error) {
-        console.error("Error fetching standings:", error);
-        setLeagueData(
-          StandingsList[0]?.league ?? { logo: "", name: "", standings: [] }
-        );
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch standings");
       }
-    };
+      const data = await response.json();
+      console.log("Full API Response:", data);
+      const leagueResponse = data.response[0]?.league;
+      console.log("League Response:", leagueResponse);
+      setLeagueData(leagueResponse || StandingsList[0]?.league);
+    } catch (error) {
+      console.error("Error fetching standings:", error);
+      setLeagueData(
+        StandingsList[0]?.league ?? { logo: "", name: "", standings: [] }
+      );
+    }
+  };
+  useEffect(() => {
+    console.log(id, " : id deliverd to fetch league");
 
     fetchStandings();
   }, [id]);
@@ -103,8 +101,6 @@ function League() {
   const handleTabClick = (path: string) => {
     navigate(`/country/${country}/${id}/${path}`);
   };
-
-  console.log("League - Current page from useParams:", page);
 
   const activePage = page ? page.toLowerCase() : "overview";
 
@@ -115,7 +111,7 @@ function League() {
           separator=">"
           items={[
             { title: <Link to="/">Home</Link> },
-            { title: <Link to="/country">Football</Link> },
+            { title: <Link to="/">Football</Link> },
             { title: <Link to={`/country/${country}`}>{country}</Link> },
             {
               title: (
@@ -148,7 +144,7 @@ function League() {
           </div>
         </div>
 
-        <div className="w-full max-w-[70vw] overflow-x-auto scrollbar-hide">
+        <div className="w-full max-w-[70vw] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none]">
           <div className="flex min-w-0">
             {MenuItems.map((item) => (
               <button

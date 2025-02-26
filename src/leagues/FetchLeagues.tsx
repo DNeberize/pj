@@ -10,7 +10,7 @@ export async function fetchLeaguesByCountry(countryName: string) {
         method: "GET",
         headers: {
           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-          "x-rapidapi-key": "e322d3134e96e5ca6f13792f4df66ed5",
+          "x-rapidapi-key": "d22ef0645cbfd825854110faddc2a669",
         },
       }
     );

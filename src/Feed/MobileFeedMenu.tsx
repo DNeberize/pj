@@ -17,7 +17,7 @@ function MobileFeedMenu({
 
   const getButtonStyles = (item: { label: string; id: string }) => {
     let styles =
-      "rounded-[0.5rem] py-[0.75rem] px-[1rem] text-xs font-semibold cursor-pointer flex items-center justify-center transition-colors duration-500 ease-in-out overflow-hidden whitespace-nowrap text-ellipsis";
+      "rounded-[0.5rem] py-[0.75rem]  text-xs font-semibold cursor-pointer flex items-center justify-center transition-colors duration-500 ease-in-out overflow-hidden whitespace-nowrap text-ellipsis";
 
     if (selectedTab === item.label) {
       if (isLeaguePage) {

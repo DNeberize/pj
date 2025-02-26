@@ -1,12 +1,12 @@
 export async function fetchCountries() {
   try {
     const response = await fetch(
-      "https://v1.basketball.api-sports.io/countries",
+      "https://v3.football.api-sports.io/countries",
       {
         method: "GET",
         headers: {
-          "x-rapidapi-host": "v1.basketball.api-sports.io",
-          "x-rapidapi-key": "e322d3134e96e5ca6f13792f4df66ed5",
+          "x-rapidapi-host": "v3.football.api-sports.io",
+          "x-rapidapi-key": "d22ef0645cbfd825854110faddc2a669",
         },
       }
     );

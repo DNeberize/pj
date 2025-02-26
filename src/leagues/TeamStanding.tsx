@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 interface TeamStanding {
   rank: number;
@@ -61,12 +61,16 @@ const getRankBadgeClass = (rank: number) => {
 const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
   return (
     <>
-      {data.map((team, index) => {
-        const stats = team[selectedTab as keyof TeamStanding] as any;
+      {data.map((team) => {
+        const stats = useMemo(
+          () => team[selectedTab as keyof TeamStanding] as any,
+          [team, selectedTab]
+        );
+        const formArray = useMemo(() => team.form.split(""), [team.form]);
 
         return (
           <div
-            key={index}
+            key={team.team.id}
             className="border-b-1 border-solid border-[#23262E1A] grid gap-3 px-5 py-3 max-sm:grid-cols-[4fr_1fr_2fr] grid-cols-[4fr_3fr_4fr]"
           >
             <div className="flex overflow-hidden gap-3">
@@ -94,12 +98,10 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
                 {stats.lose}
               </h3>
             </div>
-            <div className="grid gap-3 max-sm:grid-cols-[3fr_3fr]  grid-cols-[2fr_5fr_1fr]">
-              <h3 className="flex  text-xs justify-center">
-                {stats.goals.for}
-              </h3>
-              <div className="flex  text-xs max-sm:hidden justify-between">
-                {team.form.split("").map((e, idx) => (
+            <div className="grid gap-3 max-sm:grid-cols-[3fr_3fr] grid-cols-[2fr_5fr_1fr]">
+              <h3 className="flex text-xs justify-center">{stats.goals.for}</h3>
+              <div className="flex text-xs max-sm:hidden justify-between">
+                {formArray.map((e, idx) => (
                   <div
                     key={idx}
                     className={`aspect-square w-6 flex justify-center items-center rounded-[100px] ${getBgColor(
@@ -110,7 +112,7 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
                   </div>
                 ))}
               </div>
-              <h3 className="flex max-sm:justify-start  text-xs justify-center">
+              <h3 className="flex max-sm:justify-start text-xs justify-center">
                 {team.points}
               </h3>
             </div>
@@ -121,4 +123,4 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
   );
 };
 
-export default TeamStandings;
+export default React.memo(TeamStandings);

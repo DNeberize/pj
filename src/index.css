@@ -43,7 +43,6 @@ body {
 @media (max-width: 1024px) {
   .max-w-1024-left-header {
     justify-content: left;
-    gap: 1rem;
   }
 }
 @media (max-width: 1024px) {

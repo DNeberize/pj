@@ -14,7 +14,7 @@ type Country = {
   code: string;
   flag: string;
   name: string;
-  logo:string;
+  logo: string;
 };
 
 function LeftSideBar({ IsPC }: LeftSideBarProps) {
@@ -34,7 +34,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
   return (
     <div
       className={`${IsPC && " lg:pl-[5rem] max-lg:hidden"} ${
-        name.id ? " hidden " : ""
+        name.id && IsPC ? " hidden " : ""
       } `}
     >
       <div className="flex">
