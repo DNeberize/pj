@@ -35,7 +35,7 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
             <div className="flex gap-2 items-center">
               <img src="/src/assets/Star.svg" alt="Star" />
               <img src={league.leagueFlag} alt={league.leagueName} />
-              <h1 className="font-semibold small-menu-p max-lg:text-xs text-[#23262E]">
+              <h1 className="font-semibold min small-menu-p max-lg:text-xs text-[#23262E]">
                 {league.leagueName}
               </h1>
               <img src="/src/assets/Pin.svg" alt="Pin" />

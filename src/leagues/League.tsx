@@ -1,9 +1,10 @@
 import { Breadcrumb } from "antd";
 import { Link, useParams, Outlet, useNavigate } from "react-router-dom";
-import { useState, createContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import LeagLogo from "@assets/Country Flags/premier.svg";
 import vector from "@assets/Vector.svg";
 import StandingsList from "../jsonfiles.json/StandigsList.json";
+import LeagueInfo from "./StandingInfoContext";
 
 const MenuItems = [
   { label: "Overview", path: "overview" },
@@ -59,13 +60,8 @@ interface League {
   standings?: TeamStanding[][];
 }
 
-export const LeagueInfo = createContext<{ standings: TeamStanding[] }>({
-  standings: [],
-});
-
 function League() {
-  const { country, id } = useParams();
-  const [selectedTab, setSelectedTab] = useState<string>("overview");
+  const { country, id, page } = useParams();
   const navigate = useNavigate();
   const [leagueData, setLeagueData] = useState<League>({
     logo: "",
@@ -95,23 +91,28 @@ function League() {
         setLeagueData(leagueResponse || StandingsList[0]?.league);
       } catch (error) {
         console.error("Error fetching standings:", error);
-        setLeagueData(StandingsList[0]?.league ?? { logo: "", name: "", standings: [] });
+        setLeagueData(
+          StandingsList[0]?.league ?? { logo: "", name: "", standings: [] }
+        );
       }
     };
 
     fetchStandings();
   }, [id]);
 
-  const handleTabClick = (path: string, label: string) => {
-    setSelectedTab(label.toLowerCase());
+  const handleTabClick = (path: string) => {
     navigate(`/country/${country}/${id}/${path}`);
   };
 
+  console.log("League - Current page from useParams:", page);
+
+  const activePage = page ? page.toLowerCase() : "overview";
+
   return (
-    <div className="px-5 md:px-20 flex flex-col gap-6 py-4 w-full mx-auto">
+    <div className="px-20 max-lg:px-0 flex flex-col gap-6 py-4 w-full mx-auto">
       <div className="bg-white w-full flex flex-col justify-between p-5 pb-0 gap-5 rounded-[12px]">
-        <Breadcrumb separator=">"
-        
+        <Breadcrumb
+          separator=">"
           items={[
             { title: <Link to="/">Home</Link> },
             { title: <Link to="/country">Football</Link> },
@@ -119,7 +120,7 @@ function League() {
             {
               title: (
                 <Link
-                style={{ color: '#7F3FFC' }}
+                  style={{ color: "#7F3FFC" }}
                   to={`/country/${country}/${id}`}
                 >
                   {leagueData?.name}
@@ -138,7 +139,9 @@ function League() {
             />
           </div>
           <div>
-            <h2 className="text-[#23262E] mb-3 font-bold text-sm">{leagueData?.name}</h2>
+            <h2 className="text-[#23262E] mb-3 font-bold text-sm">
+              {leagueData?.name}
+            </h2>
             <button className="flex text-xs font-semibold px-4 py-2 gap-2 text-[#23262EB2] rounded-[8px] border border-solid border-[#23262E1A]">
               2024/2025 <img src={vector} alt="vector" />
             </button>
@@ -150,9 +153,12 @@ function League() {
             {MenuItems.map((item) => (
               <button
                 key={item.path}
-                className={`whitespace-nowrap py-3 px-4 text-xs font-semibold transition-colors duration-500 ease-in-out
-                  ${selectedTab === item.label.toLowerCase() ? "border-b-2 border-[#7F3FFC] text-[#7F3FFC]" : ""}`}
-                onClick={() => handleTabClick(item.path, item.label)}
+                className={`whitespace-nowrap py-3 px-4 text-xs font-semibold transition-colors duration-500 ease-in-out ${
+                  activePage === item.path
+                    ? "border-b-2 border-[#7F3FFC] text-[#7F3FFC]"
+                    : "text-[#23262E] hover:text-[#7F3FFC] hover:border-b-2 hover:border-[#7F3FFC]"
+                }`}
+                onClick={() => handleTabClick(item.path)}
               >
                 {item.label}
               </button>
@@ -161,7 +167,9 @@ function League() {
         </div>
       </div>
 
-      <LeagueInfo.Provider value={{ standings: leagueData.standings?.[0] || [] }}>
+      <LeagueInfo.Provider
+        value={{ standings: leagueData.standings?.[0] || [] }}
+      >
         <Outlet />
       </LeagueInfo.Provider>
     </div>

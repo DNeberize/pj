@@ -33,7 +33,7 @@ function CenterFeed() {
   };
   return (
     <div>
-      <div className="w-full max-w-1024-padding">
+      <div className="w-full">
         <div className="flex justify-center rounded-[12px]">
           <img
             className="rounded-[12px]"
@@ -52,6 +52,7 @@ function CenterFeed() {
               selectedTab={selectedTab}
               handleTabChange={handleTabChange}
               MenuItems={MenuItems}
+              isLeaguePage={false}
             />
           </div>
           {selectedTab === "All Matches" && (

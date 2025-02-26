@@ -67,20 +67,20 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
         return (
           <div
             key={index}
-            className="border-b-1 border-solid border-[#23262E1A] grid gap-3 px-5 py-3 grid-cols-[4fr_3fr_4fr]"
+            className="border-b-1 border-solid border-[#23262E1A] grid gap-3 px-5 py-3 max-sm:grid-cols-[4fr_1fr_2fr] grid-cols-[4fr_3fr_4fr]"
           >
-            <div className="flex gap-3">
+            <div className="flex overflow-hidden gap-3">
               <span
-                className={`text-xs aspect-square w-6 flex justify-center items-center rounded-[100px] ${getRankBadgeClass(
+                className={`text-xs aspect-square w-6 min-w-6 max-h-6 flex justify-center items-center rounded-[100px] ${getRankBadgeClass(
                   team.rank
                 )}`}
               >
                 {team.rank}
               </span>
               <img className="h-6" src={team.team.logo} alt={team.team.name} />
-              <h3 className="text-xs">{team.team.name}</h3>
+              <h3 className="text-xs min-w-8">{team.team.name}</h3>
             </div>
-            <div className="flex gap-3 justify-around">
+            <div className="flex gap-3 max-sm:justify-end justify-around">
               <h3 className="text-[#23262EB2] flex justify-center text-xs">
                 {stats.played}
               </h3>
@@ -94,9 +94,11 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
                 {stats.lose}
               </h3>
             </div>
-            <div className="grid gap-3 grid-cols-[2fr_5fr_1fr]">
-              <h3 className="flex text-xs justify-center">{stats.goals.for}</h3>
-              <div className="flex text-xs max-sm:hidden justify-between">
+            <div className="grid gap-3 max-sm:grid-cols-[3fr_3fr]  grid-cols-[2fr_5fr_1fr]">
+              <h3 className="flex  text-xs justify-center">
+                {stats.goals.for}
+              </h3>
+              <div className="flex  text-xs max-sm:hidden justify-between">
                 {team.form.split("").map((e, idx) => (
                   <div
                     key={idx}
@@ -108,7 +110,9 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({ data, selectedTab }) => {
                   </div>
                 ))}
               </div>
-              <h3 className="flex text-xs justify-center">{team.points}</h3>
+              <h3 className="flex max-sm:justify-start  text-xs justify-center">
+                {team.points}
+              </h3>
             </div>
           </div>
         );
