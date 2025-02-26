@@ -10,7 +10,7 @@ export async function fetchLeaguesByCountry(countryName: string) {
         method: "GET",
         headers: {
           "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-          "x-rapidapi-key": "d22ef0645cbfd825854110faddc2a669",
+          "x-rapidapi-key": import.meta.env.VITE_API_KEY,
         },
       }
     );
@@ -20,14 +20,14 @@ export async function fetchLeaguesByCountry(countryName: string) {
     }
 
     const data = await response.json();
-    console.log("API Response:", data); // Log the API response
+    console.log("API Response:", data);
 
     if (!data.response || data.response.length === 0) {
       console.warn("No leagues found for country:", countryName);
       return [];
     }
 
-    console.log("Leagues found:", data.response); // Log leagues data
+    console.log("Leagues found:", data.response);
 
     return data.response.map((item: any) => ({
       logo: item.league.logo,

@@ -6,7 +6,7 @@ export async function fetchCountries() {
         method: "GET",
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
-          "x-rapidapi-key": "d22ef0645cbfd825854110faddc2a669",
+          "x-rapidapi-key": import.meta.env.VITE_API_KEY,
         },
       }
     );

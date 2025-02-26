@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 
 type MobileFeedMenuProps = {
-  selectedTab: string;
-  handleTabChange: (value: string) => void;
-  MenuItems: { label: string; id: string }[];
+  selectedTab: number;
+  handleTabChange: (value: number) => void;
+  MenuItems: { label: string; id: number }[];
   isLeaguePage: boolean;
 };
 
@@ -15,15 +15,15 @@ function MobileFeedMenu({
 }: MobileFeedMenuProps) {
   const formattedDate = dayjs().format("MM.DD ddd").toUpperCase();
 
-  const getButtonStyles = (item: { label: string; id: string }) => {
+  const getButtonStyles = (item: number) => {
     let styles =
       "rounded-[0.5rem] py-[0.75rem]  text-xs font-semibold cursor-pointer flex items-center justify-center transition-colors duration-500 ease-in-out overflow-hidden whitespace-nowrap text-ellipsis";
 
-    if (selectedTab === item.label) {
+    if (selectedTab === item) {
       if (isLeaguePage) {
         styles += " bg-[#7F3FFC] text-black";
       } else {
-        if (item.id === "1") {
+        if (item === 1) {
           styles += " bg-red-500 text-white";
         } else {
           styles += " bg-[#7F3FFC] text-white";
@@ -55,8 +55,8 @@ function MobileFeedMenu({
         {MenuItems.map((item, index) => (
           <button
             key={item.id}
-            className={`w-full max-w-[22.25rem] ${getButtonStyles(item)}`}
-            onClick={() => handleTabChange(item.label)}
+            className={`w-full max-w-[22.25rem] ${getButtonStyles(item.id)}`}
+            onClick={() => handleTabChange(item.id)}
             style={{ minWidth: 0 }}
           >
             {index === 0 && !isLeaguePage ? item.label.slice(0, 3) : item.label}
