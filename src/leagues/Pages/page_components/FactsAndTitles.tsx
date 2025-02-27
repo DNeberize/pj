@@ -1,10 +1,21 @@
 import vec from "@assets/Vector.svg";
 import mancity from "@assets/Clubs/ManchesterCity.svg";
+interface FactsAndTitlesProps {
+  TitleHolderOnly: boolean;
+}
 
-const FactsAndTitles = () => {
+const FactsAndTitles = ({ TitleHolderOnly = false }: FactsAndTitlesProps) => {
   return (
-    <div className="rounded-[12px] gap-6 grid grid-cols-[1fr_1fr] max-sm:grid-cols-[1fr]">
-      <div className="bg-white p-5 rounded-[12px]">
+    <div
+      className={`  rounded-[12px] gap-6 grid grid-cols-${
+        TitleHolderOnly === true ? "[1fr]" : "[1fr_1fr]"
+      } max-sm:grid-cols-[1fr]`}
+    >
+      <div
+        className={` ${
+          TitleHolderOnly && "hidden"
+        }  bg-white p-5 rounded-[12px]`}
+      >
         <h2 className="text-[#23262E] font-bold text-sm">Facts</h2>
         <div className="gap-4 flex flex-col">
           <div className="grid w-full grid-cols-[1fr_1fr_1fr] gap-4">

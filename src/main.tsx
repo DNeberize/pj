@@ -9,6 +9,7 @@ import ListOfCountryPage from "./Country/ListOfCountryPage";
 import SingleCountry from "./Country/SingleCountry";
 import League from "./leagues/League";
 import LeaguePageRouter from "./leagues/LeaguePageRouter";
+import "@ant-design/v5-patch-for-react-19";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

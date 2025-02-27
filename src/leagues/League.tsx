@@ -1,28 +1,32 @@
-import { Breadcrumb } from "antd";
+import { Breadcrumb, Menu } from "antd";
 import { Link, useParams, Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LeagLogo from "@assets/Country Flags/premier.svg";
 import vector from "@assets/Vector.svg";
 import StandingsList from "../jsonfiles.json/StandigsList.json";
 import LeagueInfo from "./StandingInfoContext";
+import { ConfigProvider } from "antd";
 
 const MenuItems = [
-  { label: "Overview", path: "overview" },
-  { label: "Schedule", path: "schedule" },
-  { label: "Standings", path: "standings" },
-  { label: "Stats", path: "stats" },
-  { label: "Transfer", path: "transfer" },
-  { label: "Champions", path: "champions" },
+  { key: "1", label: "Overview", path: "overview" },
+  { key: "2", label: "Schedule", path: "schedule" },
+  { key: "3", label: "Standings", path: "standings" },
+  { key: "4", label: "Stats", path: "stats" },
+  { key: "5", label: "Transfer", path: "transfer" },
+  { key: "6", label: "Champions", path: "champions" },
 ];
+
 interface GoalStats {
   for: number;
   against: number;
 }
+
 interface Team {
   id: number;
   logo: string;
   name: string;
 }
+
 interface TeamStanding {
   rank: number;
   team: Team;
@@ -50,6 +54,7 @@ interface TeamStanding {
   };
   form: string;
 }
+
 interface League {
   logo: string;
   name: string;
@@ -57,7 +62,6 @@ interface League {
 }
 
 function League() {
-
   const { country, id, page } = useParams();
   const navigate = useNavigate();
   const [leagueData, setLeagueData] = useState<League>({
@@ -65,6 +69,7 @@ function League() {
     name: "",
     standings: [],
   });
+
   const fetchStandings = async () => {
     try {
       const response = await fetch(
@@ -82,9 +87,7 @@ function League() {
         throw new Error("Failed to fetch standings");
       }
       const data = await response.json();
-      console.log("Full API Response:", data);
       const leagueResponse = data.response[0]?.league;
-      console.log("League Response:", leagueResponse);
       setLeagueData(leagueResponse || StandingsList[0]?.league);
     } catch (error) {
       console.error("Error fetching standings:", error);
@@ -93,17 +96,21 @@ function League() {
       );
     }
   };
-  useEffect(() => {
-    console.log(id, " : id deliverd to fetch league");
 
+  useEffect(() => {
     fetchStandings();
   }, [id]);
 
-  const handleTabClick = (path: string) => {
-    navigate(`/country/${country}/${id}/${path}`);
+  const handleMenuClick = ({ key }: { key: string }) => {
+    const selectedItem = MenuItems.find((item) => item.key === key);
+    if (selectedItem?.path) {
+      navigate(`/country/${country}/${id}/${selectedItem.path}`);
+    }
   };
 
   const activePage = page ? page.toLowerCase() : "overview";
+  const currentKey =
+    MenuItems.find((item) => item.path === activePage)?.key || "1";
 
   return (
     <div className="px-20 max-lg:px-0 flex flex-col gap-6 py-4 w-full mx-auto">
@@ -146,21 +153,28 @@ function League() {
         </div>
 
         <div className="w-full max-w-[70vw] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none]">
-          <div className="flex min-w-0">
-            {MenuItems.map((item) => (
-              <button
-                key={item.path}
-                className={`whitespace-nowrap py-3 px-4 text-xs font-semibold transition-colors duration-500 ease-in-out ${
-                  activePage === item.path
-                    ? "border-b-2 border-[#7F3FFC] text-[#7F3FFC]"
-                    : "text-[#23262E] hover:text-[#7F3FFC] hover:border-b-2 hover:border-[#7F3FFC]"
-                }`}
-                onClick={() => handleTabClick(item.path)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+          <ConfigProvider
+            theme={{
+              components: {
+                Menu: {},
+              },
+            }}
+          >
+            <Menu
+              mode="horizontal"
+              selectedKeys={[currentKey]}
+              items={MenuItems}
+              onClick={handleMenuClick}
+              className="border-b-0"
+              style={{
+                justifyContent: "start",
+                background: "transparent",
+                fontSize: "12px",
+                fontWeight: 600,
+                borderBottom: "none",
+              }}
+            />
+          </ConfigProvider>
         </div>
       </div>
 

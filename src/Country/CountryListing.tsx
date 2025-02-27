@@ -1,27 +1,22 @@
 import { Link } from "react-router-dom";
 type League = {
-  logo: string;
+  logo?: string;
   name: string;
   country?: string;
-  id?: string;
-  flag:string
+  id?: number;
+  flag: string;
 };
 type LeagueListProps = {
   List: League[];
   IsPage: Boolean;
 };
 
-
 const CountryListing: React.FC<LeagueListProps> = ({ List, IsPage }) => (
-  
-  <ul           
-    
+  <ul
     className={`${
       IsPage ? "max-h-auto overflow-auto" : "max-h-[400px] overflow-auto"
     }`}
-    
   >
-    
     {List.map((L, index) => (
       <li
         key={index}

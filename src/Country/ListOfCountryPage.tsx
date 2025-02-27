@@ -25,15 +25,14 @@ function ListOfCountryPage() {
   return (
     <div className="h-auto w-full rounded-[12px] py-[20px] bg-white">
       <div className="px-[20px]">
-        <Breadcrumb separator=">">
-          <Breadcrumb.Item>
-            <Link to="/">Home</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <span>Football</span>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item className="text-purple-500">Country</Breadcrumb.Item>
-        </Breadcrumb>
+        <Breadcrumb
+          items={[
+            { title: <Link to="/">Home</Link> },
+            { title: <span>Football</span> },
+            { title: <span className="text-purple-500">Country</span> },
+          ]}
+          separator=">"
+        />
 
         <h2 className="flex font-bold text-sm  text-[#231F2E] mb-5 mt-5">
           Leagues By Countries

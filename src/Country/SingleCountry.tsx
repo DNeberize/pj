@@ -14,36 +14,38 @@ function SingleCountry() {
 
   useEffect(() => {
     if (decodedCountry) {
-      setLoading(true); 
+      setLoading(true);
       fetchLeaguesByCountry(decodedCountry).then((res) => {
         setLeagues(res);
-        setLoading(false); 
+        setLoading(false);
       });
     }
   }, [decodedCountry]);
-  console.log(leagues)
   return (
     <div>
       <div className="h-auto mb-[20px] inline-block w-full items-center rounded-[12px] py-2 px-[20px] bg-white">
-        <Breadcrumb separator=">">
-          <Breadcrumb.Item>
-            <Link to="/">Home</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Link to="/country">Football</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Link to="/country">Country</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item className="text-purple-500">{decodedCountry}</Breadcrumb.Item>
-        </Breadcrumb>
+        <Breadcrumb
+          separator=">"
+          items={[
+            { title: <Link to="/">Home</Link> },
+            { title: <Link to="/country">Football</Link> },
+            { title: <Link to="/country">Country</Link> },
+            {
+              title: <span className="text-purple-500">{decodedCountry}</span>,
+            },
+          ]}
+        />
 
         <div className="flex items-center mb-5 mt-5 gap-4">
           <div className="h-16 w-21 rounded-[12px] p-3 flex justify-center items-center border-1 border-[#23262E1A]">
             {loading ? (
               <p>Loading...</p>
             ) : (
-              <img className="rounded-1" src={leagues[0]?.flag || ""} alt="Flag" />
+              <img
+                className="rounded-1"
+                src={leagues[0]?.flag || ""}
+                alt="Flag"
+              />
             )}
           </div>
           <h2 className="text-[#23262E] font-bold text-sm">{decodedCountry}</h2>

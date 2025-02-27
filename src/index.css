@@ -9,6 +9,15 @@ body {
   }
 }
 
+.ant-menu-horizontal > .ant-menu-item-selected::after,
+.ant-menu-horizontal > .ant-menu-submenu-selected::after {
+  border-bottom: 2px solid #7f3ffc !important;
+}
+
+.ant-menu-item-selected {
+  color: #7f3ffc !important;
+}
+
 @media (max-width: 1024px) {
   .search-events {
     top: 0 !important;
@@ -24,7 +33,7 @@ body {
     position: fixed;
   }
 }
-.ant-segmented.ant-segmented-block{
+.ant-segmented.ant-segmented-block {
   height: 100%;
 }
 .search-events .ant-dropdown-menu-vertical {

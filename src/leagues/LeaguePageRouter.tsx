@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Overview from "./Pages/Overview";
 import Standings from "./Pages/Standings";
-import Transfer from "./Pages/Transfer";
+import Transfer from "./Pages/page_components/Transfer";
 import Stats from "./Pages/Stats";
 import Champions from "./Pages/Champions";
 import Schedule from "./Pages/Schedule";
@@ -9,8 +9,6 @@ import Schedule from "./Pages/Schedule";
 function LeaguePageRouter() {
   const { page } = useParams();
   const activePage = page ? page.toLowerCase() : "overview";
-
-  console.log("LeaguePageRouter - Current page:", activePage);
 
   switch (activePage) {
     case "overview":

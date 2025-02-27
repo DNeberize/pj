@@ -20,14 +20,11 @@ export async function fetchLeaguesByCountry(countryName: string) {
     }
 
     const data = await response.json();
-    console.log("API Response:", data);
 
     if (!data.response || data.response.length === 0) {
       console.warn("No leagues found for country:", countryName);
       return [];
     }
-
-    console.log("Leagues found:", data.response);
 
     return data.response.map((item: any) => ({
       logo: item.league.logo,

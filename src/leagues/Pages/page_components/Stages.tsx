@@ -1,16 +1,13 @@
 import { Flex, Progress } from "antd";
-import MatchList from "../../Feed/MatchListing";
-import Matches from "../../jsonfiles.json/Matches.json";
+import MatchList from "../../../Feed/MatchListing";
+import Matches from "../../../jsonfiles.json/Matches.json";
 
-interface TournamentSectionProps {
+interface StagesProps {
   selectedTab: number;
   handleTabChange: (label: number) => void;
 }
 
-const TournamentSection = ({
-  selectedTab,
-  handleTabChange,
-}: TournamentSectionProps) => {
+const Stages = ({ selectedTab, handleTabChange }: StagesProps) => {
   return (
     <>
       <div className="bg-white rounded-[12px] w-full p-4">
@@ -56,4 +53,4 @@ const TournamentSection = ({
   );
 };
 
-export default TournamentSection;
+export default Stages;
