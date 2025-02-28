@@ -19,13 +19,13 @@ function Standings({ isSchedulePage = false }: StandingsProps) {
 
   return (
     <div className="w-full">
-      <div className="flex bg-white rounded-[12px] flex-col justify-between">
+      <div className="flex bg-[var(--color-bg)] rounded-[12px] flex-col justify-between">
         <div className="flex p-4 justify-between w-full flex-row">
-          <h2 className="text-[#23262E] flex items-center font-bold text-sm mb-0">
+          <h2 className="text-[var(--color-text)] flex items-center font-bold text-sm mb-0">
             Standings
           </h2>
           <div
-            className={`bg-[#F7F8FA] p-1 rounded-[12px] flex w-auto ${
+            className={`bg-[var(--color-primary)] p-1 rounded-[12px] flex w-auto ${
               isSchedulePage && "hidden"
             }`}
           >
@@ -34,8 +34,8 @@ function Standings({ isSchedulePage = false }: StandingsProps) {
                 key={index}
                 className={`rounded-[8px] py-[8px] text-xs px-[1rem] cursor-pointer font-semibold w-full max-w-[440px] transition-colors duration-500 ease-in-out ${
                   selectedTab === item.toLowerCase()
-                    ? "bg-white text-[#23262E]"
-                    : "text-[#23262EB2]"
+                    ? "bg-[var(--color-bg)] text-[var(--color-text)]"
+                    : "[var(--color-text-light)]"
                 }`}
                 onClick={() => handleTabChange(item)}
               >
@@ -46,7 +46,7 @@ function Standings({ isSchedulePage = false }: StandingsProps) {
         </div>
 
         <div
-          className={`border-b-1 border-solid border-[#23262E1A] grid gap-3 px-5 py-3 max-sm:grid-cols-[4fr_1fr_2fr] grid-cols-[4fr_3fr_4fr]`}
+          className={`border-b-1 border-solid border-[var(--color-secondary)] grid gap-3 px-5 py-3 max-sm:grid-cols-[4fr_1fr_2fr] grid-cols-[4fr_3fr_4fr]`}
         >
           <div className="flex pl-2 gap-3">
             <span className="text-xs">#</span>
@@ -57,7 +57,9 @@ function Standings({ isSchedulePage = false }: StandingsProps) {
               isSchedulePage && "hidden"
             }`}
           >
-            <h3 className="text-[#23262EB2] flex justify-center text-xs">P</h3>
+            <h3 className="[var(--color-text-light)] flex justify-center text-xs">
+              P
+            </h3>
             <h3 className="text-[#3ECC29] max-sm:hidden flex justify-center text-xs">
               W
             </h3>

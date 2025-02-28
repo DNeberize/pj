@@ -2,6 +2,7 @@ import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 import { useState } from "react";
 import "../Feed/segment.css";
+import ThemeToggleSelect from "./DarkModeToggle";
 
 const MenuButtons = () => {
   const [visible, setVisible] = useState(false);
@@ -61,10 +62,7 @@ const MenuButtons = () => {
           onClick={(e) => e.stopPropagation()}
         >
           <span>Theme</span>
-          <select className="border rounded p-1 text-sm">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
+          <ThemeToggleSelect />
         </div>
       ),
       key: "2",
@@ -97,7 +95,7 @@ const MenuButtons = () => {
         onOpenChange={setVisible}
         className="max-lg:hidden"
       >
-        <button className="cursor-pointer hover:opacity-80 bg-[#F7F8FA] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
+        <button className="cursor-pointer hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
           <img
             src="/src/assets/Settings.svg"
             alt="Settings Icon"
@@ -106,11 +104,11 @@ const MenuButtons = () => {
         </button>
       </Dropdown>
 
-      <button className="cursor-pointer max-lg:hidden hover:opacity-80 bg-[#F7F8FA] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
+      <button className="cursor-pointer max-lg:hidden hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
         <img src="/src/assets/dots-grid.svg" alt="Menu Icon" />
       </button>
 
-      <button className="cursor-pointer hover:opacity-80 text-white bg-[#7F3FFC] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border max-lg:w-[75px] max-lg:h-[36px] max-w-[5.5rem] min-w-[5rem]">
+      <button className="cursor-pointer hover:opacity-80 text-white bg-[#7F3FFC] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border max-lg:w-[75px] max-lg:h-[36px] max-w-[5.5rem] min-w-[5rem]">
         Sign in
       </button>
     </div>

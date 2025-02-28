@@ -30,12 +30,12 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
         <div key={index}>
           <div
             onClick={() => toggleLeague(index)}
-            className="inline-grid w-full grid-cols-[9fr_4fr] text-xs bg-[#23262E1A] h-[50px] py-[15px] px-[20px] cursor-pointer"
+            className="inline-grid w-full grid-cols-[9fr_4fr] text-xs bg-[var(--color-secondary)] h-[50px] py-[15px] px-[20px] cursor-pointer"
           >
             <div className="flex gap-2 items-center">
               <img src="/src/assets/Star.svg" alt="Star" />
               <img src={league.leagueFlag} alt={league.leagueName} />
-              <h1 className="font-semibold min small-menu-p max-lg:text-xs text-[#23262E]">
+              <h1 className="font-semibold min small-menu-p max-lg:text-xs text-[var(--color-text)]">
                 {league.leagueName}
               </h1>
               <img src="/src/assets/Pin.svg" alt="Pin" />
@@ -43,10 +43,10 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
 
             <div className="flex min-w-[170px] justify-between max-lg:justify-end">
               <div className="flex max-lg:hidden">
-                <h2 className="text-[#23262E] px-4 border-r-[1px] border-solid border-[#23262E1A]">
+                <h2 className="text-[var(--color-text)] px-4 border-r-[1px] border-solid border-[var(--color-secondary)]">
                   HT
                 </h2>
-                <h2 className="px-4 text-[#23262E]">Corners</h2>
+                <h2 className="px-4 text-[var(--color-text)]">Corners</h2>
               </div>
               <div className="flex mx-1 gap-4 h-[20px]">
                 <img

@@ -37,13 +37,13 @@ export default function SearchBar() {
       label: (
         <form className="hidden max-lg:flex">
           <input
-            className="bg-[#F7F8FA] text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
+            className="bg-[var(--color-primary)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
             placeholder="Search Match, Team or Player"
           />
           <button
             type="submit"
-            className="right-0 top-0 bg-[#F7F8FA] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
+            className="right-0 top-0 bg-[var(--color-primary)] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
           >
             <img src="/src/assets/Search.svg" alt="Search" />
           </button>
@@ -63,7 +63,7 @@ export default function SearchBar() {
                   ${
                     selectedTab === item
                       ? "bg-[#7F3FFC] text-white"
-                      : "text-[#23262E]/70 "
+                      : "text-[var(--color-text)]/70 "
                   }
                 `}
                 onClick={() => handleTabChange(item)}
@@ -91,7 +91,7 @@ export default function SearchBar() {
           <img src={noImageIcon} alt="No Image" />
           <span>
             <h3 className="text-xs">Team Name</h3>
-            <p className="text-[#23262EB2] text-[10px]">Country</p>
+            <p className="[var(--color-text-light)] text-[10px]">Country</p>
           </span>
         </div>
       ),
@@ -102,7 +102,7 @@ export default function SearchBar() {
   return (
     <form className="relative h-10 flex " onSubmit={(e) => e.preventDefault()}>
       <input
-        className="border-[#23262E]/[10%] max-w-1024-hidden text-[#23262E]/[40%] w-full border border-solid min-w-[140px] rounded-[8px] h-10 p-2 pr-[50px] text-xs focus:outline-none"
+        className="border-[var(--color-text)]/[10%] max-w-1024-hidden text-[var(--color-text)]/[40%] w-full border border-solid min-w-[140px] rounded-[8px] h-10 p-2 pr-[50px] text-xs focus:outline-none"
         type="search"
         value={search}
         onChange={(e) => {
@@ -122,7 +122,7 @@ export default function SearchBar() {
           onClick={() =>
             window.innerWidth < 1024 ? setVisible(true) : visible
           }
-          className="cursor-pointer hover:opacity-80 max-lg:h-[36px] absolute right-0 top-0 border-[#23262E]/[10%] bg-[#F7F8FA] border border-solid rounded-[8px] h-10 w-[48px] flex items-center justify-center"
+          className="cursor-pointer hover:opacity-80 max-lg:h-[36px] absolute right-0 top-0 border-[var(--color-text)]/[10%] bg-[var(--color-primary)] border border-solid rounded-[8px] h-10 w-[48px] flex items-center justify-center"
         >
           <img src={searchIcon} alt="Search Icon" />
         </button>

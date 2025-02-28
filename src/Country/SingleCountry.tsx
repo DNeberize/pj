@@ -23,7 +23,7 @@ function SingleCountry() {
   }, [decodedCountry]);
   return (
     <div>
-      <div className="h-auto mb-[20px] inline-block w-full items-center rounded-[12px] py-2 px-[20px] bg-white">
+      <div className="h-auto mb-[20px] inline-block w-full items-center rounded-[12px] py-2 px-[20px] bg-[var(--color-bg)]">
         <Breadcrumb
           separator=">"
           items={[
@@ -37,7 +37,7 @@ function SingleCountry() {
         />
 
         <div className="flex items-center mb-5 mt-5 gap-4">
-          <div className="h-16 w-21 rounded-[12px] p-3 flex justify-center items-center border-1 border-[#23262E1A]">
+          <div className="h-16 w-21 rounded-[12px] p-3 flex justify-center items-center border-1 border-[var(--color-secondary)]">
             {loading ? (
               <p>Loading...</p>
             ) : (
@@ -48,11 +48,13 @@ function SingleCountry() {
               />
             )}
           </div>
-          <h2 className="text-[#23262E] font-bold text-sm">{decodedCountry}</h2>
+          <h2 className="text-[var(--color-text)] font-bold text-sm">
+            {decodedCountry}
+          </h2>
         </div>
       </div>
 
-      <div className="h-auto w-full rounded-[12px] py-[20px] bg-white">
+      <div className="h-auto w-full rounded-[12px] py-[20px] bg-[var(--color-bg)]">
         <h2 className="flex font-bold text-sm px-[20px] text-[#231F2E] mb-[15px]">
           All Football Leagues and Tournaments of {decodedCountry}
         </h2>

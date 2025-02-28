@@ -8,7 +8,7 @@ import Logo from "@assets/Logo.svg";
 import { Link } from "react-router-dom";
 function Header() {
   return (
-    <header className="flex lg:px-[5rem] max-lg:flex-col max-lg:pr-[1rem] justify-center bg-white top-0 left-0 w-full h-[6rem] lh:h-[6] fixed z-10">
+    <header className="flex lg:px-[5rem] max-lg:flex-col max-lg:pr-[1rem] justify-center bg-[var(--color-bg)] top-0 left-0 w-full h-[6rem] lh:h-[6] fixed z-10">
       <div className="grid grid-cols-[1fr_6fr] max-w-1024-header gap-8 h-full justify-center  items-center w-full max-w-[1500px]">
         <div className="flex min-w-[165px] items-center max-w-1024-left-header max-lg:justify-between justify-between">
           <BurgerMenu />

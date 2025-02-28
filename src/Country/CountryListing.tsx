@@ -22,7 +22,7 @@ const CountryListing: React.FC<LeagueListProps> = ({ List, IsPage }) => (
         key={index}
         className={`cursor-pointer hover:opacity-80 h-[44px] ${
           IsPage
-            ? "border-b-1 pl-[20px] flex justify-between border-[#23262E1A]"
+            ? "border-b-1 pl-[20px] flex justify-between border-[var(--color-secondary)]"
             : "border-b-0"
         }`}
       >
@@ -41,7 +41,7 @@ const CountryListing: React.FC<LeagueListProps> = ({ List, IsPage }) => (
               <img
                 src={L.flag}
                 alt={L.name}
-                className={`bg-white w-[28px] ${
+                className={`bg-[var(--color-bg)] w-[28px] ${
                   IsPage ? "rounded-[4px]" : "rounded-[27px] scale-140  "
                 }`}
               />
@@ -51,7 +51,9 @@ const CountryListing: React.FC<LeagueListProps> = ({ List, IsPage }) => (
                 {L.name}
               </h3>
               {L.country && (
-                <p className="text-[#23262E]/70 text-[10px]">{L.country}</p>
+                <p className="text-[var(--color-text)]/70 text-[10px]">
+                  {L.country}
+                </p>
               )}
             </div>
           </div>

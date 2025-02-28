@@ -101,7 +101,7 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({
         return (
           <div
             key={team.team.id}
-            className={`border-b-1 border-solid border-[#23262E1A] grid gap-3 px-5 py-3 max-sm:grid-cols-[4fr_1fr_2fr] grid-cols-${
+            className={`border-b-1 border-solid border-[var(--color-secondary)] grid gap-3 px-5 py-3 max-sm:grid-cols-[4fr_1fr_2fr] grid-cols-${
               isSchedulePage === true ? "[4fr_1fr]" : "[4fr_3fr_4fr]"
             }`}
           >
@@ -123,7 +123,7 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({
                 isSchedulePage && "hidden"
               }`}
             >
-              <h3 className="text-[#23262EB2] flex items-center justify-center text-xs">
+              <h3 className="[var(--color-text-light)] flex items-center justify-center text-xs">
                 {team[selectedTab].played}
               </h3>
               <h3 className="text-[#3ECC29] max-sm:hidden items-center flex justify-center text-xs">

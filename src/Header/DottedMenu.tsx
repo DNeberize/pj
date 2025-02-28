@@ -10,7 +10,7 @@ const DottedMenu: React.FC = () => {
       <Button
         type="default"
         onClick={() => setVisible(true)}
-        className="cursor-pointer hover:opacity-80 !bg-[#F7F8FA] border-[#23262E]/[10%] 
+        className="cursor-pointer hover:opacity-80 !bg-[var(--color-primary)] border-[var(--color-text)]/[10%] 
         flex items-center justify-center rounded-[8px] border-[1px] border-solid h-[36px] w-[36px] !p-0"
         style={{ padding: 0 }}
       >

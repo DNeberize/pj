@@ -23,7 +23,7 @@ function ListOfCountryPage() {
   );
 
   return (
-    <div className="h-auto w-full rounded-[12px] py-[20px] bg-white">
+    <div className="h-auto w-full rounded-[12px] py-[20px] bg-[var(--color-bg)]">
       <div className="px-[20px]">
         <Breadcrumb
           items={[
@@ -39,7 +39,7 @@ function ListOfCountryPage() {
         </h2>
         <form onSubmit={(e) => e.preventDefault()} className="flex">
           <input
-            className="bg-[#F7F8FA] text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
+            className="bg-[var(--color-primary)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
             value={Query}
             onChange={(e) => SetQuery(e.target.value)}
@@ -47,7 +47,7 @@ function ListOfCountryPage() {
           />
           <button
             type="submit"
-            className="right-0 top-0 bg-[#F7F8FA] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
+            className="right-0 top-0 bg-[var(--color-primary)] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
           >
             <img src="/src/assets/Search.svg" alt="Search" />
           </button>

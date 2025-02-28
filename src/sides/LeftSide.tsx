@@ -39,7 +39,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
     >
       <div className="flex">
         <div>
-          <h2 className="font-bold text-sm text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[#23262E]/10">
+          <h2 className="font-bold text-sm text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[var(--color-text)]/10">
             Pinned Leagues
           </h2>
           <LeagueListing
@@ -61,7 +61,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
         </h2>
         <form className="flex">
           <input
-            className="bg-white text-[#23262E]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
+            className="bg-[var(--color-bg)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
             value={Query}
             onChange={(e) => SetQuery(e.target.value)}
@@ -69,7 +69,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
           />
           <button
             type="submit"
-            className="right-0 top-0 bg-white rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
+            className="right-0 top-0 bg-[var(--color-bg)] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
           >
             <img src="/src/assets/Search.svg" alt="Search" />
           </button>

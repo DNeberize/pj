@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Drawer, Button } from "antd";
 import settingsIcon from "../assets/Settings.svg";
+import ThemeToggleSelect from "./DarkModeToggle";
 
 const SettingsBar: React.FC = () => {
   const [visible, setVisible] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTheme(e.target.value);
-  };
 
   return (
     <>
@@ -51,14 +40,7 @@ const SettingsBar: React.FC = () => {
           </div>
           <div className="flex items-center justify-between">
             <span>Theme</span>
-            <select
-              value={theme}
-              onChange={handleThemeChange}
-              className="border rounded p-1 text-sm"
-            >
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-            </select>
+            <ThemeToggleSelect />
           </div>
           <div className="flex items-center justify-between">
             <span>Font Size</span>
@@ -69,10 +51,12 @@ const SettingsBar: React.FC = () => {
           </div>
           <div className="flex items-center justify-between">
             <span>Edit</span>
-            <select className="border rounded p-1 text-sm">
-              <option value="edit1">Option 1</option>
-              <option value="edit2">Option 2</option>
-            </select>
+            {
+              <select className="border rounded p-1 text-sm">
+                <option value="edit1">Option 1</option>
+                <option value="edit2">Option 2</option>
+              </select>
+            }
           </div>
         </div>
       </Drawer>

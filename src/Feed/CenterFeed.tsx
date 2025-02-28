@@ -41,7 +41,7 @@ function CenterFeed() {
             alt=""
           />
         </div>
-        <div className="bg-white rounded-[8px] text-[#23262E]/70 mt-[20px]">
+        <div className="bg-[var(--color-bg)] rounded-[8px] text-[var(--color-text)]/70 mt-[20px]">
           <div className="jemala grid grid-cols-[12fr_4fr] max-lg:flex gap-8 p-[20px] mb-4">
             <FeedMenu
               selectedTab={selectedTab}
@@ -63,15 +63,9 @@ function CenterFeed() {
             </>
           )}
 
-          {selectedTab == 1 && (
-            <LeagueMatches Matches={LiveMatches} />
-          )}
-          {selectedTab == 2 && (
-            <LeagueMatches Matches={ScheduledMatches} />
-          )}
-          {selectedTab == 3 && (
-            <LeagueMatches Matches={FinisshedMatches} />
-          )}
+          {selectedTab == 1 && <LeagueMatches Matches={LiveMatches} />}
+          {selectedTab == 2 && <LeagueMatches Matches={ScheduledMatches} />}
+          {selectedTab == 3 && <LeagueMatches Matches={FinisshedMatches} />}
         </div>
       </div>
     </div>

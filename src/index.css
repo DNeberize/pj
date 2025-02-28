@@ -2,9 +2,10 @@
 
 @theme {
   --color-bg: #ffffff;
-  --color-primary: #007bff;
-  --color-secondary: #6c757d;
-  --color-text: #333333;
+  --color-primary: #f7f8fa;
+  --color-secondary: #23262e1a;
+  --color-text: #23262e;
+  --color-text-light: #23262eb2;
 }
 
 @layer base {
@@ -16,18 +17,10 @@
 
   [data-theme="dark"] {
     --color-bg: #1a1a1a;
-    --color-primary: #66b3ff;
-    --color-secondary: #adb5bd;
+    --color-primary: #13151c;
+    --color-secondary: #7f3ffc1a;
     --color-text: #ffffff;
-  }
-}
-
-@layer components {
-  .btn {
-    @apply bg-[var(--color-primary)] text-[var(--color-text)] px-4 py-2 rounded;
-  }
-  .secondary {
-    @apply bg-[var(--color-secondary)] p-4;
+    --color-text-light: #808080b2;
   }
 }
 
@@ -43,6 +36,9 @@ body {
 .ant-menu-horizontal > .ant-menu-item-selected::after,
 .ant-menu-horizontal > .ant-menu-submenu-selected::after {
   border-bottom: 2px solid #7f3ffc !important;
+}
+.ant-menu-title-content {
+  color: var(--color-text);
 }
 
 .ant-menu-item-selected {

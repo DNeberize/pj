@@ -114,7 +114,7 @@ function League() {
 
   return (
     <div className="px-20 max-lg:px-0 flex flex-col gap-6 py-4 w-full mx-auto">
-      <div className="bg-white w-full flex flex-col justify-between p-5 pb-0 gap-5 rounded-[12px]">
+      <div className="bg-[var(--color-bg)] w-full flex flex-col justify-between p-5 pb-0 gap-5 rounded-[12px]">
         <Breadcrumb
           separator=">"
           items={[
@@ -135,7 +135,7 @@ function League() {
         />
 
         <div className="flex items-center gap-4">
-          <div className="h-28 w-28 rounded-[12px] flex justify-center p-4 border border-[#23262E1A]">
+          <div className="h-28 w-28 rounded-[12px] flex justify-center p-4 border border-[var(--color-secondary)]">
             <img
               className="rounded h-full"
               src={leagueData?.logo || LeagLogo}
@@ -143,10 +143,10 @@ function League() {
             />
           </div>
           <div>
-            <h2 className="text-[#23262E] mb-3 font-bold text-sm">
+            <h2 className="text-[var(--color-text)] mb-3 font-bold text-sm">
               {leagueData?.name}
             </h2>
-            <button className="flex text-xs font-semibold px-4 py-2 gap-2 text-[#23262EB2] rounded-[8px] border border-solid border-[#23262E1A]">
+            <button className="flex text-xs font-semibold px-4 py-2 gap-2 [var(--color-text-light)] rounded-[8px] border border-solid border-[var(--color-secondary)]">
               2024/2025 <img src={vector} alt="vector" />
             </button>
           </div>

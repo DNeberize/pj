@@ -17,7 +17,7 @@ function MobileHeaderMenu() {
   ];
 
   return (
-    <div className="grid lg:hidden grid-cols-6  w-full px-2 gap-4 bg-white">
+    <div className="grid lg:hidden grid-cols-6  w-full px-2 gap-4 bg-[var(--color-bg)]">
       {tabs.map((tab) => (
         <button
           key={tab.name}

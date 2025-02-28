@@ -32,9 +32,9 @@ function MobileFeedMenu({
     } else {
       if (isLeaguePage) {
         styles +=
-          " bg-white border-[1px] border-solid border-[#23262E]/10 text-[#23262E]/70";
+          " bg-[var(--color-bg)] border-[1px] border-solid border-[var(--color-text)]/10 text-[var(--color-text)]/70";
       } else {
-        styles += " text-[#23262E]/70 border-transparent";
+        styles += " text-[var(--color-text)]/70 border-transparent";
       }
     }
 
@@ -66,7 +66,7 @@ function MobileFeedMenu({
 
       {!isLeaguePage && (
         <div className="grid grid-cols-[10fr_1fr] gap-[0.25rem]">
-          <div className="h-[2.25rem] rounded-[0.5rem] min-w-[8.125rem] bg-[#F7F8FA] flex justify-between p-[0.75rem] items-center">
+          <div className="h-[2.25rem] rounded-[0.5rem] min-w-[8.125rem] bg-[var(--color-primary)] flex justify-between p-[0.75rem] items-center">
             <img
               className="rotate-90 size-[0.625rem]"
               src="/src/assets/Vector.svg"
@@ -74,7 +74,7 @@ function MobileFeedMenu({
             />
             <div className="flex gap-[0.25rem] items-center">
               <img src="/src/assets/calendar.svg" alt="Calendar" />
-              <p className="text-[0.6875rem] text-[#23262E] font-semibold">
+              <p className="text-[0.6875rem] text-[var(--color-text)] font-semibold">
                 {formattedDate}
               </p>
             </div>
@@ -84,7 +84,7 @@ function MobileFeedMenu({
               alt="Arrow"
             />
           </div>
-          <button className="cursor-pointer hover:opacity-80 bg-[#F7F8FA] border-[#23262E]/[10%] flex items-center justify-center rounded-[0.5rem] border-[1px] border-solid w-[2.25rem]">
+          <button className="cursor-pointer hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[0.5rem] border-[1px] border-solid w-[2.25rem]">
             <img src="/src/assets/history.svg" alt="History" />
           </button>
         </div>

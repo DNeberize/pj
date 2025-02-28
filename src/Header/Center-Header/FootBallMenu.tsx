@@ -5,10 +5,10 @@ function FootBallMenu() {
 
   return (
     <div
-      className="cursor-pointer border-[#23262E]/[10%] transition-transform flex w-[10rem] border-solid border-[1px] rounded-[8px] p-0 h-10 place-items-center justify-between gap-2 pr-2"
+      className="cursor-pointer border-[var(--color-text)]/[10%] transition-transform flex w-[10rem] border-solid border-[1px] rounded-[8px] p-0 h-10 place-items-center justify-between gap-2 pr-2"
       onClick={() => setIsOpen((prev) => !prev)}
     >
-      <button className="bg-[#F7F8FA] border-[#23262E]/[10%] flex items-center justify-center rounded-[8px] border-[1px] border-solid h-[40px] w-[48px]">
+      <button className="bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border-[1px] border-solid h-[40px] w-[48px]">
         <img
           className="h-5 w-auto"
           src="/src/assets/Football.svg"

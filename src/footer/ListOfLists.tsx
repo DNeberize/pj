@@ -63,10 +63,10 @@ function ListOfLists() {
       {sections.map((section, index) => (
         <div
           key={index}
-          className="max-lg:border-b border-solid border-[#23262E1A]"
+          className="max-lg:border-b border-solid border-[var(--color-secondary)]"
         >
           <h2
-            className="text-[#23262E] mb-1 flex justify-between font-semibold text-sm uppercase cursor-pointer"
+            className="text-[var(--color-text)] mb-1 flex justify-between font-semibold text-sm uppercase cursor-pointer"
             onClick={() => toggleSection(index)}
           >
             {section.title}
@@ -84,7 +84,7 @@ function ListOfLists() {
             }`}
           >
             {section.items.map((item, i) => (
-              <li key={i} className="text-xs text-[#23262E]">
+              <li key={i} className="text-xs text-[var(--color-text)]">
                 {item}
               </li>
             ))}
