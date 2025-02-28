@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Drawer, Button } from "antd";
 import settingsIcon from "../assets/Settings.svg";
 
 const SettingsBar: React.FC = () => {
   const [visible, setVisible] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTheme(e.target.value);
+  };
 
   return (
     <>
@@ -39,7 +51,11 @@ const SettingsBar: React.FC = () => {
           </div>
           <div className="flex items-center justify-between">
             <span>Theme</span>
-            <select className="border rounded p-1 text-sm">
+            <select
+              value={theme}
+              onChange={handleThemeChange}
+              className="border rounded p-1 text-sm"
+            >
               <option value="light">Light</option>
               <option value="dark">Dark</option>
             </select>
