@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Overview from "./Pages/Overview";
 import Standings from "./Pages/Standings";
-import Transfer from "./Pages/page_components/Transfer";
+import Transfer from "../../components/league_page_components/Transfer";
 import Stats from "./Pages/Stats";
 import Champions from "./Pages/Champions";
 import Schedule from "./Pages/Schedule";

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import FeedMenu from "./FeedMenu";
-import LeagueMatches from "./LeagueMatches";
-import LiveMatches from "../jsonfiles.json/LiveMatces.json";
-import ScheduledMatches from "../jsonfiles.json/ScheduledMatches.json";
-import FinisshedMatches from "../jsonfiles.json/FinishedMatches.json";
-import MobileFeedMenu from "./MobileFeedMenu";
+import FeedMenu from "../features/feed/FeedMenu";
+import LeagueMatches from "../features/feed/LeagueMatches";
+import LiveMatches from "../data/LiveMatces.json";
+import ScheduledMatches from "../data/ScheduledMatches.json";
+import FinisshedMatches from "../data/FinishedMatches.json";
+import MobileFeedMenu from "../features/feed/MobileFeedMenu";
 
 const MenuItems = [
   {

@@ -1,5 +1,5 @@
 import Standings from "../Standing";
-import TopPlayers from "./page_components/TopPlayers";
+import TopPlayers from "../../../components/league_page_components/TopPlayers";
 import { useState } from "react";
 
 export default function Standing() {

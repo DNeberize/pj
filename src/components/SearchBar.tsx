@@ -1,10 +1,10 @@
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 import { useState } from "react";
-import "../../Feed/segment.css";
-import searchIcon from "../../assets/Search.svg";
-import closeIcon from "../../assets/X.svg";
-import noImageIcon from "../../assets/NoImage.svg";
+import "../styles/segment.css";
+import searchIcon from "@assets/Search.svg";
+import closeIcon from "@assets/X.svg";
+import noImageIcon from "@assets/NoImage.svg";
 
 export default function SearchBar() {
   const [visible, setVisible] = useState(false);

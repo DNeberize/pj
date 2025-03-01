@@ -1,4 +1,4 @@
-import ListOfLists from "./ListOfLists";
+import ListOfLists from "../components/ListOfLists";
 import { useState } from "react";
 
 function Footer() {

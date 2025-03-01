@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Drawer, Button } from "antd";
 import SettingsBar from "./SettingButton";
-import "../custom-sidebar.css";
+import "../styles/custom-sidebar.css";
 import DottedMenu from "./DottedMenu";
-import LeftSideBar from "../sides/LeftSide";
+import LeftSideBar from "../layouts/LeftSide";
 
 const Sidebar: React.FC = () => {
   const [visible, setVisible] = useState(false);

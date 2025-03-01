@@ -3,8 +3,8 @@ import { Link, useParams, Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LeagLogo from "@assets/Country Flags/premier.svg";
 import vector from "@assets/Vector.svg";
-import StandingsList from "../jsonfiles.json/StandigsList.json";
-import LeagueInfo from "./StandingInfoContext";
+import StandingsList from "../data/StandigsList.json";
+import LeagueInfo from "../features/leagues/StandingInfoContext";
 import { ConfigProvider } from "antd";
 
 const MenuItems = [

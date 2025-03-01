@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import LeagueListing from "../leagues/LeagueListing";
-import CountryListing from "../Country/CountryListing";
-import { fetchCountries } from "../Country/fetchCountries";
-import test from "../jsonfiles.json/test.json";
+import LeagueListing from "../features/leagues/LeagueListing";
+import CountryListing from "../features/country/CountryListing";
+import { fetchCountries } from "../utils/fetchCountries";
+import test from "../data/test.json";
 
 interface LeftSideBarProps {
   IsPC: boolean;
 }
 
 type Country = {
-  id?: string;
+  id?: number;
   code: string;
   flag: string;
   name: string;

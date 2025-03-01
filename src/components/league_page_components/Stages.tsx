@@ -1,6 +1,6 @@
 import { Flex, Progress } from "antd";
-import MatchList from "../../../Feed/MatchListing";
-import Matches from "../../../jsonfiles.json/Matches.json";
+import MatchList from "../../features/feed/MatchListing";
+import Matches from "../../data/Matches.json";
 
 interface StagesProps {
   selectedTab: number;

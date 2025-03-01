@@ -1,7 +1,7 @@
 import React from "react";
 import { Segmented } from "antd";
-import img from "../assets/Live.svg";
-import "./segment.css";
+import img from "@assets/Live.svg";
+import "../../styles/segment.css";
 
 type FeedMenuProps = {
   selectedTab: number;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ListCountry from "./CountryListing";
 import { Breadcrumb } from "antd";
-import { fetchCountries } from "./fetchCountries";
+import { fetchCountries } from "../../utils/fetchCountries";
 
 type Country = {
   code: string;

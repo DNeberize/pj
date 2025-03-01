@@ -1,5 +1,5 @@
-import MatchList from "../.././Feed/MatchListing";
-import Matches from "../.././jsonfiles.json/Matches.json";
+import MatchList from "../../feed/MatchListing";
+import Matches from "../../../data/Matches.json";
 import Standings from "../Standing";
 
 export default function Schedule() {

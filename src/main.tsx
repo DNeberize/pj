@@ -1,15 +1,22 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./index.css";
-import Layout from "./Layout";
-import CenterFeed from "./Feed/CenterFeed";
-import NotFound from "./NotFount";
-import ListOfCountryPage from "./Country/ListOfCountryPage";
-import SingleCountry from "./Country/SingleCountry";
-import League from "./leagues/League";
-import LeaguePageRouter from "./leagues/LeaguePageRouter";
+import "./styles/index.css";
+import Layout from "./layouts/Layout";
+import CenterFeed from "./pages/CenterFeed";
+import NotFound from "./pages/NotFount";
+import ListOfCountryPage from "./features/country/ListOfCountryPage";
+import SingleCountry from "./features/country/SingleCountry";
+import League from "./pages/League";
+import LeaguePageRouter from "./features/leagues/LeaguePageRouter";
 import "@ant-design/v5-patch-for-react-19";
+
+function applyInitialTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  document.documentElement.setAttribute("data-theme", savedTheme || "light");
+}
+
+applyInitialTheme();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

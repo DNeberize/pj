@@ -3,12 +3,11 @@ import React, { useState, useEffect } from "react";
 function ThemeToggleSelect() {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? savedTheme : "light";
+    return savedTheme || "light";
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    root.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
 
@@ -28,4 +27,5 @@ function ThemeToggleSelect() {
     </select>
   );
 }
+
 export default ThemeToggleSelect;

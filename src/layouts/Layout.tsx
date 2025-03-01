@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Header from "./Header/Header";
-import LeftSideBar from "./sides/LeftSide";
-import RightSideBar from "./sides/RightSide";
-import Footer from "./footer/Footer";
+import Header from "./Header";
+import LeftSideBar from "./LeftSide";
+import RightSideBar from "./RightSide";
+import Footer from "./Footer";
 
 export default function Layout() {
   return (

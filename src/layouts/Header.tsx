@@ -1,9 +1,9 @@
-import FootBallMenu from "./Center-Header/FootBallMenu";
-import Favorite from "./Center-Header/Favorite";
-import SearchBar from "./Center-Header/SearchBar";
-import MenuButtons from "./SettingMenu";
-import BurgerMenu from "./HeaderBurgerMenu";
-import MobileHeaderMenu from "./MobileHeaderMenu";
+import FootBallMenu from "../components/FootBallMenu";
+import Favorite from "../components/Favorite";
+import SearchBar from "../components/SearchBar";
+import MenuButtons from "../components/SettingMenu";
+import BurgerMenu from "../components/HeaderBurgerMenu";
+import MobileHeaderMenu from "../components/MobileHeaderMenu";
 import Logo from "@assets/Logo.svg";
 import { Link } from "react-router-dom";
 function Header() {

@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import LeagueListing from "../leagues/LeagueListing";
 import { Breadcrumb } from "antd";
 import { useEffect, useState } from "react";
-import { fetchLeaguesByCountry } from "../leagues/FetchLeagues";
+import { fetchLeaguesByCountry } from "../../utils/FetchLeagues";
 
 function SingleCountry() {
   const { country } = useParams();

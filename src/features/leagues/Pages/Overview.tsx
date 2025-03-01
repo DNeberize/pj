@@ -1,11 +1,11 @@
-import "../../index.css";
+import "../../../styles/index.css";
 import { useState } from "react";
 import Standings from "../Standing";
-import MobileFeedMenu from "../../Feed/MobileFeedMenu";
-import Stages from "./page_components/Stages";
-import FactsAndTitles from "./page_components/FactsAndTitles";
-import StatsAndPlayer from "./page_components/StatsAndPlayer";
-import TopPlayers from "./page_components/TopPlayers";
+import MobileFeedMenu from "../../feed/MobileFeedMenu";
+import Stages from "../../../components/league_page_components/Stages";
+import FactsAndTitles from "../../../components/league_page_components/FactsAndTitles";
+import StatsAndPlayer from "../../../components/league_page_components/StatsAndPlayer";
+import TopPlayers from "../../../components/league_page_components/TopPlayers";
 import { ReactNode } from "react";
 interface TabComponents {
   [key: number]: ReactNode;
@@ -59,7 +59,7 @@ function Overview() {
 
       <div className="hidden md:grid w-full gap-6  grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
         <div className="gap-6 flex flex-col">
-          {<FactsAndTitles TitleHolderOnly={false} />}
+          <FactsAndTitles TitleHolderOnly={false} />
 
           <div className="flex w-full justify-center rounded-[12px]">
             <img
@@ -68,22 +68,18 @@ function Overview() {
               alt=""
             />
           </div>
-          {
-            <Stages
-              selectedTab={selectedTab}
-              handleTabChange={handleTabChange}
-            />
-          }
-          {<Standings isSchedulePage={false} />}
+
+          <Stages selectedTab={selectedTab} handleTabChange={handleTabChange} />
+
+          <Standings isSchedulePage={false} />
         </div>
         <div className="rounded-[12px] gap-5 flex flex-col">
-          {<StatsAndPlayer />}
-          {
-            <TopPlayers
-              selectedStat={selectedStat}
-              handleTabChangeStat={handleTabChangeStat}
-            />
-          }
+          <StatsAndPlayer />
+
+          <TopPlayers
+            selectedStat={selectedStat}
+            handleTabChangeStat={handleTabChangeStat}
+          />
         </div>
       </div>
     </>

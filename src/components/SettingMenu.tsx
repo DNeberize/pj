@@ -1,8 +1,8 @@
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 import { useState } from "react";
-import "../Feed/segment.css";
-import ThemeToggleSelect from "./DarkModeToggle";
+import "../styles/segment.css";
+import ThemeToggleSelect from "../utils/DarkModeToggle";
 
 const MenuButtons = () => {
   const [visible, setVisible] = useState(false);

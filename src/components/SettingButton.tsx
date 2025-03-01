@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Drawer, Button } from "antd";
 import settingsIcon from "../assets/Settings.svg";
-import ThemeToggleSelect from "./DarkModeToggle";
+import ThemeToggleSelect from "../utils/DarkModeToggle";
 
 const SettingsBar: React.FC = () => {
   const [visible, setVisible] = useState(false);
