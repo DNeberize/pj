@@ -1,11 +1,11 @@
-import "../../../styles/index.css";
+import "../../styles/index.css";
 import { useState } from "react";
-import Standings from "../Standing";
-import MobileFeedMenu from "../../feed/MobileFeedMenu";
-import Stages from "../../../components/league_page_components/Stages";
-import FactsAndTitles from "../../../components/league_page_components/FactsAndTitles";
-import StatsAndPlayer from "../../../components/league_page_components/StatsAndPlayer";
-import TopPlayers from "../../../components/league_page_components/TopPlayers";
+import Standings from "../../features/leagues/Standing";
+import MobileFeedMenu from "../../features/feed/MobileFeedMenu";
+import Stages from "./overview_pages/Stages";
+import FactsAndTitles from "./overview_pages/FactsAndTitles";
+import StatsAndPlayer from "./overview_pages/StatsAndPlayer";
+import TopPlayers from "./overview_pages/TopPlayers";
 import { ReactNode } from "react";
 interface TabComponents {
   [key: number]: ReactNode;

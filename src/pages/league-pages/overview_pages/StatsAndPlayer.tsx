@@ -3,10 +3,18 @@ import Shirt from "@assets/Shirt.svg";
 import Halad from "@assets/Halad.svg";
 import Leicester from "@assets/Leicester City.svg";
 
-const StatsAndPlayer = () => {
+interface StatsAndPlayerProps {
+  noPrem?: boolean;
+}
+
+const StatsAndPlayer = ({ noPrem = true }: StatsAndPlayerProps) => {
   return (
     <>
-      <div className="bg-[var(--color-bg)] flex px-5 py-4 flex-col rounded-[12px]">
+      <div
+        className={`bg-[var(--color-bg)] px-5 py-4 flex-col rounded-[12px] ${
+          noPrem ? "flex" : "hidden"
+        }`}
+      >
         <h3 className="text-sm pb-2 font-bold flex text-[var(--color-text)]">
           <img src={Chart} alt="" />
           Prem Stats

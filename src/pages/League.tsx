@@ -1,11 +1,11 @@
-import { Breadcrumb, Menu } from "antd";
-import { Link, useParams, Outlet, useNavigate } from "react-router-dom";
+import { Breadcrumb, Menu, ConfigProvider } from "antd";
+import { Link, useParams, useNavigate, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LeagLogo from "@assets/Country Flags/premier.svg";
 import vector from "@assets/Vector.svg";
-import StandingsList from "../data/StandigsList.json";
+import { useQuery } from "@tanstack/react-query";
 import LeagueInfo from "../features/leagues/StandingInfoContext";
-import { ConfigProvider } from "antd";
+import axios from "axios";
 
 const MenuItems = [
   { key: "1", label: "Overview", path: "overview" },
@@ -62,44 +62,46 @@ interface League {
 }
 
 function League() {
-  const { country, id, page } = useParams();
   const navigate = useNavigate();
+  const { country, id, page } = useParams();
   const [leagueData, setLeagueData] = useState<League>({
     logo: "",
     name: "",
     standings: [],
   });
 
-  const fetchStandings = async () => {
-    try {
-      const response = await fetch(
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["standings", id],
+    queryFn: async () => {
+      // Fixed queryFn syntax
+      const response = await axios.get(
         `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
         {
-          method: "GET",
           headers: {
             "x-rapidapi-host": "v3.football.api-sports.io",
             "x-rapidapi-key": import.meta.env.VITE_API_KEY,
           },
         }
       );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch standings");
-      }
-      const data = await response.json();
-      const leagueResponse = data.response[0]?.league;
-      setLeagueData(leagueResponse || StandingsList[0]?.league);
-    } catch (error) {
-      console.error("Error fetching standings:", error);
-      setLeagueData(
-        StandingsList[0]?.league ?? { logo: "", name: "", standings: [] }
-      );
-    }
-  };
+      return response.data;
+    },
+    enabled: !!id,
+  });
 
   useEffect(() => {
-    fetchStandings();
-  }, [id]);
+    if (data) {
+      setLeagueData(
+        data.response[0]?.league || {
+          logo: "",
+          name: "",
+          standings: [],
+        }
+      );
+    }
+  }, [data]);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {(error as Error).message}</div>;
 
   const handleMenuClick = ({ key }: { key: string }) => {
     const selectedItem = MenuItems.find((item) => item.key === key);
@@ -127,7 +129,7 @@ function League() {
                   style={{ color: "#7F3FFC" }}
                   to={`/country/${country}/${id}`}
                 >
-                  {leagueData?.name}
+                  {leagueData.name}
                 </Link>
               ),
             },
@@ -138,15 +140,15 @@ function League() {
           <div className="h-28 w-28 rounded-[12px] flex justify-center p-4 border border-[var(--color-secondary)]">
             <img
               className="rounded h-full"
-              src={leagueData?.logo || LeagLogo}
+              src={leagueData.logo || LeagLogo}
               alt="League Logo"
             />
           </div>
           <div>
             <h2 className="text-[var(--color-text)] mb-3 font-bold text-sm">
-              {leagueData?.name}
+              {leagueData.name}
             </h2>
-            <button className="flex text-xs font-semibold px-4 py-2 gap-2 [var(--color-text-light)] rounded-[8px] border border-solid border-[var(--color-secondary)]">
+            <button className="flex text-xs font-semibold px-4 py-2 gap-2 text-[var(--color-text-light)] rounded-[8px] border border-solid border-[var(--color-secondary)]">
               2024/2025 <img src={vector} alt="vector" />
             </button>
           </div>
@@ -156,7 +158,9 @@ function League() {
           <ConfigProvider
             theme={{
               components: {
-                Menu: {},
+                Menu: {
+                  // Add any specific menu styling if needed
+                },
               },
             }}
           >

@@ -2,14 +2,20 @@ import vec from "@assets/Vector.svg";
 import mancity from "@assets/Clubs/ManchesterCity.svg";
 interface FactsAndTitlesProps {
   TitleHolderOnly: boolean;
+  onSide: boolean;
 }
 
-const FactsAndTitles = ({ TitleHolderOnly = false }: FactsAndTitlesProps) => {
+const FactsAndTitles = ({
+  TitleHolderOnly = false,
+  onSide = false,
+}: FactsAndTitlesProps) => {
   return (
     <div
-      className={`  rounded-[12px] gap-6 grid grid-cols-${
-        TitleHolderOnly === true ? "[1fr]" : "[1fr_1fr]"
-      } max-sm:grid-cols-[1fr]`}
+      className={`  rounded-[12px] gap-6 grid ${
+        TitleHolderOnly || onSide ? "grid-cols-[1fr]" : "grid-cols-[1fr_1fr]"
+      } 
+      
+      max-sm:grid-cols-[1fr]`}
     >
       <div
         className={` ${
@@ -18,7 +24,11 @@ const FactsAndTitles = ({ TitleHolderOnly = false }: FactsAndTitlesProps) => {
       >
         <h2 className="text-[var(--color-text)] font-bold text-sm">Facts</h2>
         <div className="gap-4 flex flex-col">
-          <div className="grid w-full grid-cols-[1fr_1fr_1fr] gap-4">
+          <div
+            className={`grid w-full  ${
+              onSide ? "grid-cols-[1fr_1fr]" : "grid-cols-[1fr_1fr_1fr]"
+            }  max-lg:grid-cols-[1fr_1fr] gap-4`}
+          >
             <div className="flex flex-col justify-center items-center py-[15px] px-2 rounded-[8px] border border-solid border-[var(--color-secondary)]">
               <h3 className="text-xs [var(--color-text-light)] whitespace-nowrap overflow-hidden text-ellipsis">
                 Division level
@@ -37,12 +47,16 @@ const FactsAndTitles = ({ TitleHolderOnly = false }: FactsAndTitlesProps) => {
               </h3>
               <p className="text-xs font-bold text-[var(--color-text)]">2</p>
             </div>
-          </div>
-          <div className="flex flex-col justify-between items-center w-full py-[15px] px-2 rounded-[8px] border border-solid border-[var(--color-secondary)]">
-            <h3 className="text-xs [var(--color-text-light)] whitespace-nowrap overflow-hidden text-ellipsis">
-              Red cards
-            </h3>
-            <p className="text-xs font-bold text-[var(--color-text)]">2</p>
+            <div
+              className={`flex flex-col justify-between items-center ${
+                onSide ? "" : "lg:col-start-1 lg:row-start-2 lg:col-span-3"
+              }  py-[15px] px-2 rounded-[8px] border border-solid border-[var(--color-secondary)]`}
+            >
+              <h3 className="text-xs [var(--color-text-light)] whitespace-nowrap overflow-hidden text-ellipsis">
+                Red cards
+              </h3>
+              <p className="text-xs font-bold text-[var(--color-text)]">2</p>
+            </div>
           </div>
         </div>
       </div>

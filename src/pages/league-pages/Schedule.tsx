@@ -1,6 +1,6 @@
-import MatchList from "../../feed/MatchListing";
-import Matches from "../../../data/Matches.json";
-import Standings from "../Standing";
+import MatchList from "../../features/feed/MatchListing";
+import Matches from "../../data/Matches.json";
+import Standings from "../../features/leagues/Standing";
 
 export default function Schedule() {
   return (

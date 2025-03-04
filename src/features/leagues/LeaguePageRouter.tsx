@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import Overview from "./Pages/Overview";
-import Standings from "./Pages/Standings";
-import Transfer from "../../components/league_page_components/Transfer";
-import Stats from "./Pages/Stats";
-import Champions from "./Pages/Champions";
-import Schedule from "./Pages/Schedule";
+import Overview from "../../pages/league-pages/Overview";
+import Standings from "../../pages/league-pages/Standings";
+import Transfer from "../../pages/league-pages/overview_pages/Transfer";
+import Stats from "../../pages/league-pages/Stats";
+import Champions from "../../pages/league-pages/Champions";
+import Schedule from "../../pages/league-pages/Schedule";
 
 function LeaguePageRouter() {
   const { page } = useParams();

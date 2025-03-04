@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import TopPlayerDatas from "../../../components/league_page_components/TopPlayers";
-import FactsAndTitles from "../../../components/league_page_components/FactsAndTitles";
+import TopPlayerDatas from "./overview_pages/TopPlayers";
+import FactsAndTitles from "./overview_pages/FactsAndTitles";
 import halad from "@assets/Halad.svg";
 import vector from "@assets/Vector.svg";
 import { Dropdown, Space } from "antd";
