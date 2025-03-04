@@ -1,6 +1,5 @@
 import { Breadcrumb, Menu, ConfigProvider } from "antd";
 import { Link, useParams, useNavigate, Outlet } from "react-router-dom";
-import { useState, useEffect } from "react";
 import LeagLogo from "@assets/Country Flags/premier.svg";
 import vector from "@assets/Vector.svg";
 import { useQuery } from "@tanstack/react-query";
@@ -64,16 +63,14 @@ interface League {
 function League() {
   const navigate = useNavigate();
   const { country, id, page } = useParams();
-  const [leagueData, setLeagueData] = useState<League>({
-    logo: "",
-    name: "",
-    standings: [],
-  });
 
-  const { data, isLoading, error } = useQuery({
+  const {
+    data: leagueData,
+    isLoading,
+    error,
+  } = useQuery<League>({
     queryKey: ["standings", id],
     queryFn: async () => {
-      // Fixed queryFn syntax
       const response = await axios.get(
         `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
         {
@@ -83,25 +80,14 @@ function League() {
           },
         }
       );
-      return response.data;
+      return response.data.response[0]?.league;
     },
     enabled: !!id,
   });
 
-  useEffect(() => {
-    if (data) {
-      setLeagueData(
-        data.response[0]?.league || {
-          logo: "",
-          name: "",
-          standings: [],
-        }
-      );
-    }
-  }, [data]);
-
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {(error as Error).message}</div>;
+  if (!leagueData) return <div>No league data available</div>;
 
   const handleMenuClick = ({ key }: { key: string }) => {
     const selectedItem = MenuItems.find((item) => item.key === key);
@@ -155,15 +141,7 @@ function League() {
         </div>
 
         <div className="w-full max-w-[70vw] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none]">
-          <ConfigProvider
-            theme={{
-              components: {
-                Menu: {
-                  // Add any specific menu styling if needed
-                },
-              },
-            }}
-          >
+          <ConfigProvider>
             <Menu
               mode="horizontal"
               selectedKeys={[currentKey]}

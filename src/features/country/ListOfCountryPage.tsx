@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import ListCountry from "./CountryListing";
 import { Breadcrumb } from "antd";
 import { fetchCountries } from "../../utils/fetchCountries";
+import { useQuery } from "@tanstack/react-query";
 
 type Country = {
   code: string;
@@ -11,17 +12,24 @@ type Country = {
 };
 
 function ListOfCountryPage() {
-  const [CountryList, setCountries] = useState<Country[]>([]);
-  const [Query, SetQuery] = useState("");
+  const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    fetchCountries().then(setCountries);
-  }, []);
+  const {
+    data: countries = [],
+    isLoading,
+    error,
+  } = useQuery<Country[]>({
+    queryKey: ["countries"],
+    queryFn: fetchCountries,
+  });
 
-  const FilteredCountry = CountryList.filter((country) =>
-    country.name.toLowerCase().includes(Query.toLowerCase())
+  const FilteredCountry = countries.filter((country) =>
+    country.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  if (isLoading) return <div>Loading countries...</div>;
+  if (error)
+    return <div>Error loading countries: {(error as Error).message}</div>;
   return (
     <div className="h-auto w-full rounded-[12px] py-[20px] bg-[var(--color-bg)]">
       <div className="px-[20px]">
@@ -41,8 +49,8 @@ function ListOfCountryPage() {
           <input
             className="bg-[var(--color-primary)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
-            value={Query}
-            onChange={(e) => SetQuery(e.target.value)}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search Match, Team or Player"
           />
           <button

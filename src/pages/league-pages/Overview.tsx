@@ -41,7 +41,7 @@ function Overview() {
 
   let obj: TabComponents = {
     0: <Stages selectedTab={selectedTab} handleTabChange={handleTabChange} />,
-    1: <FactsAndTitles TitleHolderOnly={false} />,
+    1: <FactsAndTitles onSide={false} TitleHolderOnly={false} />,
     2: <Standings />,
     3: <StatsAndPlayer />,
   };
@@ -59,7 +59,7 @@ function Overview() {
 
       <div className="hidden md:grid w-full gap-6  grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
         <div className="gap-6 flex flex-col">
-          <FactsAndTitles TitleHolderOnly={false} />
+          <FactsAndTitles onSide={false} TitleHolderOnly={false} />
 
           <div className="flex w-full justify-center rounded-[12px]">
             <img

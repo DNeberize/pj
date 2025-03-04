@@ -1,40 +1,41 @@
+import axios from "axios";
+interface LeagueResponse {
+  league: {
+    id: any;
+    name: string;
+    logo: string;
+  };
+  country: {
+    name: string;
+    flag: string;
+  };
+}
+
+export interface League {
+  id: any;
+  name: string;
+  logo: string;
+  country: string;
+  flag: string;
+}
 export async function fetchLeaguesByCountry(countryName: string) {
-  if (!countryName) return [];
-
-  try {
-    const response = await fetch(
-      `https://v3.football.api-sports.io/leagues?country=${encodeURIComponent(
-        countryName
-      )}`,
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
-          "x-rapidapi-key": import.meta.env.VITE_API_KEY,
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+  const response = await axios.get(
+    `https://v3.football.api-sports.io/leagues?country=${encodeURIComponent(
+      countryName
+    )}`,
+    {
+      headers: {
+        "x-rapidapi-host": "v3.football.api-sports.io",
+        "x-rapidapi-key": import.meta.env.VITE_API_KEY,
+      },
     }
+  );
 
-    const data = await response.json();
-
-    if (!data.response || data.response.length === 0) {
-      console.warn("No leagues found for country:", countryName);
-      return [];
-    }
-
-    return data.response.map((item: any) => ({
-      logo: item.league.logo,
-      name: item.league.name,
-      country: item.country.name,
-      id: item.league.id,
-      flag: item.country.flag,
-    }));
-  } catch (error) {
-    console.error("Error fetching leagues:", error);
-    return [];
-  }
+  return response.data.response.map((item: LeagueResponse) => ({
+    id: item.league.id,
+    name: item.league.name,
+    logo: item.league.logo,
+    country: item.country.name,
+    flag: item.country.flag,
+  }));
 }

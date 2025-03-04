@@ -191,7 +191,7 @@ export default function Stats() {
         ))}
       </div>
       <div className="flex-col flex gap-5">
-        <FactsAndTitles TitleHolderOnly={true} />
+        <FactsAndTitles onSide={true} TitleHolderOnly={true} />
         <TopPlayerDatas
           selectedStat={selectedStat}
           handleTabChangeStat={handleTabChangeStat}

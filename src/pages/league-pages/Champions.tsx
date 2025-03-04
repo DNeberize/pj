@@ -1,6 +1,7 @@
 import city from "@assets/Clubs/ManchesterCity.svg";
 import StatsAndPlayer from "./overview_pages/StatsAndPlayer";
 import FactsAndTitles from "./overview_pages/FactsAndTitles";
+
 export default function Champions() {
   return (
     <div className="grid w-full gap-6 grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
@@ -21,7 +22,7 @@ export default function Champions() {
           ))}
         </div>
       </div>
-      <div className="rounded-[12px] flex flex-col  gap-6  bg-[var(--color-bg)]">
+      <div className="rounded-[12px] flex flex-col  gap-6  ">
         <StatsAndPlayer noPrem={false} />
         <FactsAndTitles onSide={true} TitleHolderOnly={false} />
       </div>
