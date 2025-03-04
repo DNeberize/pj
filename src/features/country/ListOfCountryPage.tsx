@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ListCountry from "./CountryListing";
 import { Breadcrumb } from "antd";
 import { fetchCountries } from "../../utils/fetchCountries";
@@ -12,7 +11,9 @@ type Country = {
 };
 
 function ListOfCountryPage() {
-  const [search, setSearch] = useState("");
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const searchQuery = params.get("search") || "";
 
   const {
     data: countries = [],
@@ -23,13 +24,16 @@ function ListOfCountryPage() {
     queryFn: fetchCountries,
   });
 
-  const FilteredCountry = countries.filter((country) =>
-    country.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredCountries = searchQuery
+    ? countries.filter((country) =>
+        country.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : countries;
 
   if (isLoading) return <div>Loading countries...</div>;
   if (error)
     return <div>Error loading countries: {(error as Error).message}</div>;
+
   return (
     <div className="h-auto w-full rounded-[12px] py-[20px] bg-[var(--color-bg)]">
       <div className="px-[20px]">
@@ -42,26 +46,12 @@ function ListOfCountryPage() {
           separator=">"
         />
 
-        <h2 className="flex font-bold text-sm  text-[#231F2E] mb-5 mt-5">
+        <h2 className="flex font-bold text-sm text-[var(--color-text-dark)] mb-5 mt-5">
           Leagues By Countries
         </h2>
-        <form onSubmit={(e) => e.preventDefault()} className="flex">
-          <input
-            className="bg-[var(--color-primary)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search Match, Team or Player"
-          />
-          <button
-            type="submit"
-            className="right-0 top-0 bg-[var(--color-primary)] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
-          >
-            <img src="/src/assets/Search.svg" alt="Search" />
-          </button>
-        </form>
       </div>
-      <ListCountry IsPage={true} List={FilteredCountry} />
+
+      <ListCountry IsPage={true} List={filteredCountries} />
     </div>
   );
 }

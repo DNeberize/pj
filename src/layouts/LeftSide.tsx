@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import LeagueListing from "../features/leagues/LeagueListing";
 import CountryListing from "../features/country/CountryListing";
 import { fetchCountries } from "../utils/fetchCountries";
@@ -21,6 +21,26 @@ type Country = {
 function LeftSideBar({ IsPC }: LeftSideBarProps) {
   const { id } = useParams();
   const [search, setSearch] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (search) {
+      params.set("search", search);
+    } else {
+      params.delete("search");
+    }
+    navigate(`${location.pathname}?${params.toString()}`, { replace: true });
+  }, [search, location.pathname, navigate]);
+  function searchPage() {
+    const params = new URLSearchParams(location.search);
+    if (search) {
+      params.set("search", search);
+    } else {
+      params.delete("search");
+    }
+    navigate(`/country?${params.toString()}`);
+  }
 
   const {
     data: countries = [],
@@ -47,7 +67,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
     >
       <div className="flex">
         <div>
-          <h2 className="font-bold text-sm text-[#231F2E] pb-4 my-[15px] border-b-1 border-solid border-[var(--color-text)]/10">
+          <h2 className="font-bold text-sm text-[var(--color-text-dark)] pb-4 my-[15px] border-b-1 border-solid border-[var(--color-text)]/10">
             Pinned Leagues
           </h2>
           <LeagueListing
@@ -63,11 +83,17 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
         </div>
       </div>
       <div>
-        <h2 className="flex font-bold text-sm text-[#231F2E] mb-[15px] mt-[30px]">
+        <h2 className="flex font-bold text-sm text-[var(--color-text-dark)] mb-[15px] mt-[30px]">
           <Link to="/country">Countries</Link>
-          <span className="text-[#231F2E]/70 pl-2">[A-Z]</span>
+          <span className="text-[var(--color-text-dark)]/70 pl-2">[A-Z]</span>
         </h2>
-        <form className="flex">
+        <form
+          className="flex"
+          onSubmit={(e) => {
+            e.preventDefault();
+            searchPage();
+          }}
+        >
           <input
             className="bg-[var(--color-bg)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
@@ -78,11 +104,11 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
           <button
             type="submit"
             className="right-0 top-0 bg-[var(--color-bg)] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
-            onClick={(e) => e.preventDefault()}
           >
             <img src="/src/assets/Search.svg" alt="Search" />
           </button>
         </form>
+
         <CountryListing IsPage={false} List={filteredCountries} />
       </div>
     </div>

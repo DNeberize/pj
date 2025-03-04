@@ -1,20 +1,32 @@
 import type { MenuProps } from "antd";
-import { Dropdown } from "antd";
-import { useState } from "react";
+import { ConfigProvider, Dropdown } from "antd";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/segment.css";
 import ThemeToggleSelect from "../utils/DarkModeToggle";
 
 const MenuButtons = () => {
   const [visible, setVisible] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("modal") === "settings") {
+      setVisible(true);
+    }
+  }, [location]);
 
   const items: MenuProps["items"] = [
     {
       label: (
-        <div className="flex items-center justify-between p-2   rounded">
-          <h2 className="text-lg text-black font-semibold">Search</h2>
+        <div className="flex items-center justify-between p-2 rounded">
+          <h2 className="text-lg text-[var(--color-text)] font-semibold">
+            Search
+          </h2>
           <button
             className="cursor-pointer hover:opacity-80"
-            onClick={() => setVisible(false)}
+            onClick={() => handleCloseSettings()}
           >
             <img src="/src/assets/X.svg" alt="Close" className="h-4 w-4" />
           </button>
@@ -26,13 +38,17 @@ const MenuButtons = () => {
     {
       label: (
         <div
-          className="flex items-center justify-between p-2 hover:bg-gray-100 rounded"
+          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
           onClick={(e) => e.stopPropagation()}
         >
-          <span>Language</span>
-          <select className="border rounded p-1 text-sm">
-            <option value="english">English</option>
-            <option value="spanish">Spanish</option>
+          <span className="text-[var(--color-text)]">Language</span>
+          <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
+            <option className="text-[var(--color-text)]" value="english">
+              English
+            </option>
+            <option className="text-[var(--color-text)]" value="spanish">
+              Spanish
+            </option>
           </select>
         </div>
       ),
@@ -42,13 +58,17 @@ const MenuButtons = () => {
     {
       label: (
         <div
-          className="flex items-center justify-between p-2 hover:bg-gray-100 rounded"
+          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
           onClick={(e) => e.stopPropagation()}
         >
-          <span>Timezone</span>
-          <select className="border rounded p-1 text-sm">
-            <option value="utc">UTC</option>
-            <option value="est">EST</option>
+          <span className="text-[var(--color-text)]">Timezone</span>
+          <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
+            <option className="text-[var(--color-text)]" value="utc">
+              UTC
+            </option>
+            <option className="text-[var(--color-text)]" value="est">
+              EST
+            </option>
           </select>
         </div>
       ),
@@ -58,10 +78,10 @@ const MenuButtons = () => {
     {
       label: (
         <div
-          className="flex items-center justify-between p-2 hover:bg-gray-100 rounded"
+          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
           onClick={(e) => e.stopPropagation()}
         >
-          <span>Theme</span>
+          <span className="text-[var(--color-text)]">Theme</span>
           <ThemeToggleSelect />
         </div>
       ),
@@ -71,13 +91,17 @@ const MenuButtons = () => {
     {
       label: (
         <div
-          className="flex items-center justify-between p-2 hover:bg-gray-100 rounded"
+          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
           onClick={(e) => e.stopPropagation()}
         >
-          <span>Edit</span>
-          <select className="border rounded p-1 text-sm">
-            <option value="1.50">1.50</option>
-            <option value="2.00">2.00</option>
+          <span className="text-[var(--color-text)]">Edit</span>
+          <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
+            <option className="text-[var(--color-text)]" value="1.50">
+              1.50
+            </option>
+            <option className="text-[var(--color-text)]" value="2.00">
+              2.00
+            </option>
           </select>
         </div>
       ),
@@ -85,24 +109,71 @@ const MenuButtons = () => {
     },
   ];
 
+  const handleOpenSettings = () => {
+    setVisible(true);
+    const params = new URLSearchParams(location.search);
+    params.set("modal", "settings");
+    navigate(`${location.pathname}?${params.toString()}`);
+  };
+
+  const handleCloseSettings = () => {
+    setVisible(false);
+    const params = new URLSearchParams(location.search);
+    params.delete("modal");
+    navigate(`${location.pathname}`);
+  };
+
   return (
-    <div className="flex  settings-menu justify-between gap-4 h-[40px]">
-      <Dropdown
-        menu={{ items }}
-        trigger={["click"]}
-        overlayStyle={{ width: "400px", height: "320px" }}
-        open={visible}
-        onOpenChange={setVisible}
-        className="max-lg:hidden"
+    <div className="flex settings-menu justify-between gap-4 h-[40px] relative">
+      {visible && (
+        <div className="fixed w-full h-full inset-0 bg-black/30 backdrop-blur-md z-[998]" />
+      )}
+
+      <ConfigProvider
+        theme={{
+          token: {
+            colorBgElevated: "var(--color-primary)",
+            colorText: "var(--color-text)",
+            controlItemBgHover: "var(--color-primary)",
+            colorPrimaryHover: "var(--color-text)",
+            controlItemBgActive: "var(--color-secondary)",
+            colorBgTextActive: "var(--color-text)",
+          },
+          components: {
+            Dropdown: {},
+          },
+        }}
       >
-        <button className="cursor-pointer hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
-          <img
-            src="/src/assets/Settings.svg"
-            alt="Settings Icon"
-            className="h-[1.5rem]"
-          />
-        </button>
-      </Dropdown>
+        <Dropdown
+          menu={{ items }}
+          trigger={["click"]}
+          getPopupContainer={() => document.body}
+          overlayStyle={{
+            position: "fixed",
+            width: "400px",
+            height: "320px",
+            left: "calc(50% - 200px)",
+            top: "calc(50% - 160px)",
+            backgroundColor: "var(--color-primary)",
+            zIndex: 1000,
+            borderRadius: "8px",
+          }}
+          open={visible}
+          onOpenChange={setVisible}
+          className="max-lg:hidden"
+        >
+          <button
+            className="cursor-pointer hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]"
+            onClick={handleOpenSettings}
+          >
+            <img
+              src="/src/assets/Settings.svg"
+              alt="Settings Icon"
+              className="h-[1.5rem]"
+            />
+          </button>
+        </Dropdown>
+      </ConfigProvider>
 
       <button className="cursor-pointer max-lg:hidden hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">
         <img src="/src/assets/dots-grid.svg" alt="Menu Icon" />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Segmented } from "antd";
+import { Segmented, ConfigProvider } from "antd";
 import img from "@assets/Live.svg";
 import "../../styles/segment.css";
 
@@ -25,39 +25,56 @@ const FeedMenu: React.FC<FeedMenuProps> = ({
   return (
     <>
       <div className="max-lg:hidden">
-        <Segmented
-          block={true}
-          value={MenuItems[selectedTab]?.label}
-          onChange={(label) => {
-            const selectedItem = MenuItems.find((item) => item.label === label);
-            if (selectedItem) {
-              handleTabChange(selectedItem.id);
-            }
+        <ConfigProvider
+          theme={{
+            components: {
+              Segmented: {
+                trackBg: "var(--color-primary)",
+                itemColor: "var(--color-text)",
+                itemHoverBg: "var(--color-primary)",
+                itemHoverColor: "var(--color-text)",
+                itemSelectedBg: "var(--color-secondary)",
+                itemSelectedColor: "var(--color-text)",
+              },
+            },
           }}
-          options={MenuItems.map((item) => ({
-            label:
-              item.id === 1 ? (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <img
-                    src={img}
-                    alt="Live"
-                    style={{ width: 20, height: 20, marginRight: 8 }}
-                  />
-                  {item.label}
-                </div>
-              ) : (
-                item.label
-              ),
-            value: item.label,
-          }))}
-        />
+        >
+          <Segmented
+            block={true}
+            value={MenuItems[selectedTab]?.label}
+            onChange={(label) => {
+              const selectedItem = MenuItems.find(
+                (item) => item.label === label
+              );
+              if (selectedItem) {
+                handleTabChange(selectedItem.id);
+              }
+            }}
+            options={MenuItems.map((item) => ({
+              label:
+                item.id === 1 ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    <img
+                      src={img}
+                      alt="Live"
+                      style={{ width: 20, height: 20, marginRight: 8 }}
+                    />
+                    {item.label}
+                  </div>
+                ) : (
+                  item.label
+                ),
+              value: item.label,
+            }))}
+          />
+        </ConfigProvider>
       </div>
       <div className="h-[45px] max-lg:hidden rounded-[8px] min-w-[130px] bg-[var(--color-primary)] flex justify-between p-[12px] items-center">
         <img

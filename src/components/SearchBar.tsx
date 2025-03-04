@@ -1,6 +1,7 @@
-import type { MenuProps } from "antd";
-import { Dropdown } from "antd";
-import { useState } from "react";
+import { MenuProps } from "antd";
+import { ConfigProvider, Dropdown } from "antd";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/segment.css";
 import searchIcon from "@assets/Search.svg";
 import closeIcon from "@assets/X.svg";
@@ -10,6 +11,18 @@ export default function SearchBar() {
   const [visible, setVisible] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState<string>("All");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (search) {
+      params.set("search", search);
+    } else {
+      params.delete("search");
+    }
+    navigate(`${location.pathname}?${params.toString()}`, { replace: true });
+  }, [search, location.pathname, navigate]);
 
   const handleTabChange = (value: string) => {
     setSelectedTab(value);
@@ -18,7 +31,7 @@ export default function SearchBar() {
   const items: MenuProps["items"] = [
     {
       label: (
-        <div className="flex items-center cursor-auto justify-between p-2 rounded">
+        <div className="flex items-center cursor-auto hover:none justify-between p-2 rounded">
           <div className="flex gap-2">
             <img src={searchIcon} alt="Search Icon" />
             <h2 className="text-lg text-black font-semibold">Search</h2>
@@ -37,9 +50,14 @@ export default function SearchBar() {
       label: (
         <form className="hidden max-lg:flex">
           <input
-            className="bg-[var(--color-primary)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
+            className="bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-[var(--color-text)]/[40%] w-full rounded-l-[8px] h-10 p-2 text-xs focus:outline-none"
             type="search"
             placeholder="Search Match, Team or Player"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setVisible(!!e.target.value);
+            }}
           />
           <button
             type="submit"
@@ -53,8 +71,8 @@ export default function SearchBar() {
     },
     {
       label: (
-        <div className="flex items-center  cursor-auto justify-between p-2 rounded">
-          <div className=" w-full gap-3 justify-between rounded-[12px] flex">
+        <div className="flex items-center cursor-auto justify-between p-2 rounded">
+          <div className="w-full gap-3 justify-between rounded-[12px] flex">
             {["All", "Teams", "Leagues", "Players"].map((item, index) => (
               <button
                 key={index}
@@ -63,9 +81,8 @@ export default function SearchBar() {
                   ${
                     selectedTab === item
                       ? "bg-[#7F3FFC] text-white"
-                      : "text-[var(--color-text)]/70 "
-                  }
-                `}
+                      : "text-[var(--color-text)]/70"
+                  }`}
                 onClick={() => handleTabChange(item)}
               >
                 {item}
@@ -79,7 +96,7 @@ export default function SearchBar() {
     { type: "divider" },
     {
       label: (
-        <div className="flex items-center p-2 hover:bg-gray-100 rounded">
+        <div className="flex items-center p-2 hover:bg-[var(--color-secondary)] rounded">
           Teams
         </div>
       ),
@@ -87,7 +104,7 @@ export default function SearchBar() {
     },
     ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => ({
       label: (
-        <div className="flex items-center gap-4 p-2 hover:bg-gray-100 rounded">
+        <div className="flex items-center gap-4 p-2 hover:bg-[var(--color-secondary)] rounded">
           <img src={noImageIcon} alt="No Image" />
           <span>
             <h3 className="text-xs">Team Name</h3>
@@ -100,7 +117,7 @@ export default function SearchBar() {
   ];
 
   return (
-    <form className="relative h-10 flex " onSubmit={(e) => e.preventDefault()}>
+    <form className="relative h-10 flex" onSubmit={(e) => e.preventDefault()}>
       <input
         className="border-[var(--color-text)]/[10%] max-w-1024-hidden text-[var(--color-text)]/[40%] w-full border border-solid min-w-[140px] rounded-[8px] h-10 p-2 pr-[50px] text-xs focus:outline-none"
         type="search"
@@ -111,22 +128,37 @@ export default function SearchBar() {
         }}
         placeholder="Search Match, Team or Player"
       />
-      <Dropdown
-        menu={{ items }}
-        overlayClassName="search-events"
-        open={visible}
-        className="h-full"
+      <ConfigProvider
+        theme={{
+          components: {
+            Dropdown: {
+              colorBgElevated: "var(--color-primary)",
+              colorText: "var(--color-text)",
+              controlItemBgHover: "var(--color-primary)",
+              colorPrimaryHover: "var(--color-text)",
+              controlItemBgActive: "var(--color-secondary)",
+              colorBgTextActive: "var(--color-text)",
+            },
+          },
+        }}
       >
-        <button
-          type="submit"
-          onClick={() =>
-            window.innerWidth < 1024 ? setVisible(true) : visible
-          }
-          className="cursor-pointer hover:opacity-80 max-lg:h-[36px] absolute right-0 top-0 border-[var(--color-text)]/[10%] bg-[var(--color-primary)] border border-solid rounded-[8px] h-10 w-[48px] flex items-center justify-center"
+        <Dropdown
+          menu={{ items }}
+          overlayClassName="search-events"
+          open={visible}
+          className="h-full"
         >
-          <img src={searchIcon} alt="Search Icon" />
-        </button>
-      </Dropdown>
+          <button
+            type="submit"
+            onClick={() =>
+              window.innerWidth < 1024 ? setVisible(true) : visible
+            }
+            className="cursor-pointer hover:opacity-80 max-lg:h-[36px] absolute right-0 top-0 border-[var(--color-text)]/[10%] bg-[var(--color-primary)] border border-solid rounded-[8px] h-10 w-[48px] flex items-center justify-center"
+          >
+            <img src={searchIcon} alt="Search Icon" />
+          </button>
+        </Dropdown>
+      </ConfigProvider>
     </form>
   );
 }

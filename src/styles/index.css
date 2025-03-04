@@ -6,6 +6,7 @@
   --color-secondary: #23262e1a;
   --color-text: #23262e;
   --color-text-light: #23262eb2;
+  --color-text-dark: #231f2e;
 }
 
 @layer base {
@@ -21,6 +22,7 @@
     --color-secondary: #7f3ffc1a;
     --color-text: #ffffff;
     --color-text-light: #808080b2;
+    --color-text-dark: #e2d8ec;
   }
 }
 

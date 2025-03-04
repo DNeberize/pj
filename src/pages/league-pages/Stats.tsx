@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import TopPlayerDatas from "./overview_pages/TopPlayers";
 import FactsAndTitles from "./overview_pages/FactsAndTitles";
 import halad from "@assets/Halad.svg";
-import vector from "@assets/Vector.svg";
+import Vector from "../../components/svgs/Vector";
 import { Dropdown, Space } from "antd";
 
 interface Player {

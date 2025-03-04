@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import LeagueListing from "../leagues/LeagueListing";
 import { Breadcrumb } from "antd";
 import { useQuery } from "@tanstack/react-query";
@@ -6,8 +6,11 @@ import { fetchLeaguesByCountry, League } from "../../utils/FetchLeagues";
 
 function SingleCountry() {
   const { country } = useParams<{ country: string }>();
-  const decodedCountry = country ? decodeURIComponent(country) : "";
+  const [searchParams] = useSearchParams();
+  const modal = searchParams.get("modal"); // Get "settings"
 
+  const decodedCountry = country ? decodeURIComponent(country) : "";
+  console.log("modal", modal);
   const {
     data: leagues = [],
     isLoading,
@@ -24,9 +27,27 @@ function SingleCountry() {
         <Breadcrumb
           separator=">"
           items={[
-            { title: <Link to="/">Home</Link> },
-            { title: <Link to="/country">Football</Link> },
-            { title: <Link to="/country">Country</Link> },
+            {
+              title: (
+                <Link style={{ color: "var(--color-text)" }} to="/">
+                  Home
+                </Link>
+              ),
+            },
+            {
+              title: (
+                <Link style={{ color: "var(--color-text)" }} to="/country">
+                  Football
+                </Link>
+              ),
+            },
+            {
+              title: (
+                <Link style={{ color: "var(--color-text)" }} to="/country">
+                  Country
+                </Link>
+              ),
+            },
             {
               title: <span className="text-purple-500">{decodedCountry}</span>,
             },
@@ -54,7 +75,7 @@ function SingleCountry() {
       </div>
 
       <div className="h-auto w-full rounded-[12px] py-[20px] bg-[var(--color-bg)]">
-        <h2 className="flex font-bold text-sm px-[20px] text-[#231F2E] mb-[15px]">
+        <h2 className="flex font-bold text-sm px-[20px] text-[var(--color-text-dark)] mb-[15px]">
           All Football Leagues and Tournaments of {decodedCountry}
         </h2>
         {isLoading ? (

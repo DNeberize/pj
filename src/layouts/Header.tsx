@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import MenuButtons from "../components/SettingMenu";
 import BurgerMenu from "../components/HeaderBurgerMenu";
 import MobileHeaderMenu from "../components/MobileHeaderMenu";
-import Logo from "@assets/Logo.svg";
+import Logo from "../components/svgs/MainLogo";
 import { Link } from "react-router-dom";
 function Header() {
   return (
@@ -14,11 +14,7 @@ function Header() {
           <BurgerMenu />
           <div className="flex justify-center min-w-[100px]">
             <Link to="/">
-              <img
-                src={Logo}
-                className="h-[40px] max-lg:h-[20px] w-auto object-contain"
-                alt="Logo"
-              />
+              <Logo />
             </Link>
           </div>
         </div>

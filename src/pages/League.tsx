@@ -1,7 +1,7 @@
 import { Breadcrumb, Menu, ConfigProvider } from "antd";
 import { Link, useParams, useNavigate, Outlet } from "react-router-dom";
 import LeagLogo from "@assets/Country Flags/premier.svg";
-import vector from "@assets/Vector.svg";
+import Vector from "../components/svgs/Vector";
 import { useQuery } from "@tanstack/react-query";
 import LeagueInfo from "../features/leagues/StandingInfoContext";
 import axios from "axios";
@@ -106,9 +106,30 @@ function League() {
         <Breadcrumb
           separator=">"
           items={[
-            { title: <Link to="/">Home</Link> },
-            { title: <Link to="/">Football</Link> },
-            { title: <Link to={`/country/${country}`}>{country}</Link> },
+            {
+              title: (
+                <Link style={{ color: "var(--color-text)" }} to="/">
+                  Home
+                </Link>
+              ),
+            },
+            {
+              title: (
+                <Link style={{ color: "var(--color-text)" }} to="/">
+                  Football
+                </Link>
+              ),
+            },
+            {
+              title: (
+                <Link
+                  style={{ color: "var(--color-text)" }}
+                  to={`/country/${country}`}
+                >
+                  {country}
+                </Link>
+              ),
+            },
             {
               title: (
                 <Link
@@ -134,8 +155,8 @@ function League() {
             <h2 className="text-[var(--color-text)] mb-3 font-bold text-sm">
               {leagueData.name}
             </h2>
-            <button className="flex text-xs font-semibold px-4 py-2 gap-2 text-[var(--color-text-light)] rounded-[8px] border border-solid border-[var(--color-secondary)]">
-              2024/2025 <img src={vector} alt="vector" />
+            <button className="flex text-xs items-center font-semibold px-4 py-2 gap-2 text-[var(--color-text-light)] rounded-[8px] border border-solid border-[var(--color-secondary)]">
+              2024/2025 <Vector />
             </button>
           </div>
         </div>

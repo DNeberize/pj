@@ -47,7 +47,7 @@ const CountryListing: React.FC<LeagueListProps> = ({ List, IsPage }) => (
               />
             </div>
             <div className="ml-2">
-              <h3 className="text-sm text-[#231F2E] min-w-[115px] font-semibold">
+              <h3 className="text-sm text-[var(--color-text-dark)] min-w-[115px] font-semibold">
                 {L.name}
               </h3>
               {L.country && (
