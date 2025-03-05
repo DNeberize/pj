@@ -4,23 +4,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/segment.css";
 import ThemeToggleSelect from "../utils/DarkModeToggle";
 
+const MODAL_NAME = "settings";
 const MenuButtons = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
-  const isSettingsModalOpen = params.get("modal") === "settings";
-  const [visible, setVisible] = useState(isSettingsModalOpen);
+
+  const isSettingsModalOpen = params.get("modal") === MODAL_NAME;
 
   const handleOpenSettings = () => {
     console.log(location, navigate);
-    setVisible(true);
     const params = new URLSearchParams(location.search);
-    params.set("modal", "settings");
+    params.set("modal", MODAL_NAME);
     navigate(`${location.pathname}?${params.toString()}`);
   };
 
   const handleCloseSettings = () => {
-    setVisible(false);
     const params = new URLSearchParams(location.search);
     params.delete("modal");
     navigate(`${location.pathname}?${params.toString()}`);
@@ -94,7 +93,7 @@ const MenuButtons = () => {
         }}
       >
         <Modal
-          open={visible || isSettingsModalOpen}
+          open={isSettingsModalOpen}
           onCancel={handleCloseSettings}
           footer={null}
           width={400}

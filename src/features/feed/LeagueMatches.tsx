@@ -67,7 +67,7 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
 
           <div
             className={`transition-[max-height] duration-500 ease-in-out overflow-hidden ${
-              openLeagues[index] ? "max-h-[1000px]" : "max-h-0"
+              openLeagues[index] ? "max-h-max" : "max-h-0"
             }`}
           >
             <MatchList List={league.matches} IsHomePage={true} />

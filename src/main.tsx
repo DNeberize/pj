@@ -12,6 +12,8 @@ import LeaguePageRouter from "./features/leagues/LeaguePageRouter";
 import "@ant-design/v5-patch-for-react-19";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Team from "./pages/Team";
+import TeamPageRouter from "./features/teams/TeamPageRouter";
 
 const queryClient = new QueryClient();
 function applyInitialTheme() {
@@ -34,6 +36,10 @@ createRoot(document.getElementById("root")!).render(
             <Route path="country/:country/:id" element={<League />}>
               <Route index element={<LeaguePageRouter />} />
               <Route path=":page" element={<LeaguePageRouter />} />
+            </Route>
+            <Route path="country/:country/:id/team" element={<Team />}>
+              <Route index element={<TeamPageRouter />} />
+              <Route path=":page" element={<TeamPageRouter />} />
             </Route>
           </Route>
         </Routes>
