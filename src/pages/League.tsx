@@ -5,6 +5,7 @@ import Vector from "../components/svgs/Vector";
 import { useQuery } from "@tanstack/react-query";
 import LeagueInfo from "../features/leagues/StandingInfoContext";
 import axios from "axios";
+import { useState } from "react";
 
 const MenuItems = [
   { key: "1", label: "Overview", path: "overview" },
@@ -63,16 +64,26 @@ interface League {
 function League() {
   const navigate = useNavigate();
   const { country, id, page } = useParams();
+  const [selectedSeason, setSelectedSeason] = useState("2024/2025");
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
+
+  const currentYear = new Date().getFullYear();
+
+  const seasons = Array.from({ length: 10 }, (_, i) => {
+    const startYear = currentYear - i;
+    return `${startYear}/${startYear + 1}`;
+  });
 
   const {
     data: leagueData,
     isLoading,
     error,
   } = useQuery<League>({
-    queryKey: ["standings", id],
+    queryKey: ["standings", id, selectedSeason],
     queryFn: async () => {
+      const startYear = parseInt(selectedSeason.split("/")[0]);
       const response = await axios.get(
-        `https://v3.football.api-sports.io/standings?league=${id}&season=2023`,
+        `https://v3.football.api-sports.io/standings?league=${id}&season=${startYear}`,
         {
           headers: {
             "x-rapidapi-host": "v3.football.api-sports.io",
@@ -94,6 +105,15 @@ function League() {
     if (selectedItem?.path) {
       navigate(`/country/${country}/${id}/${selectedItem.path}`);
     }
+  };
+
+  const handleSeasonChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSeason(e.target.value);
+    setIsSelectOpen(false);
+  };
+
+  const handleSelectToggle = () => {
+    setIsSelectOpen(!isSelectOpen);
   };
 
   const activePage = page ? page.toLowerCase() : "overview";
@@ -155,9 +175,32 @@ function League() {
             <h2 className="text-[var(--color-text)] mb-3 font-bold text-sm">
               {leagueData.name}
             </h2>
-            <button className="flex text-xs items-center font-semibold px-4 py-2 gap-2 text-[var(--color-text-light)] rounded-[8px] border border-solid border-[var(--color-secondary)]">
-              2024/2025 <Vector />
-            </button>
+            <div className="relative inline-block">
+              <select
+                value={selectedSeason}
+                onChange={handleSeasonChange}
+                onFocus={handleSelectToggle}
+                onBlur={handleSelectToggle}
+                className="text-xs font-semibold px-4 py-2 pr-8 text-[var(--color-text-light)] rounded-[8px] border border-solid border-[var(--color-secondary)] bg-transparent appearance-none"
+              >
+                {seasons.map((season) => (
+                  <option
+                    key={season}
+                    value={season}
+                    className="bg-[var(--color-bg)]"
+                  >
+                    {season}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2">
+                <Vector
+                  className={`transition-transform duration-300 ${
+                    isSelectOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -182,7 +225,7 @@ function League() {
       </div>
 
       <LeagueInfo.Provider
-        value={{ standings: leagueData.standings?.[0] || [] }}
+        value={{ standings: leagueData.standings?.[0] || [], selectedSeason }}
       >
         <Outlet />
       </LeagueInfo.Provider>

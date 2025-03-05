@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import LeagueListing from "../features/leagues/LeagueListing";
 import CountryListing from "../features/country/CountryListing";
@@ -23,23 +23,22 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
   const [search, setSearch] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (search) {
-      params.set("search", search);
-    } else {
-      params.delete("search");
-    }
-    navigate(`${location.pathname}?${params.toString()}`, { replace: true });
-  }, [search, location.pathname, navigate]);
+  const params = new URLSearchParams(location.search);
+
   function searchPage() {
-    const params = new URLSearchParams(location.search);
     if (search) {
       params.set("search", search);
     } else {
       params.delete("search");
     }
-    navigate(`/country?${params.toString()}`);
+
+    if (location.pathname === "/") {
+      navigate(`/country?${params.toString()}`);
+    } else if (location.pathname.startsWith("/country")) {
+      navigate(`${location.pathname}?${params.toString()}`);
+    } else {
+      navigate(`/country${location.pathname}?${params.toString()}`);
+    }
   }
 
   const {
@@ -48,12 +47,14 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
     error,
   } = useQuery<Country[]>({
     queryKey: ["countries"],
-    queryFn: fetchCountries,
+    queryFn: async () => await fetchCountries(),
   });
 
-  const filteredCountries = countries.filter((country) =>
-    country.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredCountries = countries
+    ? countries.filter((country) =>
+        country.name.toLowerCase().includes(search.toLowerCase())
+      )
+    : [];
 
   if (isLoading) return <div>Loading countries...</div>;
   if (error)
@@ -61,13 +62,13 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
 
   return (
     <div
-      className={`${IsPC && "lg:pl-[5rem] max-lg:hidden"} ${
+      className={`${IsPC ? "lg:pl-[5rem] max-lg:hidden" : ""} ${
         id && IsPC ? "hidden" : ""
       }`}
     >
       <div className="flex">
         <div>
-          <h2 className="font-bold text-sm text-[var(--color-text-dark)] pb-4 my-[15px] border-b-1 border-solid border-[var(--color-text)]/10">
+          <h2 className="font-bold text-sm text-[var(--color-text-dark)] pb-4 my-[15px] border-b border-[var(--color-text)]/10">
             Pinned Leagues
           </h2>
           <LeagueListing
@@ -84,8 +85,10 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
       </div>
       <div>
         <h2 className="flex font-bold text-sm text-[var(--color-text-dark)] mb-[15px] mt-[30px]">
-          <Link to="/country">Countries</Link>
-          <span className="text-[var(--color-text-dark)]/70 pl-2">[A-Z]</span>
+          <Link to="/country">
+            Countries
+            <span className="text-[var(--color-text-dark)]/70 pl-2">[A-Z]</span>
+          </Link>
         </h2>
         <form
           className="flex"

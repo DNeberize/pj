@@ -1,6 +1,7 @@
 import { createContext } from "react";
 interface LeagueContextType {
   standings?: TeamStanding[];
+  selectedSeason: string;
 }
 interface TeamStanding {
   rank: number;
@@ -42,5 +43,6 @@ interface Team {
 
 const LeagueInfo = createContext<LeagueContextType>({
   standings: [],
+  selectedSeason: "2024/2025",
 });
 export default LeagueInfo;

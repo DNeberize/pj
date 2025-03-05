@@ -1,20 +1,29 @@
-function Vector() {
+// Vector.tsx
+import React from "react";
+
+interface VectorProps {
+  className?: string;
+}
+
+const Vector: React.FC<VectorProps> = ({ className = "" }) => {
   return (
     <svg
       width="12"
-      height="8"
-      viewBox="0 0 12 8"
+      height="12"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <path
-        d="M1 1.5L6 6.5L11 1.5"
-        stroke="var(--color-text)"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        d="M4 6L8 10L12 6"
+        stroke="var(--color-text-light)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
-}
+};
+
 export default Vector;

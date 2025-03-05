@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import TopPlayerDatas from "./overview_pages/TopPlayers";
 import FactsAndTitles from "./overview_pages/FactsAndTitles";
-import halad from "@assets/Halad.svg";
 import Vector from "../../components/svgs/Vector";
 import { Dropdown, Space } from "antd";
+import LeagueInfo from "../../features/leagues/StandingInfoContext";
 
 interface Player {
   photo: string;
@@ -29,6 +29,7 @@ export default function Stats() {
   const [playerData, setPlayerData] = useState<Player[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [idTeam, setIdTeam] = useState<number | null>(null);
+  const { selectedSeason } = useContext(LeagueInfo);
 
   const handleTabChangeStat = (item: string) => {
     setSelectedStat(item);
@@ -62,13 +63,13 @@ export default function Stats() {
   useEffect(() => {
     console.log("Current Player Data:", playerData);
   }, [playerData]);
-
+  const startYear = parseInt(selectedSeason.split("/")[0]);
   const fetchStandings = async () => {
     if (!idTeam) return;
 
     try {
       const response = await fetch(
-        `https://v3.football.api-sports.io/players?team=${idTeam}&season=2023`,
+        `https://v3.football.api-sports.io/players?team=${idTeam}&season=${startYear}`,
         {
           method: "GET",
           headers: {
@@ -99,7 +100,7 @@ export default function Stats() {
 
   useEffect(() => {
     if (id) {
-      fetchTeamsByLeague(Number(id), 2023);
+      fetchTeamsByLeague(Number(id), startYear);
     }
   }, [id]);
 
@@ -136,7 +137,7 @@ export default function Stats() {
     <div className="grid w-full gap-6 grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
       <div className="rounded-[12px] pt-5 gap-6 flex-col bg-[var(--color-bg)]">
         <h2 className="font-bold ml-5 pb-5 flex items-center text-[14px] text-[var(--color-text)]">
-          Stats 23/24
+          Stats {selectedSeason}
         </h2>
         <div className="flex w-full max-w-[50%] min-w-[280px] mx-5 gap-5">
           <Dropdown
@@ -150,7 +151,7 @@ export default function Stats() {
             >
               <Space className="w-full flex justify-between">
                 Goals
-                <img src={vector} alt="dropdown arrow" />
+                <Vector />
               </Space>
             </a>
           </Dropdown>
@@ -165,7 +166,7 @@ export default function Stats() {
             >
               <Space className="w-full flex justify-between">
                 Select Team
-                <img src={vector} alt="dropdown arrow" />
+                <Vector />
               </Space>
             </a>
           </Dropdown>

@@ -12,8 +12,6 @@ type Country = {
 
 function ListOfCountryPage() {
   const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const searchQuery = params.get("search") || "";
 
   const {
     data: countries = [],
@@ -24,6 +22,8 @@ function ListOfCountryPage() {
     queryFn: fetchCountries,
   });
 
+  const params = new URLSearchParams(location.search);
+  const searchQuery = params.get("search") || "";
   const filteredCountries = searchQuery
     ? countries.filter((country) =>
         country.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -31,6 +31,7 @@ function ListOfCountryPage() {
     : countries;
 
   if (isLoading) return <div>Loading countries...</div>;
+
   if (error)
     return <div>Error loading countries: {(error as Error).message}</div>;
 

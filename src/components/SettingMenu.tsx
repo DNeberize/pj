@@ -1,115 +1,18 @@
-import type { MenuProps } from "antd";
-import { ConfigProvider, Dropdown } from "antd";
-import { useState, useEffect } from "react";
+import { ConfigProvider, Modal } from "antd";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/segment.css";
 import ThemeToggleSelect from "../utils/DarkModeToggle";
 
 const MenuButtons = () => {
-  const [visible, setVisible] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get("modal") === "settings") {
-      setVisible(true);
-    }
-  }, [location]);
-
-  const items: MenuProps["items"] = [
-    {
-      label: (
-        <div className="flex items-center justify-between p-2 rounded">
-          <h2 className="text-lg text-[var(--color-text)] font-semibold">
-            Search
-          </h2>
-          <button
-            className="cursor-pointer hover:opacity-80"
-            onClick={() => handleCloseSettings()}
-          >
-            <img src="/src/assets/X.svg" alt="Close" className="h-4 w-4" />
-          </button>
-        </div>
-      ),
-      key: "header",
-    },
-    { type: "divider" },
-    {
-      label: (
-        <div
-          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <span className="text-[var(--color-text)]">Language</span>
-          <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
-            <option className="text-[var(--color-text)]" value="english">
-              English
-            </option>
-            <option className="text-[var(--color-text)]" value="spanish">
-              Spanish
-            </option>
-          </select>
-        </div>
-      ),
-      key: "0",
-    },
-    { type: "divider" },
-    {
-      label: (
-        <div
-          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <span className="text-[var(--color-text)]">Timezone</span>
-          <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
-            <option className="text-[var(--color-text)]" value="utc">
-              UTC
-            </option>
-            <option className="text-[var(--color-text)]" value="est">
-              EST
-            </option>
-          </select>
-        </div>
-      ),
-      key: "1",
-    },
-    { type: "divider" },
-    {
-      label: (
-        <div
-          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <span className="text-[var(--color-text)]">Theme</span>
-          <ThemeToggleSelect />
-        </div>
-      ),
-      key: "2",
-    },
-    { type: "divider" },
-    {
-      label: (
-        <div
-          className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <span className="text-[var(--color-text)]">Edit</span>
-          <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
-            <option className="text-[var(--color-text)]" value="1.50">
-              1.50
-            </option>
-            <option className="text-[var(--color-text)]" value="2.00">
-              2.00
-            </option>
-          </select>
-        </div>
-      ),
-      key: "3",
-    },
-  ];
+  const params = new URLSearchParams(location.search);
+  const isSettingsModalOpen = params.get("modal") === "settings";
+  const [visible, setVisible] = useState(isSettingsModalOpen);
 
   const handleOpenSettings = () => {
+    console.log(location, navigate);
     setVisible(true);
     const params = new URLSearchParams(location.search);
     params.set("modal", "settings");
@@ -120,15 +23,57 @@ const MenuButtons = () => {
     setVisible(false);
     const params = new URLSearchParams(location.search);
     params.delete("modal");
-    navigate(`${location.pathname}`);
+    navigate(`${location.pathname}?${params.toString()}`);
   };
+
+  const modalContent = (
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center justify-between p-2 rounded">
+        <h2 className="text-lg text-[var(--color-text)] font-semibold">
+          Search
+        </h2>
+        <button
+          className="cursor-pointer hover:opacity-80"
+          onClick={handleCloseSettings}
+        >
+          <img src="/src/assets/X.svg" alt="Close" className="h-4 w-4" />
+        </button>
+      </div>
+      <div className="border-t border-[var(--color-secondary)]" />
+
+      <div className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded">
+        <span className="text-[var(--color-text)]">Language</span>
+        <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+        </select>
+      </div>
+
+      <div className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded">
+        <span className="text-[var(--color-text)]">Timezone</span>
+        <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
+          <option value="utc">UTC</option>
+          <option value="est">EST</option>
+        </select>
+      </div>
+
+      <div className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded">
+        <span className="text-[var(--color-text)]">Theme</span>
+        <ThemeToggleSelect />
+      </div>
+
+      <div className="flex items-center justify-between p-2 hover:bg-[var(--color-secondary)] rounded">
+        <span className="text-[var(--color-text)]">Edit</span>
+        <select className="border bg-[var(--color-bg)] text-[var(--color-text)] border-[var(--color-secondary)] rounded p-1 text-sm">
+          <option value="1.50">1.50</option>
+          <option value="2.00">2.00</option>
+        </select>
+      </div>
+    </div>
+  );
 
   return (
     <div className="flex settings-menu justify-between gap-4 h-[40px] relative">
-      {visible && (
-        <div className="fixed w-full h-full inset-0 bg-black/30 backdrop-blur-md z-[998]" />
-      )}
-
       <ConfigProvider
         theme={{
           token: {
@@ -140,39 +85,45 @@ const MenuButtons = () => {
             colorBgTextActive: "var(--color-text)",
           },
           components: {
-            Dropdown: {},
+            Modal: {
+              contentBg: "var(--color-primary)",
+              headerBg: "var(--color-primary)",
+              borderRadiusLG: 8,
+            },
           },
         }}
       >
-        <Dropdown
-          menu={{ items }}
-          trigger={["click"]}
-          getPopupContainer={() => document.body}
-          overlayStyle={{
-            position: "fixed",
-            width: "400px",
-            height: "320px",
-            left: "calc(50% - 200px)",
-            top: "calc(50% - 160px)",
-            backgroundColor: "var(--color-primary)",
-            zIndex: 1000,
-            borderRadius: "8px",
+        <Modal
+          open={visible || isSettingsModalOpen}
+          onCancel={handleCloseSettings}
+          footer={null}
+          width={400}
+          styles={{
+            content: {
+              height: "320px",
+              padding: "16px",
+            },
+            body: {
+              padding: 0,
+            },
           }}
-          open={visible}
-          onOpenChange={setVisible}
+          centered
+          closable={false}
           className="max-lg:hidden"
         >
-          <button
-            className="cursor-pointer hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]"
-            onClick={handleOpenSettings}
-          >
-            <img
-              src="/src/assets/Settings.svg"
-              alt="Settings Icon"
-              className="h-[1.5rem]"
-            />
-          </button>
-        </Dropdown>
+          {modalContent}
+        </Modal>
+
+        <button
+          className="cursor-pointer hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]"
+          onClick={handleOpenSettings}
+        >
+          <img
+            src="/src/assets/Settings.svg"
+            alt="Settings Icon"
+            className="h-[1.5rem]"
+          />
+        </button>
       </ConfigProvider>
 
       <button className="cursor-pointer max-lg:hidden hover:opacity-80 bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]">

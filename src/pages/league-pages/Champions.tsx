@@ -7,10 +7,10 @@ export default function Champions() {
     <div className="grid w-full gap-6 grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
       <div className="rounded-[12px] pt-5 gap-5 flex-col bg-[var(--color-bg)]">
         <h2 className="px-5 pt-2 text-sm font-bold">Champions By year</h2>
-        <div className=" gap-4 p-5  flex flex-wrap">
+        <div className="grid grid-cols-4 gap-4 p-5 max-md:grid-cols-3 max-sm:grid-cols-2 max-[450px]:grid-cols-1">
           {Array.from({ length: 16 }, (_, index) => (
             <div
-              className="flex aspect-[4/3] flex-col py-6 px-3 min-w-47 border-1 gap-2 justify-center items-center border-solid border-[#23262E1A] rounded-[12px]"
+              className="flex aspect-[4/3] flex-col   border-1 gap-2 justify-center items-center border-solid border-[#23262E1A] rounded-[12px]"
               key={index}
             >
               <h2 className="text-xs font-bold py-1.5 px-2.5 rounded-[8px] bg-[#23262E4D] text-white">

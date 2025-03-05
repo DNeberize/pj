@@ -1,7 +1,6 @@
 import { MenuProps } from "antd";
 import { ConfigProvider, Dropdown } from "antd";
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import "../styles/segment.css";
 import searchIcon from "@assets/Search.svg";
 import closeIcon from "@assets/X.svg";
@@ -11,18 +10,6 @@ export default function SearchBar() {
   const [visible, setVisible] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState<string>("All");
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (search) {
-      params.set("search", search);
-    } else {
-      params.delete("search");
-    }
-    navigate(`${location.pathname}?${params.toString()}`, { replace: true });
-  }, [search, location.pathname, navigate]);
 
   const handleTabChange = (value: string) => {
     setSelectedTab(value);
@@ -55,15 +42,16 @@ export default function SearchBar() {
             placeholder="Search Match, Team or Player"
             value={search}
             onChange={(e) => {
-              setSearch(e.target.value);
-              setVisible(!!e.target.value);
+              const newSearch = e.target.value;
+              setSearch(newSearch);
+              setVisible(!!newSearch);
             }}
           />
           <button
             type="submit"
             className="right-0 top-0 bg-[var(--color-primary)] rounded-r-[8px] h-10 w-[3rem] flex items-center justify-center"
           >
-            <img src="/src/assets/Search.svg" alt="Search" />
+            <img src={searchIcon} alt="Search" />
           </button>
         </form>
       ),
@@ -123,8 +111,9 @@ export default function SearchBar() {
         type="search"
         value={search}
         onChange={(e) => {
-          setSearch(e.target.value);
-          setVisible(!!e.target.value);
+          const newSearch = e.target.value;
+          setSearch(newSearch);
+          setVisible(!!newSearch);
         }}
         placeholder="Search Match, Team or Player"
       />
@@ -150,9 +139,7 @@ export default function SearchBar() {
         >
           <button
             type="submit"
-            onClick={() =>
-              window.innerWidth < 1024 ? setVisible(true) : visible
-            }
+            onClick={() => window.innerWidth < 1024 && setVisible(true)}
             className="cursor-pointer hover:opacity-80 max-lg:h-[36px] absolute right-0 top-0 border-[var(--color-text)]/[10%] bg-[var(--color-primary)] border border-solid rounded-[8px] h-10 w-[48px] flex items-center justify-center"
           >
             <img src={searchIcon} alt="Search Icon" />
