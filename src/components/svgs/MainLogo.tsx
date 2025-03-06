@@ -3,6 +3,7 @@ function Logo() {
     <svg
       width="full"
       capHeight="40px"
+      style={{ maxHeight: "40px" }}
       viewBox="0 0 160 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

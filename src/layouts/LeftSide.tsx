@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import LeagueListing from "../features/leagues/LeagueListing";
 import CountryListing from "../features/country/CountryListing";
 import { fetchCountries } from "../utils/fetchCountries";
@@ -7,7 +7,7 @@ import test from "../data/test.json";
 import { useQuery } from "@tanstack/react-query";
 
 interface LeftSideBarProps {
-  IsPC: boolean;
+  IsDesktop: boolean;
 }
 
 type Country = {
@@ -18,8 +18,7 @@ type Country = {
   logo: string;
 };
 
-function LeftSideBar({ IsPC }: LeftSideBarProps) {
-  const { id } = useParams();
+function LeftSideBar({ IsDesktop }: LeftSideBarProps) {
   const [search, setSearch] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
@@ -61,11 +60,7 @@ function LeftSideBar({ IsPC }: LeftSideBarProps) {
     return <div>Error loading countries: {(error as Error).message}</div>;
 
   return (
-    <div
-      className={`${IsPC ? "lg:pl-[5rem] max-lg:hidden" : ""} ${
-        id && IsPC ? "hidden" : ""
-      }`}
-    >
+    <div className={`${IsDesktop ? "lg:pl-[5rem] max-lg:hidden" : ""} `}>
       <div className="flex">
         <div>
           <h2 className="font-bold text-sm text-[var(--color-text-dark)] pb-4 my-[15px] border-b border-[var(--color-text)]/10">

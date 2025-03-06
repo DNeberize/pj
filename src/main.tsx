@@ -14,6 +14,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Team from "./pages/Team";
 import TeamPageRouter from "./features/teams/TeamPageRouter";
+import NoSidebarLayout from "./layouts/NoSidebarLayout";
 
 const queryClient = new QueryClient();
 function applyInitialTheme() {
@@ -30,20 +31,23 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<CenterFeed />} />
-            <Route path="*" element={<NotFound />} />
             <Route path="country" element={<ListOfCountryPage />} />
-            <Route path="country/:country" element={<SingleCountry />} />
-            <Route path="country/:country/:id" element={<League />}>
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="country/:country" element={<NoSidebarLayout />}>
+            <Route index element={<SingleCountry />} />
+            <Route path=":id" element={<League />}>
               <Route index element={<LeaguePageRouter />} />
               <Route path=":page" element={<LeaguePageRouter />} />
             </Route>
-            <Route path="country/:country/:id/team" element={<Team />}>
+            <Route path=":id/team" element={<Team />}>
               <Route index element={<TeamPageRouter />} />
               <Route path=":page" element={<TeamPageRouter />} />
             </Route>
           </Route>
         </Routes>
       </BrowserRouter>
+
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>

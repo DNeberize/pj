@@ -1,14 +1,10 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
 function RightSideBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const name = useParams();
 
   return (
-    <div
-      className={`pr-[5rem] max-w-1024-hidden ${name.id ? " hidden " : ""} `}
-    >
+    <div className={`pr-[5rem] max-w-1024-hidden `}>
       <div className=" p-4 pt-3 bg-[var(--color-bg)] rounded-[12px]">
         <div
           onClick={() => setIsOpen((prev) => !prev)}

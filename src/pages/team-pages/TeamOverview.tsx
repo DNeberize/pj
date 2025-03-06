@@ -7,6 +7,9 @@ import FactsAndTitles from "./overview_pages/FactsAndTitles";
 import StatsAndPlayer from "./overview_pages/StatsAndPlayer";
 import TopPlayers from "./overview_pages/TopPlayers";
 import { ReactNode } from "react";
+import Formation from "./overview_pages/Formation";
+import TeamLeagues from "./overview_pages/TeamLeagues";
+import DistributionAndInfo from "./overview_pages/DistributionAndInfo";
 interface TabComponents {
   [key: number]: ReactNode;
 }
@@ -59,6 +62,9 @@ function TeamOverview() {
           </div>
 
           <Stages />
+          <DistributionAndInfo />
+          <TeamLeagues />
+          <Formation />
         </div>
         <div className="rounded-[12px] gap-5 flex flex-col">
           <StatsAndPlayer />

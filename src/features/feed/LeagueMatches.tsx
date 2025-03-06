@@ -35,13 +35,13 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
             <div className="flex gap-2 items-center">
               <img src="/src/assets/Star.svg" alt="Star" />
               <img src={league.leagueFlag} alt={league.leagueName} />
-              <h1 className="font-semibold min small-menu-p max-lg:text-xs text-[var(--color-text)]">
+              <h1 className="font-semibold min small-menu-p max-lg:text-xs text-[var(--color-text)] max-w-35 truncate hover:overflow-visible hover:whitespace-normal hover:max-w-none">
                 {league.leagueName}
               </h1>
               <img src="/src/assets/Pin.svg" alt="Pin" />
             </div>
 
-            <div className="flex min-w-[170px] justify-between max-lg:justify-end">
+            <div className="flex min-w-[170px] max-lg:min-w-0 justify-between max-lg:justify-end">
               <div className="flex max-lg:hidden">
                 <h2 className="text-[var(--color-text)] px-4 border-r-[1px] border-solid border-[var(--color-secondary)]">
                   HT
@@ -66,11 +66,13 @@ function LeagueMatches({ Matches }: LeagueMatchesProps) {
           </div>
 
           <div
-            className={`transition-[max-height] duration-500 ease-in-out overflow-hidden ${
-              openLeagues[index] ? "max-h-max" : "max-h-0"
+            className={`grid transition-all duration-500 ease-in-out overflow-hidden ${
+              openLeagues[index] ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
             }`}
           >
-            <MatchList List={league.matches} IsHomePage={true} />
+            <div className="overflow-hidden">
+              <MatchList List={league.matches} IsHomePage={true} />
+            </div>
           </div>
         </div>
       ))}

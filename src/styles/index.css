@@ -140,3 +140,19 @@ body {
   transform: skewX(-20deg);
   border-radius: 4px !important;
 }
+.pin {
+  background-color: white;
+  transform: rotate(45deg);
+  border-radius: 60px 60px 8px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: auto;
+  height: auto;
+  margin: 5px;
+}
+
+.pin img {
+  transform: rotate(-45deg);
+}

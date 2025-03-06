@@ -17,11 +17,7 @@ const FactsAndTitles = ({
       
       max-sm:grid-cols-[1fr]`}
     >
-      <div
-        className={` ${
-          TitleHolderOnly && "hidden"
-        }  bg-[var(--color-bg)] p-5 pt-4 rounded-[12px]`}
-      >
+      <div className={` bg-[var(--color-bg)] p-5 pt-4 rounded-[12px]`}>
         <h2 className="text-[var(--color-text)] pb-2 font-bold text-sm">
           Facts
         </h2>
@@ -62,7 +58,11 @@ const FactsAndTitles = ({
           </div>
         </div>
       </div>
-      <div className="bg-[var(--color-bg)] rounded-[12px]  pb-8 py-5">
+      <div
+        className={`bg-[var(--color-bg)] rounded-[12px]  pb-8 py-5  ${
+          TitleHolderOnly && "hidden"
+        } `}
+      >
         <h2 className="text-[var(--color-text)] px-5 font-bold text-sm">
           Title Holder
         </h2>

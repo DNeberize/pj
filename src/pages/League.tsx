@@ -64,7 +64,7 @@ interface League {
 function League() {
   const navigate = useNavigate();
   const { country, id, page } = useParams();
-  const [selectedSeason, setSelectedSeason] = useState("2024/2025");
+  const [selectedSeason, setSelectedSeason] = useState("2023/2024");
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const currentYear = new Date().getFullYear();

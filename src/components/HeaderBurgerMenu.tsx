@@ -21,10 +21,10 @@ const Sidebar: React.FC = () => {
       <Button
         type="primary"
         onClick={showDrawer}
-        className="sidebar-toggle  flex items-center justify-center min-h-[40px]"
+        className="sidebar-toggle min-w-10 flex items-center justify-center min-h-[40px]"
       >
         <img
-          className="h-[20px] w-[20px]"
+          className="h-[20px] min-w-4.5 w-[20px]"
           src="/src/assets/dropDown.svg"
           alt=""
         />

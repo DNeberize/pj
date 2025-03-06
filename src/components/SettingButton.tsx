@@ -16,7 +16,7 @@ const SettingsBar: React.FC = () => {
         style={{ padding: 0 }}
       >
         <img
-          className="w-[20px] h-[20px] flex-shrink-0"
+          className="w-10 h-10 flex-shrink-0"
           src={settingsIcon}
           alt="Dropdown"
         />
