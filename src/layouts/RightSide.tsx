@@ -4,11 +4,11 @@ function RightSideBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`pr-[5rem] max-w-1024-hidden `}>
-      <div className=" p-4 pt-3 bg-[var(--color-bg)] rounded-[12px]">
+    <div className={`pr-[5rem] max-w-1024-hidden  `}>
+      <div className=" p-4 pt-3 bg-[var(--color-bg)]  rounded-[12px]">
         <div
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex justify-between mb-2 cursor-pointer"
+          className="flex justify-between mb-2  cursor-pointer"
         >
           <h2 className="text-sm font-bold">Download Application</h2>
           <img

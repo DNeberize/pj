@@ -8,9 +8,15 @@
   --color-text-light: #23262eb2;
   --color-text-dark: #231f2e;
 }
+@layer utilities {
+  .scrollbar-gutter-stable {
+    scrollbar-gutter: stable;
+  }
+}
 
 @layer base {
   :root {
+    
     background-color: var(--color-bg);
     color: var(--color-text);
     transition: background-color 0.3s ease, color 0.3s ease;

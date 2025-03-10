@@ -10,6 +10,7 @@ import { ReactNode } from "react";
 import Formation from "./overview_pages/Formation";
 import TeamLeagues from "./overview_pages/TeamLeagues";
 import DistributionAndInfo from "./overview_pages/DistributionAndInfo";
+import SideLined from "./overview_pages/SideLined";
 interface TabComponents {
   [key: number]: ReactNode;
 }
@@ -62,6 +63,7 @@ function TeamOverview() {
           </div>
 
           <Stages />
+          <SideLined/>
           <DistributionAndInfo />
           <TeamLeagues />
           <Formation />

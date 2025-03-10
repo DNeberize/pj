@@ -6,9 +6,10 @@ export default function NoSidebarLayout() {
   return (
     <div className="page-container relative w-full flex flex-col">
       <Header />
-      <div className="flex-1">
+      <div className="w-full flex justify-center">
+      <div className="flex-1 max-w-[1500px]">
         <Outlet />
-      </div>
+      </div></div>
       <Footer />
     </div>
   );
