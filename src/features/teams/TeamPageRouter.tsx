@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import TeamOverview from "../../pages/team-pages/TeamOverview";
-import Standings from "../../pages/league-pages/Standings";
-import Transfer from "../../pages/league-pages/overview_pages/Transfer";
-import Stats from "../../pages/league-pages/Stats";
+
 import Champions from "../../pages/league-pages/Champions";
-import Schedule from "../../pages/league-pages/Schedule";
+import TeamStandings from "../../pages/team-pages/TeamSalary";
+import Stages from "../../pages/team-pages/overview_pages/Stages";
+import Squad from "../../pages/team-pages/Squad";
+import Transfer from "../../pages/league-pages/overview_pages/Transfer";
 
 function TeamPageRouter() {
   const { page } = useParams();
@@ -13,16 +14,16 @@ function TeamPageRouter() {
   switch (activePage) {
     case "overview":
       return <TeamOverview />;
-    case "standings":
-      return <Standings />;
-    case "transfer":
-      return <Transfer />;
-    case "stats":
-      return <Stats />;
+    case "salary":
+      return <TeamStandings />;
+    case "schedule":
+      return <Stages />;
+    case "squad":
+      return <Squad />;
     case "champions":
       return <Champions />;
-    case "schedule":
-      return <Schedule />;
+    case "transfer":
+      return <Transfer />;
     default:
       return <TeamOverview />;
   }

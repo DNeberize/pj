@@ -3,23 +3,26 @@ import { useState } from "react";
 import Standings from "../../features/leagues/Standing";
 import MobileFeedMenu from "../../features/feed/MobileFeedMenu";
 import Stages from "./overview_pages/Stages";
-import FactsAndTitles from "./overview_pages/FactsAndTitles";
 import StatsAndPlayer from "./overview_pages/StatsAndPlayer";
 import TopPlayers from "./overview_pages/TopPlayers";
-import { ReactNode } from "react";
 import Formation from "./overview_pages/Formation";
 import TeamLeagues from "./overview_pages/TeamLeagues";
 import DistributionAndInfo from "./overview_pages/DistributionAndInfo";
 import SideLined from "./overview_pages/SideLined";
+import TeamStats from "./TeamStats";
+import { ReactNode } from "react";
+import About from "./overview_pages/About";
+
 interface TabComponents {
   [key: number]: ReactNode;
 }
 
 const MenuItems = [
-  { label: "Stages", id: 0 },
-  { label: "Info", id: 1 },
-  { label: "Standing", id: 2 },
-  { label: "Top Player", id: 3 },
+  { label: "Matches", id: 0 },
+  { label: "Stats", id: 1 },
+  { label: "Info", id: 2 },
+  { label: "Standing", id: 3 },
+  { label: "Lineup", id: 4 },
 ];
 
 function TeamOverview() {
@@ -36,9 +39,15 @@ function TeamOverview() {
 
   let obj: TabComponents = {
     0: <Stages />,
-    1: <FactsAndTitles onSide={false} TitleHolderOnly={false} />,
-    2: <Standings />,
-    3: <StatsAndPlayer />,
+    1: <TeamStats />,
+    2: (
+      <div className="flex flex-col gap-5">
+        <DistributionAndInfo /> <TeamLeagues />
+        <About />
+      </div>
+    ),
+    3: <Standings />,
+    4: <Formation />,
   };
 
   return (
@@ -50,9 +59,9 @@ function TeamOverview() {
         isLeaguePage={true}
       />
 
-      <div className="block md:hidden">{obj[selectedMenuButton]}</div>
+      <div className="hidden max-lg:block">{obj[selectedMenuButton]}</div>
 
-      <div className="hidden md:grid w-full gap-6  grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
+      <div className="grid max-lg:hidden w-full gap-6 grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
         <div className="gap-6 flex flex-col">
           <div className="flex w-full justify-center rounded-[12px]">
             <img
@@ -61,9 +70,9 @@ function TeamOverview() {
               alt=""
             />
           </div>
-
           <Stages />
-          <SideLined/>
+          <TeamStats />
+          <SideLined />
           <DistributionAndInfo />
           <TeamLeagues />
           <Formation />
@@ -75,6 +84,7 @@ function TeamOverview() {
             selectedStat={selectedStat}
             handleTabChangeStat={handleTabChangeStat}
           />
+          <About />
         </div>
       </div>
     </>

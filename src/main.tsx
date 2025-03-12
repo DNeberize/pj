@@ -23,28 +23,40 @@ function applyInitialTheme() {
 }
 
 applyInitialTheme();
+const homeRoute = (
+  <Route path="/" element={<Layout />}>
+    <Route index element={<CenterFeed />} />
+    <Route path="country" element={<ListOfCountryPage />} />
+    <Route path="*" element={<NotFound />} />
+  </Route>
+);
+const teamRoute = (
+  <Route path=":id/team/:team" element={<Team />}>
+    <Route index element={<TeamPageRouter />} />
+    <Route path=":page" element={<TeamPageRouter />} />
+  </Route>
+);
+const leagueRoute = (
+  <Route path=":id" element={<League />}>
+    <Route index element={<LeaguePageRouter />} />
+    <Route path=":page" element={<LeaguePageRouter />} />
+  </Route>
+);
+const pageRoutes = (
+  <Route path="country/:country" element={<NoSidebarLayout />}>
+    <Route index element={<SingleCountry />} />
+    {leagueRoute}
+    {teamRoute}
+  </Route>
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<CenterFeed />} />
-            <Route path="country" element={<ListOfCountryPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="country/:country" element={<NoSidebarLayout />}>
-            <Route index element={<SingleCountry />} />
-            <Route path=":id" element={<League />}>
-              <Route index element={<LeaguePageRouter />} />
-              <Route path=":page" element={<LeaguePageRouter />} />
-            </Route>
-            <Route path=":id/team" element={<Team />}>
-              <Route index element={<TeamPageRouter />} />
-              <Route path=":page" element={<TeamPageRouter />} />
-            </Route>
-          </Route>
+          {homeRoute}
+          {pageRoutes}
         </Routes>
       </BrowserRouter>
 

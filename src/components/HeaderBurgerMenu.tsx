@@ -43,7 +43,7 @@ const Sidebar: React.FC = () => {
           <DottedMenu />
         </div>
         <div className="sidebar-content">
-          <LeftSideBar IsPC={false} />
+          <LeftSideBar IsDesktop={false} />
         </div>
       </Drawer>
     </div>

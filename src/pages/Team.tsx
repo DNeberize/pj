@@ -5,9 +5,9 @@ import TeamInfo from "../features/teams/TeamInfoContext";
 
 const MenuItems = [
   { key: "1", label: "Overview", path: "overview" },
-  { key: "2", label: "Schedule", path: "schedule" },
-  { key: "3", label: "Standings", path: "standings" },
-  { key: "4", label: "Stats", path: "stats" },
+  { key: "2", label: "Salary", path: "salary" },
+  { key: "3", label: "Schedule", path: "schedule" },
+  { key: "4", label: "Squad", path: "squad" },
   { key: "5", label: "Transfer", path: "transfer" },
   { key: "6", label: "Champions", path: "champions" },
 ];
@@ -59,12 +59,12 @@ interface Team {
 
 function Team() {
   const navigate = useNavigate();
-  const { country, id, page } = useParams();
+  const { country, id, teamId, page } = useParams();
 
   const handleMenuClick = ({ key }: { key: string }) => {
     const selectedItem = MenuItems.find((item) => item.key === key);
     if (selectedItem?.path) {
-      navigate(`/country/${country}/${id}/team/${selectedItem.path}`);
+      navigate(`/country/${country}/${id}/team/${teamId}/${selectedItem.path}`);
     }
   };
 
@@ -106,7 +106,7 @@ function Team() {
               title: (
                 <Link
                   style={{ color: "#7F3FFC" }}
-                  to={`/country/${country}/${id}`}
+                  to={`/country/${country}/${id}/team/${teamId}`}
                 >
                   Team
                 </Link>

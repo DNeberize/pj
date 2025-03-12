@@ -16,7 +16,6 @@
 
 @layer base {
   :root {
-    
     background-color: var(--color-bg);
     color: var(--color-text);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -47,6 +46,24 @@ body {
 }
 .ant-menu-title-content {
   color: var(--color-text);
+}
+/* In your CSS file */
+.scrollbar-always-visible {
+  -ms-overflow-style: scrollbar; /* For IE/Edge */
+  scrollbar-width: auto; /* For Firefox */
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+.scrollbar-always-visible::-webkit-scrollbar {
+  width: 8px; /* Adjust width as needed */
+}
+
+.scrollbar-always-visible::-webkit-scrollbar-thumb {
+  background-color: #888; /* Customize thumb color */
+}
+
+.scrollbar-always-visible::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Customize track color */
 }
 
 .ant-menu-item-selected {

@@ -55,9 +55,9 @@ function Overview() {
         isLeaguePage={true}
       />
 
-      <div className="block md:hidden">{obj[selectedMenuButton]}</div>
+      <div className="hidden max-md:block">{obj[selectedMenuButton]}</div>
 
-      <div className="hidden md:grid w-full gap-6  grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
+      <div className="grid max-md:hidden w-full gap-6  grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
         <div className="gap-6 flex flex-col">
           <FactsAndTitles onSide={false} TitleHolderOnly={false} />
 

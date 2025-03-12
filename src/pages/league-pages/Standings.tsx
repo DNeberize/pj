@@ -10,7 +10,7 @@ export default function Standing() {
   };
   return (
     <div className="hidden md:grid w-full gap-6  grid-cols-[20fr_7fr] max-lg:grid-cols-[1fr]">
-      {<Standings />}
+      <Standings />
       {
         <TopPlayers
           selectedStat={selectedStat}

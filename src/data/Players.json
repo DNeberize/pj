@@ -1,0 +1,87 @@
+{
+  "get": "players/squads",
+  "parameters": {
+    "team": "33"
+  },
+  "errors": [],
+  "results": 1,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "team": {
+        "id": 33,
+        "name": "Manchester United",
+        "logo": ""
+      },
+      "players": [
+        {
+          "id": 20319,
+          "name": "N. Bishop",
+          "age": 22,
+          "number": 30,
+          "position": "Goalkeeper",
+          "photo": "/src/assets/Halad.svg"
+        },
+        {
+          "id": 885,
+          "name": "E. Bailly",
+          "age": 27,
+          "number": 3,
+          "position": "Defender",
+          "photo": "/src/assets/Halad.svg"
+        },
+        {
+          "id": 899,
+          "name": "Andreas Pereira",
+          "age": 25,
+          "number": 15,
+          "position": "Midfielder",
+          "photo": "/src/assets/Halad.svg"
+        },
+        {
+          "id": 19329,
+          "name": "D. James",
+          "age": 24,
+          "number": 21,
+          "position": "Attacker",
+          "photo": "/src/assets/Halad.svg"
+        },
+        {
+          "id": 20319,
+          "name": "N. Bishop",
+          "age": 22,
+          "number": 30,
+          "position": "Goalkeeper",
+          "photo": "/src/assets/Halad.svg"
+        },
+        {
+          "id": 885,
+          "name": "E. Bailly",
+          "age": 27,
+          "number": 3,
+          "position": "Defender",
+          "photo": "/src/assets/Halad.svg"
+        },
+        {
+          "id": 899,
+          "name": "Andreas Pereira",
+          "age": 25,
+          "number": 15,
+          "position": "Midfielder",
+          "photo": "/src/assets/Halad.svg"
+        },
+        {
+          "id": 19329,
+          "name": "D. James",
+          "age": 24,
+          "number": 21,
+          "position": "Attacker",
+          "photo": "/src/assets/Halad.svg"
+        }
+      ]
+    }
+  ]
+}

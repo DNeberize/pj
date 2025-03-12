@@ -1,34 +1,37 @@
 import React from "react";
 import { ConfigProvider, Flex, Tooltip } from "antd";
+import { Link, useLocation } from "react-router-dom";
 import GorisDila from "@assets/Clubs/FC Dila Gori.png";
 
 const buttonWidth = 80;
 
+// Define TypeScript interfaces for props and team data
+interface Team {
+  id: number;
+  logo: string;
+  name: string;
+}
+
+interface Goals {
+  for: number;
+  against: number;
+}
+
+interface TeamStatistics {
+  played: number;
+  win: number;
+  draw: number;
+  lose: number;
+  goals: Goals;
+}
+
 interface TeamStanding {
   rank: number;
-  team: { id: number; logo: string; name: string };
+  team: Team;
   points: number;
-  all: {
-    played: number;
-    win: number;
-    draw: number;
-    lose: number;
-    goals: { for: number; against: number };
-  };
-  home: {
-    played: number;
-    win: number;
-    draw: number;
-    lose: number;
-    goals: { for: number; against: number };
-  };
-  away: {
-    played: number;
-    win: number;
-    draw: number;
-    lose: number;
-    goals: { for: number; against: number };
-  };
+  all: TeamStatistics;
+  home: TeamStatistics;
+  away: TeamStatistics;
   form: string;
 }
 
@@ -38,24 +41,26 @@ interface TeamStandingsProps {
   isSchedulePage?: boolean;
 }
 
-const getBgColor = (e: string): string => {
-  switch (e.toLowerCase()) {
-    case "w":
-      return "bg-[#3ECC29]";
-    case "l":
-      return "bg-[#F21818]";
-    case "d":
-      return "bg-[#FFC21A]";
-    default:
-      return "bg-[#23262EB2]";
-  }
-};
-
 const TeamStandings: React.FC<TeamStandingsProps> = ({
   data,
   selectedTab,
   isSchedulePage = false,
 }) => {
+  const location = useLocation(); // Access the current location
+
+  const getBgColor = (e: string): string => {
+    switch (e.toLowerCase()) {
+      case "w":
+        return "bg-[#3ECC29]";
+      case "l":
+        return "bg-[#F21818]";
+      case "d":
+        return "bg-[#FFC21A]";
+      default:
+        return "bg-[#23262EB2]";
+    }
+  };
+
   const getRankBadgeClass = (rank: number) => {
     if (isSchedulePage) {
       return "";
@@ -88,7 +93,6 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({
                   />
                 </div>
                 <p className="flex items-center">vs</p>
-
                 <div className="flex flex-col justify-center items-center">
                   გორის დილა
                   <img className="max-w-5" src={GorisDila} alt="" />
@@ -98,6 +102,10 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({
           [team, GorisDila]
         );
 
+        const teamLink = `/${location.pathname.split("/")[1]}/${
+          location.pathname.split("/")[2]
+        }/${location.pathname.split("/")[3]}/team/${team.team.id}`;
+
         return (
           <div
             key={team.team.id}
@@ -105,7 +113,7 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({
               isSchedulePage === true ? "[4fr_1fr]" : "[4fr_3fr_4fr]"
             }`}
           >
-            <div className="flex overflow-hidden gap-3">
+            <Link to={teamLink} className="flex jj overflow-hidden gap-3">
               <span
                 className={`text-xs aspect-square w-6 min-w-6 max-h-6 flex justify-center items-center rounded-[100px] ${getRankBadgeClass(
                   team.rank
@@ -117,7 +125,7 @@ const TeamStandings: React.FC<TeamStandingsProps> = ({
               <h3 className="text-xs flex items-center min-w-8">
                 {team.team.name}
               </h3>
-            </div>
+            </Link>
             <div
               className={`flex gap-3 max-sm:justify-end justify-around ${
                 isSchedulePage && "hidden"

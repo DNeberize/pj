@@ -1,14 +1,14 @@
 function Logo() {
   return (
     <svg
-      width="full"
+      width="100%"
       capHeight="40px"
       style={{ maxHeight: "40px" }}
       viewBox="0 0 160 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_7092_35)">
+      <g clipPath="url(#clip0_7092_35)">
         <path
           d="M146.544 32H85.3359V13.4072C85.3359 6.00218 91.3604 0 98.7928 0H160.001V18.5928C160.001 25.9978 153.977 32 146.544 32Z"
           fill="#7F3FFC"
