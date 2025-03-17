@@ -2,7 +2,9 @@ import { Breadcrumb, Menu, ConfigProvider } from "antd";
 import { Link, useParams, useNavigate, Outlet } from "react-router-dom";
 import ManCity from "@assets/Clubs/ManchesterCity.svg";
 import TeamInfo from "../features/teams/TeamInfoContext";
-
+import { useQuery } from "@tanstack/react-query";
+import { FetchTeam } from "../utils/FetchTeam";
+import { useEffect } from "react";
 const MenuItems = [
   { key: "1", label: "Overview", path: "overview" },
   { key: "2", label: "Salary", path: "salary" },
@@ -59,12 +61,26 @@ interface Team {
 
 function Team() {
   const navigate = useNavigate();
-  const { country, id, teamId, page } = useParams();
+  const { country, id, team, page } = useParams();
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["team", team],
+    queryFn: () => FetchTeam(Number(team)),
+  });
+  if (isLoading) {
+    return <div>Loading team info...</div>;
+  }
 
+  if (isError) {
+    return (
+      <div>
+        Error fetching team info: {(error as Error)?.message || "Unknown error"}
+      </div>
+    );
+  }
   const handleMenuClick = ({ key }: { key: string }) => {
     const selectedItem = MenuItems.find((item) => item.key === key);
     if (selectedItem?.path) {
-      navigate(`/country/${country}/${id}/team/${teamId}/${selectedItem.path}`);
+      navigate(`/country/${country}/${id}/team/${team}/${selectedItem.path}`);
     }
   };
 
@@ -106,9 +122,9 @@ function Team() {
               title: (
                 <Link
                   style={{ color: "#7F3FFC" }}
-                  to={`/country/${country}/${id}/team/${teamId}`}
+                  to={`/country/${country}/${id}/team/${team}`}
                 >
-                  Team
+                  {data?.team.name}
                 </Link>
               ),
             },
@@ -117,12 +133,19 @@ function Team() {
 
         <div className="flex items-center gap-4">
           <div className="h-28 w-28 rounded-[12px] flex justify-center p-4 border border-[var(--color-secondary)]">
-            <img className="rounded h-full" src={ManCity} alt="League Logo" />
+            <img
+              className="rounded h-full"
+              src={data?.team.logo}
+              alt="Team Logo"
+            />
           </div>
           <div>
             <h2 className="text-[var(--color-text)] mb-3 font-bold text-sm">
-              Team
+              {data?.team.name}
             </h2>
+            <h3 className="text-xs text-[var(--color-text-light)]">
+              {data?.team.country}
+            </h3>
           </div>
         </div>
 

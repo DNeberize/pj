@@ -3,9 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/segment.css";
 import { SettingsModalContent } from "../data/ModalContent";
 import { DottedGridModalContent } from "../data/ModalContent";
+import { SignInModal } from "../data/ModalContent";
 
 const SETTINGS_MODAL = "settings";
 const DOTTEDGRID_MODAL = "dottedgrid";
+const SIGN_IN_MODAL = "signin";
 
 const MenuButtons = () => {
   const location = useLocation();
@@ -14,6 +16,7 @@ const MenuButtons = () => {
 
   const isSettingsModalOpen = params.get("modal") === SETTINGS_MODAL;
   const isDottedGridModalOpen = params.get("modal") === DOTTEDGRID_MODAL;
+  const isSignInModalOpen = params.get("modal") === SIGN_IN_MODAL;
 
   const ModalHandler = (modalName?: string) => {
     const params = new URLSearchParams(location.search);
@@ -88,6 +91,26 @@ const MenuButtons = () => {
           <DottedGridModalContent ModalHandler={ModalHandler} />
         </Modal>
 
+        <Modal
+          open={isSignInModalOpen}
+          onCancel={() => ModalHandler()}
+          footer={null}
+          width={600}
+          styles={{
+            content: {
+              height: "",
+              padding: "8px",
+            },
+            body: {
+              padding: 0,
+            },
+          }}
+          centered
+          closable={false}
+          className="max-lg:hidden"
+        >
+          <SignInModal ModalHandler={ModalHandler} />
+        </Modal>
         <button
           className="cursor-pointer hover:opacity-80 max-lg:hidden bg-[var(--color-primary)] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border w-[40px]"
           onClick={() => ModalHandler(SETTINGS_MODAL)}
@@ -106,7 +129,10 @@ const MenuButtons = () => {
         </button>
       </ConfigProvider>
 
-      <button className="cursor-pointer hover:opacity-80 text-white bg-[#7F3FFC] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border max-lg:w-[75px] max-lg:h-[36px] max-w-[5.5rem] min-w-[5rem]">
+      <button
+        onClick={() => ModalHandler(SIGN_IN_MODAL)}
+        className="cursor-pointer hover:opacity-80 text-white bg-[#7F3FFC] border-[var(--color-text)]/[10%] flex items-center justify-center rounded-[8px] border max-lg:w-[75px] max-lg:h-[36px] max-w-[5.5rem] min-w-[5rem]"
+      >
         Sign in
       </button>
     </div>

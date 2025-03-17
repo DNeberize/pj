@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "./FetchBase";
 interface LeagueResponse {
   league: {
     id: any;
@@ -18,17 +18,10 @@ export interface League {
   country: string;
   flag: string;
 }
+
 export async function fetchLeaguesByCountry(countryName: string) {
-  const response = await axios.get(
-    `https://v3.football.api-sports.io/leagues?country=${encodeURIComponent(
-      countryName
-    )}`,
-    {
-      headers: {
-        "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": import.meta.env.VITE_API_KEY,
-      },
-    }
+  const response = await axiosInstance.get(
+    `/leagues?country=${encodeURIComponent(countryName)}`
   );
 
   return response.data.response.map((item: LeagueResponse) => ({

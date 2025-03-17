@@ -46,8 +46,8 @@ const apiClient = axios.create({
 });
 
 export default function Transfer() {
-  const [idTeam, setIdTeam] = useState<number | null>(null);
-  const { id } = useParams();
+  const { id, team } = useParams();
+  const [idTeam, setIdTeam] = useState<number | null>(Number(team));
   const { selectedSeason } = useContext(LeagueInfo);
   const startYear = parseInt(selectedSeason.split("/")[0]);
 
@@ -71,7 +71,6 @@ export default function Transfer() {
 
   const teams = teamsData?.response.map((entry) => entry.team) || [];
   const transfers = transfersData || [];
-
   const items = teams.map((e) => ({
     label: (
       <a
@@ -100,12 +99,12 @@ export default function Transfer() {
             className="border-1 rounded-[8px] border-solid flex justify-between px-4 py-2 border-[var(--color-secondary)]"
             menu={{
               items,
-              style: { maxHeight: "200px", overflowY: "auto" },
+              style: { maxHeight: "300px", overflowY: "auto" },
             }}
             trigger={["click"]}
           >
             <a
-              className="flex w-full max-w-[150px] text-[var(--color-text)] font-semibold text-xs"
+              className="flex w-full max-w-[200px] text-[var(--color-text)] font-semibold text-xs"
               onClick={(e) => e.preventDefault()}
             >
               <Space className="text-xs  text-[var(--color-text)]">
@@ -162,8 +161,10 @@ export default function Transfer() {
           )}
         </ul>
       </div>
-      <div className="rounded-[12px] pt-5 gap-6 flex-col bg-[var(--color-bg)]">
-        <StatsAndPlayer />
+      <div>
+        <div className="rounded-[12px] pt-5 gap-6 flex-col bg-[var(--color-bg)]">
+          <StatsAndPlayer />
+        </div>
       </div>
     </div>
   );

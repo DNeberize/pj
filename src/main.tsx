@@ -7,12 +7,12 @@ import CenterFeed from "./pages/CenterFeed";
 import NotFound from "./pages/NotFount";
 import ListOfCountryPage from "./features/country/ListOfCountryPage";
 import SingleCountry from "./features/country/SingleCountry";
-import League from "./pages/League";
+import League from "./pages/League"; // Assumes League includes <Outlet />
 import LeaguePageRouter from "./features/leagues/LeaguePageRouter";
 import "@ant-design/v5-patch-for-react-19";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Team from "./pages/Team";
+import Team from "./pages/Team"; // Assumes Team includes <Outlet />
 import TeamPageRouter from "./features/teams/TeamPageRouter";
 import NoSidebarLayout from "./layouts/NoSidebarLayout";
 
@@ -23,6 +23,7 @@ function applyInitialTheme() {
 }
 
 applyInitialTheme();
+
 const homeRoute = (
   <Route path="/" element={<Layout />}>
     <Route index element={<CenterFeed />} />
@@ -30,23 +31,28 @@ const homeRoute = (
     <Route path="*" element={<NotFound />} />
   </Route>
 );
-const teamRoute = (
-  <Route path=":id/team/:team" element={<Team />}>
-    <Route index element={<TeamPageRouter />} />
-    <Route path=":page" element={<TeamPageRouter />} />
-  </Route>
-);
-const leagueRoute = (
-  <Route path=":id" element={<League />}>
-    <Route index element={<LeaguePageRouter />} />
-    <Route path=":page" element={<LeaguePageRouter />} />
-  </Route>
-);
-const pageRoutes = (
-  <Route path="country/:country" element={<NoSidebarLayout />}>
+
+const countryRoute = (
+  <Route path="country/:country" element={<Layout />}>
     <Route index element={<SingleCountry />} />
-    {leagueRoute}
-    {teamRoute}
+  </Route>
+);
+
+const leagueRoute = (
+  <Route path="country/:country/:id" element={<NoSidebarLayout />}>
+    <Route element={<League />}>
+      <Route index element={<LeaguePageRouter />} />
+      <Route path=":page" element={<LeaguePageRouter />} />
+    </Route>
+  </Route>
+);
+
+const teamRoute = (
+  <Route path="country/:country/:id/team/:team" element={<NoSidebarLayout />}>
+    <Route element={<Team />}>
+      <Route index element={<TeamPageRouter />} />
+      <Route path=":page" element={<TeamPageRouter />} />
+    </Route>
   </Route>
 );
 
@@ -56,10 +62,11 @@ createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           {homeRoute}
-          {pageRoutes}
+          {countryRoute}
+          {leagueRoute}
+          {teamRoute}
         </Routes>
       </BrowserRouter>
-
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>

@@ -60,9 +60,7 @@ export default function Stats() {
     }
   }, [teams]);
 
-  useEffect(() => {
-    console.log("Current Player Data:", playerData);
-  }, [playerData]);
+  useEffect(() => {}, [playerData]);
   const startYear = parseInt(selectedSeason.split("/")[0]);
   const fetchStandings = async () => {
     if (!idTeam) return;
@@ -109,10 +107,6 @@ export default function Stats() {
       fetchStandings();
     }
   }, [idTeam]);
-
-  useEffect(() => {
-    console.log("Current Teams:", teams);
-  }, [teams]);
 
   const items = teams.map((e) => ({
     label: (

@@ -39,7 +39,6 @@ export default function TeamStanding() {
   }
 
   sortPlayers();
-  console.log(playersByPosition);
 
   const [selectedStat, setSelectedStat] = useState<string>("Goal");
 

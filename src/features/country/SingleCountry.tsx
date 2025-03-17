@@ -10,7 +10,6 @@ function SingleCountry() {
   const modal = searchParams.get("modal"); // Get "settings"
 
   const decodedCountry = country ? decodeURIComponent(country) : "";
-  console.log("modal", modal);
   const {
     data: leagues = [],
     isLoading,
